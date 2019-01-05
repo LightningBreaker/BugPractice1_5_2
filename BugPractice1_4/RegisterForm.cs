@@ -15,9 +15,15 @@ namespace BugPractice1_4
     {
 
         private UserInfo reg_userInfo=new UserInfo();
+        private Form1 form1=null;
         public RegisterForm()
         {
 
+            InitializeComponent();
+        }
+        public RegisterForm(Form1 _form1)
+        {
+            this.form1 = _form1;
             InitializeComponent();
         }
 
@@ -84,6 +90,12 @@ namespace BugPractice1_4
 
         private void reg_btn_next2_Click(object sender, EventArgs e)
         {
+            if (!is_next2())
+            {
+                MessageBox.Show("请先完善用户信息");
+                return;
+
+            }
             this.reg_tab_page.SelectedIndex = 2;
             reg_tab_page.SelectTab(2);
             page_index = 2;
@@ -113,16 +125,19 @@ namespace BugPractice1_4
 
             if (len <= 5 || IsDigitOrNumber(tmp_name) == 0)
             {
+                label_reg_user.ForeColor = Color.Red;
                 label_reg_user.Text = "账号长度必须大于等于6，且仅能包含数字或字母";
                 user_name_ok = false;
             }
             else if (dataReader.Read())
             {
+                label_reg_user.ForeColor = Color.Red;
                 label_reg_user.Text = "该账号名字已经存在";
                 user_name_ok = false;
             }
             else
             {
+                label_reg_user.ForeColor = Color.Green;
                 label_reg_user.Text = "账号合法";
                 reg_userInfo.User_name = tmp_name;
 
@@ -161,7 +176,32 @@ namespace BugPractice1_4
 
         private void reg_waiting_Click(object sender, EventArgs e)
         {
-            
+            MySqlConnection mycon = new MySqlConnection(Global_Database.Conn);
+            mycon.Open();
+         //   insert into table_user_info(user_name, password, type, telephone, email) values('vladimir', 'vladimir', 2, '12323232323'
+       //-> , '213123123@gmail.com');
+            MySqlCommand mycmd = 
+                new MySqlCommand(" insert into" +
+                " table_user_info" +
+                "(user_name, password, type, telephone, email)" +
+                " values(" +
+                "'" + reg_userInfo.User_name + "'," +
+                "'" + reg_userInfo.Password + "'," +
+                    + reg_userInfo.Type + "," +
+                "'" + reg_userInfo.Telephone + "'," +
+                "'" + reg_userInfo.Email + "');"
+                , mycon);
+
+            if (mycmd.ExecuteNonQuery() > 0)
+            {
+                this.Hide();
+                this.form1.Show();
+            }
+            else
+            {
+                MessageBox.Show("系统维护中，请改日再创建");
+            }
+            mycon.Close();
         }
 
         private void reg_password2_TextChanged(object sender, EventArgs e)
@@ -174,7 +214,7 @@ namespace BugPractice1_4
             }
             else
             {
-                is_ok[0] = false;
+                is_ok[1] = false;
                 reg_label_pass2.ForeColor = Color.Red;
                 reg_label_pass2.Text = "两次输入密码不一致";
 
@@ -204,12 +244,14 @@ namespace BugPractice1_4
                 is_ok[2] = false;
                 reg_label_email.Text = "请输入合法邮箱";
                 reg_label_email.ForeColor = Color.Red;
+                
             }
             else
             {
                 is_ok[2] = true;
                 reg_label_email.Text = "邮箱合法";
                 reg_label_email.ForeColor = Color.Green;
+                reg_userInfo.Email = reg_email.Text;
 
             }
         }
@@ -227,6 +269,7 @@ namespace BugPractice1_4
                 is_ok[3] = true;
                 reg_label_phone.ForeColor = Color.Green;
                 reg_label_phone.Text = "手机号码合法";
+                reg_userInfo.Telephone = reg_telephone.Text;
             }
         }
     }

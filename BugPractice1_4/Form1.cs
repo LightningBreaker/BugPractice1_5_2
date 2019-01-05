@@ -30,7 +30,7 @@ namespace BugPractice1_4
             mycon.Open();
             MySqlCommand mycmd = new MySqlCommand("select * from table_user_info " +
                 "where user_name = '" + username + "' and password = '"
-                + password + "'", mycon);
+                + password + "'and is_verified='1'", mycon);
             //mda.SelectCommand = mycmd;
             //DataSet my_data = new DataSet();
             //mda.Fill(my_data);
@@ -46,6 +46,18 @@ namespace BugPractice1_4
             }
             else
             {
+                dr.Close();
+                
+                mycmd = new MySqlCommand("select * from table_user_info " +
+                "where user_name = '" + username + "' and password = '"
+                + password + "'and is_verified='0'", mycon);
+                
+                 dr = mycmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    MessageBox.Show("账号审核中");
+                }
+                else
                 MessageBox.Show("账号或密码错误");
             }
 
@@ -60,7 +72,7 @@ namespace BugPractice1_4
 
         private void label_register_Click(object sender, EventArgs e)
         {
-            RegisterForm registerForm = new RegisterForm();
+            RegisterForm registerForm = new RegisterForm(this);
             registerForm.Show();
             this.Hide();
 
