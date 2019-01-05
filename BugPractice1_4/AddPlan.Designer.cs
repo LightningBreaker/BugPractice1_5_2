@@ -43,6 +43,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label_managerError = new System.Windows.Forms.Label();
+            this.comboBox_priority = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label_descriptionError
@@ -93,7 +95,7 @@
             // 
             this.textBox_planName.Location = new System.Drawing.Point(44, 51);
             this.textBox_planName.Name = "textBox_planName";
-            this.textBox_planName.Size = new System.Drawing.Size(519, 25);
+            this.textBox_planName.Size = new System.Drawing.Size(235, 25);
             this.textBox_planName.TabIndex = 11;
             // 
             // label1
@@ -145,6 +147,7 @@
             // 
             // comboBox_managerName
             // 
+            this.comboBox_managerName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_managerName.FormattingEnabled = true;
             this.comboBox_managerName.Location = new System.Drawing.Point(44, 307);
             this.comboBox_managerName.MaxDropDownItems = 15;
@@ -180,11 +183,36 @@
             this.label_managerError.Size = new System.Drawing.Size(0, 15);
             this.label_managerError.TabIndex = 25;
             // 
+            // comboBox_priority
+            // 
+            this.comboBox_priority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_priority.FormattingEnabled = true;
+            this.comboBox_priority.Items.AddRange(new object[] {
+            "次要",
+            "一般",
+            "紧急"});
+            this.comboBox_priority.Location = new System.Drawing.Point(328, 53);
+            this.comboBox_priority.MaxDropDownItems = 15;
+            this.comboBox_priority.Name = "comboBox_priority";
+            this.comboBox_priority.Size = new System.Drawing.Size(235, 23);
+            this.comboBox_priority.TabIndex = 44;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(325, 27);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(121, 15);
+            this.label7.TabIndex = 43;
+            this.label7.Text = "计划优先级(*)：";
+            // 
             // AddPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(619, 447);
+            this.Controls.Add(this.comboBox_priority);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label_managerError);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
@@ -224,5 +252,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label_managerError;
+        private System.Windows.Forms.ComboBox comboBox_priority;
+        private System.Windows.Forms.Label label7;
     }
 }

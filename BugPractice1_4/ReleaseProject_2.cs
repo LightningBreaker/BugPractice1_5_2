@@ -12,12 +12,14 @@ namespace BugPractice1_4
 {
     public partial class ReleaseProject_2 : Form
     {
-        Form preForm;
-        List<plan> plans = new List<plan>();
-        public ReleaseProject_2(Form pref)
+        ReleaseProject preForm;
+        BindingList<plan> plans = new BindingList<plan>();
+        public ReleaseProject_2(ReleaseProject pref)
         {
             InitializeComponent();
-            dataGridView1.DataSource = 
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.DataSource = plans;
+            
             preForm = pref;
         }
 
@@ -40,6 +42,15 @@ namespace BugPractice1_4
             {
                 return;
             }
+            //添加计划信息到数据库，通知相关人员
+            string project_name = preForm.textBox_projectName.Text;
+            string project_description = preForm.textBox_description.Text;
+            string project_managerID = preForm.textBox_managerID.Text;
+            string project_managerName = preForm.textBox_managerName.Text;
+            int plan_nums = plans.Count;
+
+            string projectID = Global_Database.AddProjectToDatabase(project_name, project_description, project_managerID, project_managerName, plan_nums);
+            Global_Database.AddPlanToDatabase(plans, projectID);
         }
 
         private void ReleaseProject_2_Load(object sender, EventArgs e)
@@ -57,20 +68,42 @@ namespace BugPractice1_4
         {
             new AddPlan(plans).ShowDialog();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 2)
+            {
+                int index = e.RowIndex;
+               // MessageBox.Show(index.ToString()+plans[0].name);
+                
+                new ViewPlan(plans, index).ShowDialog();
+            }
+        }
+
+        private void button_deletePLan_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("是否要删除选中的计划？", "删除计划", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.Cancel) return;
+            int index = dataGridView1.SelectedCells[0].RowIndex;
+            plans.RemoveAt(index);
+            MessageBox.Show("删除成功");
+        }
     }
     public class plan
     {
-        public string name;
-        public string description;
-        public string manager_id;
-        public string manager_name;
+        public string name { get; set; }
+        public string description { get; set; }
+        public string manager_id { get; set; }
+        public string manager_name { get; set; }
+        public int priority { get; set; }
 
-        public plan(string name,string description,string manager_name,string manager_id)
+        public plan(string name,string description,string manager_name,string manager_id,int priority)
         {
             this.name = name;
             this.description = description;
             this.manager_id = manager_id;
             this.manager_name = manager_name;
+            this.priority = priority;
         }
     }
 }

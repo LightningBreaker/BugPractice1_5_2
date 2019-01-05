@@ -8,10 +8,10 @@ namespace BugPractice1_4
 {
     public class Global_Userinfo
     {
-        public static string userid;
-        public static string username;
-        public static int type;
-        public static bool isLogined;
+        public static string userid = "00000";
+        public static string username = "default";
+        public static int type = ADMINISTRATOR;
+        public static bool isLogined = true;
 
         public const int USER_NOT_VERIFIED = 0;
         public const int ADMINISTRATOR = 1;
