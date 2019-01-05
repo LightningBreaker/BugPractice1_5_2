@@ -38,22 +38,22 @@
             this.label6 = new System.Windows.Forms.Label();
             this.reg_tab_page = new System.Windows.Forms.TabControl();
             this.reg_account_page = new System.Windows.Forms.TabPage();
+            this.reg_combo_type = new System.Windows.Forms.ComboBox();
             this.label_reg_user = new System.Windows.Forms.Label();
             this.reg_btn_next1 = new System.Windows.Forms.Button();
             this.reg_info_page = new System.Windows.Forms.TabPage();
+            this.reg_label_phone = new System.Windows.Forms.Label();
+            this.reg_label_email = new System.Windows.Forms.Label();
+            this.reg_label_pass2 = new System.Windows.Forms.Label();
+            this.reg_lable_pass1 = new System.Windows.Forms.Label();
             this.reg_btn_next2 = new System.Windows.Forms.Button();
             this.reg_telephone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.reg_password2 = new System.Windows.Forms.TextBox();
             this.reg_email = new System.Windows.Forms.TextBox();
             this.reg_result_page = new System.Windows.Forms.TabPage();
-            this.reg_combo_type = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.reg_waiting = new System.Windows.Forms.Button();
-            this.reg_lable_pass1 = new System.Windows.Forms.Label();
-            this.reg_label_pass2 = new System.Windows.Forms.Label();
-            this.reg_label_email = new System.Windows.Forms.Label();
-            this.reg_label_phone = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.reg_tab_page.SuspendLayout();
             this.reg_account_page.SuspendLayout();
             this.reg_info_page.SuspendLayout();
@@ -107,6 +107,7 @@
             this.reg_password1.Location = new System.Drawing.Point(25, 35);
             this.reg_password1.Multiline = true;
             this.reg_password1.Name = "reg_password1";
+            this.reg_password1.PasswordChar = '*';
             this.reg_password1.Size = new System.Drawing.Size(358, 48);
             this.reg_password1.TabIndex = 5;
             this.reg_password1.TextChanged += new System.EventHandler(this.reg_password1_TextChanged);
@@ -157,6 +158,21 @@
             this.reg_account_page.TabIndex = 0;
             this.reg_account_page.Text = "创建账号";
             // 
+            // reg_combo_type
+            // 
+            this.reg_combo_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.reg_combo_type.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.reg_combo_type.FormattingEnabled = true;
+            this.reg_combo_type.Items.AddRange(new object[] {
+            "系统管理员",
+            "项目管理人员",
+            "测试工程师",
+            "软件开发工程师"});
+            this.reg_combo_type.Location = new System.Drawing.Point(37, 267);
+            this.reg_combo_type.Name = "reg_combo_type";
+            this.reg_combo_type.Size = new System.Drawing.Size(358, 33);
+            this.reg_combo_type.TabIndex = 15;
+            // 
             // label_reg_user
             // 
             this.label_reg_user.AutoSize = true;
@@ -204,6 +220,38 @@
             this.reg_info_page.Text = "基本信息";
             this.reg_info_page.UseVisualStyleBackColor = true;
             // 
+            // reg_label_phone
+            // 
+            this.reg_label_phone.AutoSize = true;
+            this.reg_label_phone.Location = new System.Drawing.Point(22, 372);
+            this.reg_label_phone.Name = "reg_label_phone";
+            this.reg_label_phone.Size = new System.Drawing.Size(0, 15);
+            this.reg_label_phone.TabIndex = 18;
+            // 
+            // reg_label_email
+            // 
+            this.reg_label_email.AutoSize = true;
+            this.reg_label_email.Location = new System.Drawing.Point(22, 273);
+            this.reg_label_email.Name = "reg_label_email";
+            this.reg_label_email.Size = new System.Drawing.Size(0, 15);
+            this.reg_label_email.TabIndex = 17;
+            // 
+            // reg_label_pass2
+            // 
+            this.reg_label_pass2.AutoSize = true;
+            this.reg_label_pass2.Location = new System.Drawing.Point(22, 182);
+            this.reg_label_pass2.Name = "reg_label_pass2";
+            this.reg_label_pass2.Size = new System.Drawing.Size(0, 15);
+            this.reg_label_pass2.TabIndex = 16;
+            // 
+            // reg_lable_pass1
+            // 
+            this.reg_lable_pass1.AutoSize = true;
+            this.reg_lable_pass1.Location = new System.Drawing.Point(22, 86);
+            this.reg_lable_pass1.Name = "reg_lable_pass1";
+            this.reg_lable_pass1.Size = new System.Drawing.Size(0, 15);
+            this.reg_lable_pass1.TabIndex = 15;
+            // 
             // reg_btn_next2
             // 
             this.reg_btn_next2.BackColor = System.Drawing.Color.Red;
@@ -246,6 +294,7 @@
             this.reg_password2.Location = new System.Drawing.Point(25, 131);
             this.reg_password2.Multiline = true;
             this.reg_password2.Name = "reg_password2";
+            this.reg_password2.PasswordChar = '*';
             this.reg_password2.Size = new System.Drawing.Size(358, 48);
             this.reg_password2.TabIndex = 9;
             this.reg_password2.TextChanged += new System.EventHandler(this.reg_password2_TextChanged);
@@ -273,32 +322,6 @@
             this.reg_result_page.Text = "注册结果";
             this.reg_result_page.UseVisualStyleBackColor = true;
             // 
-            // reg_combo_type
-            // 
-            this.reg_combo_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.reg_combo_type.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.reg_combo_type.FormattingEnabled = true;
-            this.reg_combo_type.Items.AddRange(new object[] {
-            "系统管理员",
-            "项目管理人员",
-            "测试工程师",
-            "软件开发工程师"});
-            this.reg_combo_type.Location = new System.Drawing.Point(37, 267);
-            this.reg_combo_type.Name = "reg_combo_type";
-            this.reg_combo_type.Size = new System.Drawing.Size(358, 33);
-            this.reg_combo_type.TabIndex = 15;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.ForeColor = System.Drawing.Color.Blue;
-            this.label7.Location = new System.Drawing.Point(80, 122);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(264, 28);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "等待系统管理员审核";
-            // 
             // reg_waiting
             // 
             this.reg_waiting.BackColor = System.Drawing.Color.Red;
@@ -314,41 +337,16 @@
             this.reg_waiting.UseVisualStyleBackColor = false;
             this.reg_waiting.Click += new System.EventHandler(this.reg_waiting_Click);
             // 
-            // reg_lable_pass1
+            // label7
             // 
-            this.reg_lable_pass1.AutoSize = true;
-            this.reg_lable_pass1.Location = new System.Drawing.Point(22, 86);
-            this.reg_lable_pass1.Name = "reg_lable_pass1";
-            this.reg_lable_pass1.Size = new System.Drawing.Size(55, 15);
-            this.reg_lable_pass1.TabIndex = 15;
-            this.reg_lable_pass1.Text = "label8";
-            // 
-            // reg_label_pass2
-            // 
-            this.reg_label_pass2.AutoSize = true;
-            this.reg_label_pass2.Location = new System.Drawing.Point(22, 182);
-            this.reg_label_pass2.Name = "reg_label_pass2";
-            this.reg_label_pass2.Size = new System.Drawing.Size(55, 15);
-            this.reg_label_pass2.TabIndex = 16;
-            this.reg_label_pass2.Text = "label8";
-            // 
-            // reg_label_email
-            // 
-            this.reg_label_email.AutoSize = true;
-            this.reg_label_email.Location = new System.Drawing.Point(22, 273);
-            this.reg_label_email.Name = "reg_label_email";
-            this.reg_label_email.Size = new System.Drawing.Size(55, 15);
-            this.reg_label_email.TabIndex = 17;
-            this.reg_label_email.Text = "label8";
-            // 
-            // reg_label_phone
-            // 
-            this.reg_label_phone.AutoSize = true;
-            this.reg_label_phone.Location = new System.Drawing.Point(22, 372);
-            this.reg_label_phone.Name = "reg_label_phone";
-            this.reg_label_phone.Size = new System.Drawing.Size(55, 15);
-            this.reg_label_phone.TabIndex = 18;
-            this.reg_label_phone.Text = "label8";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.ForeColor = System.Drawing.Color.Blue;
+            this.label7.Location = new System.Drawing.Point(80, 122);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(264, 28);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "等待系统管理员审核";
             // 
             // RegisterForm
             // 
