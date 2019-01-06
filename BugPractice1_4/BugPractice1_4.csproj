@@ -55,6 +55,12 @@
     <Compile Include="AddPlan.Designer.cs">
       <DependentUpon>AddPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="BugCreater.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BugCreater.Designer.cs">
+      <DependentUpon>BugCreater.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,9 +89,13 @@
     <Compile Include="ReleaseProject_2.Designer.cs">
       <DependentUpon>ReleaseProject_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableBug.cs" />
     <Compile Include="UserInfo.cs" />
     <EmbeddedResource Include="AddPlan.resx">
       <DependentUpon>AddPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BugCreater.resx">
+      <DependentUpon>BugCreater.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

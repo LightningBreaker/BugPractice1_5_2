@@ -79,5 +79,10 @@ namespace BugPractice1_4
                 this.Close();
             }
         }
+
+        private void AddPlan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

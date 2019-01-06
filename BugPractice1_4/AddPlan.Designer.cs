@@ -202,6 +202,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddPlan";
             this.Text = "添加计划";
+            this.Load += new System.EventHandler(this.AddPlan_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
