@@ -30,19 +30,22 @@
         {
             this.bug_cre_tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.bug_cre_bug_level = new System.Windows.Forms.ComboBox();
+            this.bug_cre_btn_next1 = new System.Windows.Forms.Button();
             this.label_descriptionError = new System.Windows.Forms.Label();
             this.label_nameError = new System.Windows.Forms.Label();
             this.bug_cre_description = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.bug_cre_text_bug_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.bug_cre_btn_next1 = new System.Windows.Forms.Button();
-            this.bug_cre_bug_level = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.user_name = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.bug_cre_tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -79,18 +82,46 @@
             this.tabPage1.Text = "bug描述";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // label3
             // 
-            this.tabPage2.Controls.Add(this.button1);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(403, 492);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "负责人指派";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(22, 327);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 15);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Bug等级：";
+            // 
+            // bug_cre_bug_level
+            // 
+            this.bug_cre_bug_level.BackColor = System.Drawing.Color.LemonChiffon;
+            this.bug_cre_bug_level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bug_cre_bug_level.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bug_cre_bug_level.ForeColor = System.Drawing.Color.White;
+            this.bug_cre_bug_level.FormattingEnabled = true;
+            this.bug_cre_bug_level.Items.AddRange(new object[] {
+            "次要",
+            "一般",
+            "严重"});
+            this.bug_cre_bug_level.Location = new System.Drawing.Point(144, 324);
+            this.bug_cre_bug_level.Name = "bug_cre_bug_level";
+            this.bug_cre_bug_level.Size = new System.Drawing.Size(121, 33);
+            this.bug_cre_bug_level.TabIndex = 17;
+            this.bug_cre_bug_level.SelectedIndexChanged += new System.EventHandler(this.bug_cre_bug_level_SelectedIndexChanged);
+            // 
+            // bug_cre_btn_next1
+            // 
+            this.bug_cre_btn_next1.BackColor = System.Drawing.Color.Red;
+            this.bug_cre_btn_next1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bug_cre_btn_next1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bug_cre_btn_next1.Font = new System.Drawing.Font("幼圆", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bug_cre_btn_next1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.bug_cre_btn_next1.Location = new System.Drawing.Point(12, 380);
+            this.bug_cre_btn_next1.Name = "bug_cre_btn_next1";
+            this.bug_cre_btn_next1.Size = new System.Drawing.Size(358, 71);
+            this.bug_cre_btn_next1.TabIndex = 16;
+            this.bug_cre_btn_next1.Text = "下一步";
+            this.bug_cre_btn_next1.UseVisualStyleBackColor = false;
+            this.bug_cre_btn_next1.Click += new System.EventHandler(this.bug_cre_btn_next1_Click);
             // 
             // label_descriptionError
             // 
@@ -143,65 +174,21 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Bug名(*)：";
             // 
-            // bug_cre_btn_next1
+            // tabPage2
             // 
-            this.bug_cre_btn_next1.BackColor = System.Drawing.Color.Red;
-            this.bug_cre_btn_next1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bug_cre_btn_next1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.bug_cre_btn_next1.Font = new System.Drawing.Font("幼圆", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bug_cre_btn_next1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.bug_cre_btn_next1.Location = new System.Drawing.Point(12, 380);
-            this.bug_cre_btn_next1.Name = "bug_cre_btn_next1";
-            this.bug_cre_btn_next1.Size = new System.Drawing.Size(358, 71);
-            this.bug_cre_btn_next1.TabIndex = 16;
-            this.bug_cre_btn_next1.Text = "下一步";
-            this.bug_cre_btn_next1.UseVisualStyleBackColor = false;
-            this.bug_cre_btn_next1.Click += new System.EventHandler(this.bug_cre_btn_next1_Click);
-            // 
-            // bug_cre_bug_level
-            // 
-            this.bug_cre_bug_level.BackColor = System.Drawing.Color.LemonChiffon;
-            this.bug_cre_bug_level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.bug_cre_bug_level.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bug_cre_bug_level.ForeColor = System.Drawing.Color.White;
-            this.bug_cre_bug_level.FormattingEnabled = true;
-            this.bug_cre_bug_level.Items.AddRange(new object[] {
-            "次要",
-            "一般",
-            "严重"});
-            this.bug_cre_bug_level.Location = new System.Drawing.Point(144, 324);
-            this.bug_cre_bug_level.Name = "bug_cre_bug_level";
-            this.bug_cre_bug_level.Size = new System.Drawing.Size(121, 33);
-            this.bug_cre_bug_level.TabIndex = 17;
-            this.bug_cre_bug_level.SelectedIndexChanged += new System.EventHandler(this.bug_cre_bug_level_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 327);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 15);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Bug等级：";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 44);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(399, 150);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 15);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "开发工程师列表：";
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.user_name);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(403, 492);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "负责人指派";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -216,6 +203,54 @@
             this.button1.TabIndex = 17;
             this.button1.Text = "下一步";
             this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 15);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "开发工程师列表：";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 44);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.Size = new System.Drawing.Size(399, 150);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // user_name
+            // 
+            this.user_name.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.user_name.ForeColor = System.Drawing.Color.Black;
+            this.user_name.Location = new System.Drawing.Point(0, 248);
+            this.user_name.Multiline = true;
+            this.user_name.Name = "user_name";
+            this.user_name.Size = new System.Drawing.Size(178, 48);
+            this.user_name.TabIndex = 18;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("宋体", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.ForeColor = System.Drawing.Color.Black;
+            this.textBox1.Location = new System.Drawing.Point(202, 248);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(107, 48);
+            this.textBox1.TabIndex = 19;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::BugPractice1_4.Properties.Resources.start;
+            this.button2.Location = new System.Drawing.Point(333, 241);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(32, 54);
+            this.button2.TabIndex = 20;
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // BugCreater
             // 
@@ -254,5 +289,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox user_name;
     }
 }
