@@ -32,13 +32,15 @@
             this.textBox_projectName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_description = new System.Windows.Forms.TextBox();
-            this.textBox_manager = new System.Windows.Forms.TextBox();
+            this.textBox_managerID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button_nextPage = new System.Windows.Forms.Button();
             this.label_nameError = new System.Windows.Forms.Label();
             this.label_descriptionError = new System.Windows.Forms.Label();
             this.button_giveUp = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox_managerName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -76,28 +78,28 @@
             this.textBox_description.TabIndex = 4;
             this.textBox_description.TextChanged += new System.EventHandler(this.textBox_description_TextChanged);
             // 
-            // textBox_manager
+            // textBox_managerID
             // 
-            this.textBox_manager.Enabled = false;
-            this.textBox_manager.Location = new System.Drawing.Point(43, 298);
-            this.textBox_manager.Name = "textBox_manager";
-            this.textBox_manager.Size = new System.Drawing.Size(347, 25);
-            this.textBox_manager.TabIndex = 6;
+            this.textBox_managerID.Location = new System.Drawing.Point(43, 298);
+            this.textBox_managerID.Name = "textBox_managerID";
+            this.textBox_managerID.ReadOnly = true;
+            this.textBox_managerID.Size = new System.Drawing.Size(157, 25);
+            this.textBox_managerID.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(40, 274);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 15);
+            this.label3.Size = new System.Drawing.Size(113, 15);
             this.label3.TabIndex = 5;
-            this.label3.Text = "项目负责人：";
+            this.label3.Text = "项目负责人ID：";
             // 
             // button_nextPage
             // 
             this.button_nextPage.Location = new System.Drawing.Point(43, 366);
             this.button_nextPage.Name = "button_nextPage";
-            this.button_nextPage.Size = new System.Drawing.Size(136, 33);
+            this.button_nextPage.Size = new System.Drawing.Size(157, 33);
             this.button_nextPage.TabIndex = 7;
             this.button_nextPage.Text = "下一页>>";
             this.button_nextPage.UseVisualStyleBackColor = true;
@@ -123,9 +125,9 @@
             // 
             // button_giveUp
             // 
-            this.button_giveUp.Location = new System.Drawing.Point(254, 366);
+            this.button_giveUp.Location = new System.Drawing.Point(240, 366);
             this.button_giveUp.Name = "button_giveUp";
-            this.button_giveUp.Size = new System.Drawing.Size(136, 33);
+            this.button_giveUp.Size = new System.Drawing.Size(150, 33);
             this.button_giveUp.TabIndex = 10;
             this.button_giveUp.Text = "放弃发布";
             this.button_giveUp.UseVisualStyleBackColor = true;
@@ -141,17 +143,36 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // textBox_managerName
+            // 
+            this.textBox_managerName.Location = new System.Drawing.Point(240, 298);
+            this.textBox_managerName.Name = "textBox_managerName";
+            this.textBox_managerName.ReadOnly = true;
+            this.textBox_managerName.Size = new System.Drawing.Size(150, 25);
+            this.textBox_managerName.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(237, 274);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 15);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "项目负责人姓名：";
+            // 
             // ReleaseProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 466);
+            this.Controls.Add(this.textBox_managerName);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button_giveUp);
             this.Controls.Add(this.label_descriptionError);
             this.Controls.Add(this.label_nameError);
             this.Controls.Add(this.button_nextPage);
-            this.Controls.Add(this.textBox_manager);
+            this.Controls.Add(this.textBox_managerID);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox_description);
             this.Controls.Add(this.label2);
@@ -169,16 +190,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox_projectName;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox_description;
-        private System.Windows.Forms.TextBox textBox_manager;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button_nextPage;
-        private System.Windows.Forms.Label label_nameError;
-        private System.Windows.Forms.Label label_descriptionError;
-        private System.Windows.Forms.Button button_giveUp;
-        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox textBox_projectName;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox textBox_description;
+        public System.Windows.Forms.TextBox textBox_managerID;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Button button_nextPage;
+        public System.Windows.Forms.Label label_nameError;
+        public System.Windows.Forms.Label label_descriptionError;
+        public System.Windows.Forms.Button button_giveUp;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.TextBox textBox_managerName;
+        public System.Windows.Forms.Label label4;
     }
 }

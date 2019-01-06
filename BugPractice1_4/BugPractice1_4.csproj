@@ -91,6 +91,12 @@
     </Compile>
     <Compile Include="TableBug.cs" />
     <Compile Include="UserInfo.cs" />
+    <Compile Include="ViewPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewPlan.Designer.cs">
+      <DependentUpon>ViewPlan.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddPlan.resx">
       <DependentUpon>AddPlan.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReleaseProject_2.resx">
       <DependentUpon>ReleaseProject_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPlan.resx">
+      <DependentUpon>ViewPlan.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

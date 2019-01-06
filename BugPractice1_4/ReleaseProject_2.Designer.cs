@@ -30,13 +30,13 @@
         {
             this.label = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.plan_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.plan_manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button_deletePLan = new System.Windows.Forms.Button();
             this.button_addPlan = new System.Windows.Forms.Button();
             this.button_release = new System.Windows.Forms.Button();
             this.button_giveup = new System.Windows.Forms.Button();
+            this.plan_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.plan_manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,34 +58,12 @@
             this.plan_manager,
             this.ButtonColumn});
             this.dataGridView1.Location = new System.Drawing.Point(57, 88);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(594, 243);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // plan_name
-            // 
-            this.plan_name.HeaderText = "计划名称";
-            this.plan_name.Name = "plan_name";
-            this.plan_name.ReadOnly = true;
-            this.plan_name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.plan_name.Width = 150;
-            // 
-            // plan_manager
-            // 
-            this.plan_manager.HeaderText = "计划负责人";
-            this.plan_manager.Name = "plan_manager";
-            this.plan_manager.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.plan_manager.Width = 180;
-            // 
-            // ButtonColumn
-            // 
-            this.ButtonColumn.HeaderText = "查看";
-            this.ButtonColumn.Name = "ButtonColumn";
-            this.ButtonColumn.ReadOnly = true;
-            this.ButtonColumn.Text = "查看";
-            this.ButtonColumn.ToolTipText = "查看";
-            this.ButtonColumn.Width = 70;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button_deletePLan
             // 
@@ -95,6 +73,7 @@
             this.button_deletePLan.TabIndex = 3;
             this.button_deletePLan.Text = "删除计划";
             this.button_deletePLan.UseVisualStyleBackColor = true;
+            this.button_deletePLan.Click += new System.EventHandler(this.button_deletePLan_Click);
             // 
             // button_addPlan
             // 
@@ -126,6 +105,34 @@
             this.button_giveup.UseVisualStyleBackColor = true;
             this.button_giveup.Click += new System.EventHandler(this.button_giveup_Click);
             // 
+            // plan_name
+            // 
+            this.plan_name.DataPropertyName = "name";
+            this.plan_name.HeaderText = "计划名称";
+            this.plan_name.Name = "plan_name";
+            this.plan_name.ReadOnly = true;
+            this.plan_name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.plan_name.Width = 150;
+            // 
+            // plan_manager
+            // 
+            this.plan_manager.DataPropertyName = "manager_name";
+            this.plan_manager.HeaderText = "计划负责人";
+            this.plan_manager.Name = "plan_manager";
+            this.plan_manager.ReadOnly = true;
+            this.plan_manager.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.plan_manager.Width = 180;
+            // 
+            // ButtonColumn
+            // 
+            this.ButtonColumn.HeaderText = "";
+            this.ButtonColumn.Name = "ButtonColumn";
+            this.ButtonColumn.ReadOnly = true;
+            this.ButtonColumn.Text = "查看";
+            this.ButtonColumn.ToolTipText = "查看";
+            this.ButtonColumn.UseColumnTextForButtonValue = true;
+            this.ButtonColumn.Width = 70;
+            // 
             // ReleaseProject_2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -153,11 +160,11 @@
         #endregion
 
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button_deletePLan;
         private System.Windows.Forms.Button button_addPlan;
         private System.Windows.Forms.Button button_release;
         private System.Windows.Forms.Button button_giveup;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn plan_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn plan_manager;
         private System.Windows.Forms.DataGridViewButtonColumn ButtonColumn;
