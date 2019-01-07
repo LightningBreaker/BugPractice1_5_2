@@ -20,11 +20,18 @@ namespace BugPractice1_4
             InitializeComponent();
         }
         private int pre_id=-1;
-        public BugCreater(int _pre_id)
+        private int case_id;
+        public BugCreater(int _pre_id,int case_id)
         {
             InitializeComponent();
             this.pre_id = _pre_id;
 
+        }
+
+        public BugCreater(int _case_id)
+        {
+            InitializeComponent();
+            this.case_id = _case_id;
         }
         private const int OK_LEN = 20;
         private bool[] is_ok = new bool[OK_LEN] ;
@@ -72,6 +79,7 @@ namespace BugPractice1_4
 
         }
 
+        
         
         private TableBug table_bug=new TableBug();
       
