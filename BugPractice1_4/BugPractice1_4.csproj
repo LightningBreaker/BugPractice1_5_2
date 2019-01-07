@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCase.Designer.cs">
+      <DependentUpon>AddCase.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddPlan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,21 @@
     <Compile Include="ViewPlan.Designer.cs">
       <DependentUpon>ViewPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewPlan_Tester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewPlan_Tester.Designer.cs">
+      <DependentUpon>ViewPlan_Tester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPlan_Tester_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewPlan_Tester_2.Designer.cs">
+      <DependentUpon>ViewPlan_Tester_2.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddCase.resx">
+      <DependentUpon>AddCase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddPlan.resx">
       <DependentUpon>AddPlan.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +148,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPlan.resx">
       <DependentUpon>ViewPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPlan_Tester.resx">
+      <DependentUpon>ViewPlan_Tester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPlan_Tester_2.resx">
+      <DependentUpon>ViewPlan_Tester_2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

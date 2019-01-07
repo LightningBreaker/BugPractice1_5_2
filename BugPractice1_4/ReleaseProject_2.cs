@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace BugPractice1_4
 {
@@ -49,8 +50,16 @@ namespace BugPractice1_4
             string project_managerName = preForm.textBox_managerName.Text;
             int plan_nums = plans.Count;
 
-            string projectID = Global_Database.AddProjectToDatabase(project_name, project_description, project_managerID, project_managerName, plan_nums);
-            Global_Database.AddPlanToDatabase(plans, projectID);
+            try
+            {
+                string projectID = Global_Database.AddProjectToDatabase(project_name, project_description, project_managerID, project_managerName, plan_nums);
+                Global_Database.AddPlanToDatabase(plans, projectID);
+            }
+            catch(MySqlException ex)
+            {
+                MessageBox.Show("数据库连接异常！");
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ReleaseProject_2_Load(object sender, EventArgs e)
