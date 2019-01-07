@@ -43,8 +43,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_planName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox_managerName = new System.Windows.Forms.ComboBox();
             this.comboBox_priority = new System.Windows.Forms.ComboBox();
+            this.textBox_manageName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label7
@@ -183,21 +183,9 @@
             this.label1.TabIndex = 43;
             this.label1.Text = "计划名(*)：";
             // 
-            // comboBox_managerName
-            // 
-            this.comboBox_managerName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_managerName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox_managerName.FormattingEnabled = true;
-            this.comboBox_managerName.Location = new System.Drawing.Point(39, 307);
-            this.comboBox_managerName.MaxDropDownItems = 15;
-            this.comboBox_managerName.Name = "comboBox_managerName";
-            this.comboBox_managerName.Size = new System.Drawing.Size(235, 23);
-            this.comboBox_managerName.TabIndex = 54;
-            // 
             // comboBox_priority
             // 
             this.comboBox_priority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_priority.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox_priority.FormattingEnabled = true;
             this.comboBox_priority.Items.AddRange(new object[] {
             "次要",
@@ -209,17 +197,24 @@
             this.comboBox_priority.Size = new System.Drawing.Size(235, 23);
             this.comboBox_priority.TabIndex = 59;
             // 
+            // textBox_manageName
+            // 
+            this.textBox_manageName.Location = new System.Drawing.Point(39, 305);
+            this.textBox_manageName.Name = "textBox_manageName";
+            this.textBox_manageName.Size = new System.Drawing.Size(235, 25);
+            this.textBox_manageName.TabIndex = 60;
+            // 
             // ViewPlan_Tester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 450);
+            this.Controls.Add(this.textBox_manageName);
             this.Controls.Add(this.comboBox_priority);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label_managerError);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox_managerName);
             this.Controls.Add(this.button_giveUp);
             this.Controls.Add(this.button_nextPage);
             this.Controls.Add(this.textBox_managerID);
@@ -256,7 +251,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_planName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox_managerName;
         private System.Windows.Forms.ComboBox comboBox_priority;
+        private System.Windows.Forms.TextBox textBox_manageName;
     }
 }

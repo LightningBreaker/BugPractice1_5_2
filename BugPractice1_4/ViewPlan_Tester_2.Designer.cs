@@ -44,7 +44,7 @@
             // 
             // button_giveup
             // 
-            this.button_giveup.Location = new System.Drawing.Point(711, 372);
+            this.button_giveup.Location = new System.Drawing.Point(762, 372);
             this.button_giveup.Name = "button_giveup";
             this.button_giveup.Size = new System.Drawing.Size(136, 33);
             this.button_giveup.TabIndex = 12;
@@ -54,16 +54,17 @@
             // 
             // button_release
             // 
-            this.button_release.Location = new System.Drawing.Point(529, 372);
+            this.button_release.Location = new System.Drawing.Point(578, 372);
             this.button_release.Name = "button_release";
             this.button_release.Size = new System.Drawing.Size(136, 33);
             this.button_release.TabIndex = 11;
             this.button_release.Text = "添加完毕";
             this.button_release.UseVisualStyleBackColor = true;
+            this.button_release.Click += new System.EventHandler(this.button_release_Click);
             // 
             // button_addPlan
             // 
-            this.button_addPlan.Location = new System.Drawing.Point(711, 80);
+            this.button_addPlan.Location = new System.Drawing.Point(762, 80);
             this.button_addPlan.Name = "button_addPlan";
             this.button_addPlan.Size = new System.Drawing.Size(136, 33);
             this.button_addPlan.TabIndex = 10;
@@ -73,7 +74,7 @@
             // 
             // button_deletePLan
             // 
-            this.button_deletePLan.Location = new System.Drawing.Point(711, 142);
+            this.button_deletePLan.Location = new System.Drawing.Point(762, 142);
             this.button_deletePLan.Name = "button_deletePLan";
             this.button_deletePLan.Size = new System.Drawing.Size(136, 33);
             this.button_deletePLan.TabIndex = 9;
@@ -83,6 +84,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -95,9 +97,10 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(625, 243);
+            this.dataGridView1.Size = new System.Drawing.Size(674, 256);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
             // label1
             // 
@@ -123,7 +126,7 @@
             this.case_name.Name = "case_name";
             this.case_name.ReadOnly = true;
             this.case_name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.case_name.Width = 200;
+            this.case_name.Width = 170;
             // 
             // case_id
             // 
@@ -132,6 +135,7 @@
             this.case_id.Name = "case_id";
             this.case_id.ReadOnly = true;
             this.case_id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.case_id.Width = 60;
             // 
             // case_status
             // 
@@ -140,7 +144,7 @@
             this.case_status.Name = "case_status";
             this.case_status.ReadOnly = true;
             this.case_status.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.case_status.Width = 120;
+            this.case_status.Width = 95;
             // 
             // ButtonColumn
             // 
@@ -156,13 +160,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 452);
+            this.ClientSize = new System.Drawing.Size(931, 452);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_giveup);
             this.Controls.Add(this.button_release);
             this.Controls.Add(this.button_addPlan);
             this.Controls.Add(this.button_deletePLan);
             this.Controls.Add(this.dataGridView1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ViewPlan_Tester_2";
             this.Text = "添加测试用例";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

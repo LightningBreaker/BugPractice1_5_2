@@ -18,7 +18,8 @@ namespace BugPractice1_4
         public ReleaseProject()
         {
             InitializeComponent();
-            
+            textBox_managerName.Text = Global_Userinfo.username;
+            textBox_managerID.Text = Global_Userinfo.userid;
         }
 
         private void ReleaseProject_Load(object sender, EventArgs e)
@@ -78,6 +79,11 @@ namespace BugPractice1_4
             {
                 conn.Close();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            new ViewPlan_Tester("2").ShowDialog();
         }
     }
 }
