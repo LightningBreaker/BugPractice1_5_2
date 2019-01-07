@@ -115,7 +115,7 @@ namespace BugPractice1_4
         bool user_name_ok = false;
         private void reg_user_name_TextChanged(object sender, EventArgs e)
         {
-           MySqlConnection conn = new MySqlConnection(Global_Database.Conn);
+           MySqlConnection conn = new MySqlConnection(Form1.CONSTR);
         string tmp_name = reg_user_name.Text.ToString();
             int len = tmp_name.Length;
             conn.Open();
@@ -176,7 +176,7 @@ namespace BugPractice1_4
 
         private void reg_waiting_Click(object sender, EventArgs e)
         {
-            MySqlConnection mycon = new MySqlConnection(Global_Database.Conn);
+            MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
             mycon.Open();
          //   insert into table_user_info(user_name, password, type, telephone, email) values('vladimir', 'vladimir', 2, '12323232323'
        //-> , '213123123@gmail.com');

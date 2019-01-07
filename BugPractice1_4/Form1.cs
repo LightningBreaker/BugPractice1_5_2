@@ -14,7 +14,7 @@ namespace BugPractice1_4
    
     public partial class Form1 : Form
     {
-        private static string CONSTR = "server=localhost;" +
+        public static string CONSTR = "server=localhost;" +
            "User Id=root;password=TheFirstDon;" +
            "Database=practice_in_school";
         public Form1()
@@ -31,16 +31,20 @@ namespace BugPractice1_4
             MySqlCommand mycmd = new MySqlCommand("select * from table_user_info " +
                 "where user_name = '" + username + "' and password = '"
                 + password + "'and is_verified='1'", mycon);
-            //mda.SelectCommand = mycmd;
-            //DataSet my_data = new DataSet();
-            //mda.Fill(my_data);
-            //my_data.Tables[0]
+            
             MySqlDataReader dr = mycmd.ExecuteReader();
             if (dr.Read())
             {
+                Global_Userinfo.user_id = (int)dr.GetValue(0);
+                Global_Userinfo.username = (string)dr.GetValue(1);
+                Global_Userinfo.type = (int)dr.GetValue(3);
+                Global_Userinfo.isLogined = true;
+
                 dr.Close();
                 mycon.Close();
-                MessageBox.Show("登录成功");
+                this.Hide();
+               BugCreater bugCreater=  new BugCreater();
+                bugCreater.Show();
                 
 
             }
