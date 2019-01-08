@@ -18,7 +18,7 @@ namespace BugPractice1_4
         private int reporter_id;
         private int bug_level;
         private string bug_reason;
-        private int case_id=2;
+        private int case_id=1;
         private int next_bug_id=-1;
         private int prior_bug_id = -1;
         private char head_tag;
@@ -27,6 +27,43 @@ namespace BugPractice1_4
 
         public static string[] Str_status = new string[] { "待修复", "待确认修复", "已修复" };
         public static string[] Str_level = new string[] {"次要","一般","严重" };
+
+        public static string Add_Bug(TableBug tableBug)
+        {
+            string cmd_para,cmd_value;
+            cmd_para = " insert into" +
+                " table_bug" +
+                "(bug_manager," +
+                "manager_id," +
+                "bug_name," +
+                "bug_reporter,reporter_id," +
+                "bug_level,case_id," +
+                "head_tag";
+            if (tableBug.next_bug_id != -1)
+            {
+                cmd_para = cmd_para + ",next_bug_id";
+            }
+             cmd_para =cmd_para+   ")";
+            cmd_value = " values(" +
+            "'" + tableBug.Bug_manager + "'," +
+            " " + tableBug.Manager_id + " ," +
+            "'" + tableBug.Bug_name + "'," +
+             "'" + tableBug.Bug_reporter + "'," +
+             "" + tableBug.reporter_id.ToString() + "," +
+             "" + tableBug.Bug_level + "," +
+             "" + tableBug.Case_id + "," +
+
+            "\"" + tableBug.Head_tag + "\"";
+            if (tableBug.next_bug_id != -1)
+            {
+                cmd_value = cmd_value + ", " + tableBug.Next_bug_id + ""; 
+            }
+
+            cmd_value=cmd_value+");";
+
+
+            return cmd_para+cmd_value;
+        }
         public int Bug_id { get => bug_id; set => bug_id = value; }
         public int Bug_status { get => bug_status; set => bug_status = value; }
         public string Bug_manager { get => bug_manager; set => bug_manager = value; }
