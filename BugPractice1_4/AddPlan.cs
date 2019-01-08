@@ -17,8 +17,13 @@ namespace BugPractice1_4
         public AddPlan(BindingList<plan> PLANS)
         {
             InitializeComponent();
+            
             InitiateInfo();
+            comboBox_managerName.SelectedIndex = 0;
+            comboBox_managerName_SelectedIndexChanged(null, null);
             planlist = PLANS;
+           
+            
         }
 
         private void button_nextPage_Click(object sender, EventArgs e)
@@ -34,10 +39,7 @@ namespace BugPractice1_4
                 label_descriptionError.Text = "计划描述不能为空！";
                 noProblem = false;
             }
-            if(comboBox_managerName.SelectedItem.ToString().Length == 0)
-            {
-                label_managerError.Text = "必须选择计划负责人！";
-            }
+           
             if (!noProblem) return;
 
             planlist.Add(new plan(textBox_planName.Text, textBox_description.Text, comboBox_managerName.SelectedItem.ToString(), textBox_managerID.Text,comboBox_priority.SelectedIndex));

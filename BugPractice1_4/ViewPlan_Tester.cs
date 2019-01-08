@@ -18,6 +18,7 @@ namespace BugPractice1_4
         {
             InitializeComponent();
             this.planID = planID;
+            InitiateInfos();
         }
 
         private void button_giveUp_Click(object sender, EventArgs e)
@@ -32,12 +33,14 @@ namespace BugPractice1_4
 
             Global_Database.SearchPlanInfo(planID, out p, out plan_status,out projectID);
 
+            MessageBox.Show(p.description);
             textBox_planName.Text = p.name;
             comboBox_priority.SelectedIndex = p.priority;
-            comboBox_managerName.Text = p.manager_name;
+            textBox_manageName.Text = p.manager_name;
+            textBox_manageName.ReadOnly = true;
             textBox_managerID.Text = p.manager_id;
             textBox_description.Text = p.description;
-
+            comboBox_priority.Enabled = false;
         }
 
         private void button_nextPage_Click(object sender, EventArgs e)

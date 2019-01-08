@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-
+using System.Windows.Forms;
 namespace BugPractice1_4
 {
     class Global_Database
@@ -43,8 +43,9 @@ namespace BugPractice1_4
             
             foreach(var p in plans)
             {
-                string sql = "insert into table_plan(plan_name,plan_priority,plan_status，plan_project,plan_manager,case_nums) " +
-                    String.Format("values({0},{1},0,{2},{3},0)", p.name, p.priority, project_id, p.manager_id);
+                string sql = "insert into table_plan(plan_name,plan_priority,plan_status,plan_project,plan_manager,case_nums,description) " +
+                    String.Format("values('{0}','{1}',1,'{2}','{3}','0',{4})", p.name, p.priority, project_id, p.manager_id,p.description);
+                MessageBox.Show(sql);
                 command = new MySqlCommand(sql,conn);
                 command.ExecuteNonQuery();
             }
@@ -57,11 +58,11 @@ namespace BugPractice1_4
             MySqlCommand command;
             conn.Open();
             string sql = "insert into table_project(project_name,project_status,project_manager,project_description,manager_id,plan_nums) " +
-                    String.Format("values({0},0,{1},{2},{3},{4})",name,managerName,description,managerID,planNums);
+                    String.Format("values('{0}',0,'{1}','{2}',{3},{4})",name,managerName,description,managerID,planNums);
             command = new MySqlCommand(sql, conn);
             command.ExecuteNonQuery();
 
-            string sql2 = String.Format("select project_id from table_project where project_name = {0} and manager_id = {1}", name, managerID);
+            string sql2 = String.Format("select project_id from table_project where project_name = '{0}' and manager_id = {1}", name, managerID);
             command = new MySqlCommand(sql2, conn);
             var reader = command.ExecuteReader();
             reader.Read();
@@ -86,13 +87,13 @@ namespace BugPractice1_4
             string description = reader["description"].ToString();
             string plan_managerID = reader["plan_manager"].ToString();
 
-
-            string sql2 = String.Format("select user_name from user_info where user_id = {0}", plan_managerID);
+            reader.Close();
+            string sql2 = String.Format("select user_name from table_user_info where user_id = {0}", plan_managerID);
             command = new MySqlCommand(sql2, conn);
             var reader2 = command.ExecuteReader();
             reader2.Read();
-            string plan_managerName = reader2[0].ToString();
-
+            string plan_managerName = reader2["user_name"].ToString();
+           // MessageBox.Show(plan_managerName);
             PLAN = new plan(plan_name, description, plan_managerName, plan_managerID, plan_priority);
             conn.Close();
 
@@ -102,7 +103,7 @@ namespace BugPractice1_4
         public static void AddCaseToDatabase(string name, int status, string description, string step,string planID)
         {
             MySqlConnection conn = new MySqlConnection(Conn);
-            string sql = String.Format("insert into table_case(case_description, case_step, case_status, case_name, plan_id, bug_nums) values({0},{1},{2},{3},{4},0) ",description,step,status,name,planID);
+            string sql = String.Format("insert into table_case(case_description, case_step, case_status, case_name, plan_id, bug_nums) values('{0}','{1}',{2},'{3}','{4}',0) ",description,step,status,name,planID);
             conn.Open();
             MySqlCommand command = new MySqlCommand(sql,conn);
 
@@ -114,6 +115,17 @@ namespace BugPractice1_4
         {
             MySqlConnection conn = new MySqlConnection(Conn);
             string sql = String.Format("delete from table_case where case_id = {0}",case_id);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            command.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public static void AlterCaseFromDatabase(string case_id, string name, int status, string description, string step)
+        {
+            MySqlConnection conn = new MySqlConnection(Conn);
+            string sql = String.Format("update table_case set case_name = '{0}', case_status={1}, case_description='{2}', case_step='{3}' where case_id = {4}",name,status,description,step,case_id);
             conn.Open();
             MySqlCommand command = new MySqlCommand(sql, conn);
 
