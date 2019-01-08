@@ -32,9 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Data, Version=6.7.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 8.0.13\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
+      <HintPath>C:\Users\ysh\Desktop\mysql-connector-net-8.0.11-noinstall\v4.5.2\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -74,6 +74,24 @@
     <Compile Include="BugCreater.Designer.cs">
       <DependentUpon>BugCreater.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bug_chart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bug_chart.Designer.cs">
+      <DependentUpon>Bug_chart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data_analysis_line.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data_analysis_line.Designer.cs">
+      <DependentUpon>Data_analysis_line.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data_Visualization_Analysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data_Visualization_Analysis.Designer.cs">
+      <DependentUpon>Data_Visualization_Analysis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +122,18 @@
     </Compile>
     <Compile Include="TableBug.cs" />
     <Compile Include="UserInfo.cs" />
+    <Compile Include="user_information.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="user_information.designer.cs">
+      <DependentUpon>user_information.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User_manager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_manager.designer.cs">
+      <DependentUpon>User_manager.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewPlan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +164,15 @@
     <EmbeddedResource Include="BugCreater.resx">
       <DependentUpon>BugCreater.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bug_chart.resx">
+      <DependentUpon>Bug_chart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data_analysis_line.resx">
+      <DependentUpon>Data_analysis_line.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data_Visualization_Analysis.resx">
+      <DependentUpon>Data_Visualization_Analysis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +194,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReleaseProject_2.resx">
       <DependentUpon>ReleaseProject_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user_information.resx">
+      <DependentUpon>user_information.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_manager.resx">
+      <DependentUpon>User_manager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewPlan.resx">
       <DependentUpon>ViewPlan.cs</DependentUpon>

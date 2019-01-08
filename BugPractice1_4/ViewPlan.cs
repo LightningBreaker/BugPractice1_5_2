@@ -90,6 +90,7 @@ namespace BugPractice1_4
         {
             textBox_planName.Text = planlist[index].name;
             textBox_description.Text = planlist[index].description;
+            MessageBox.Show(planlist[index].manager_name + planlist[index].manager_id);
             comboBox_managerName.Text = planlist[index].manager_name;
             textBox_managerID.Text = planlist[index].manager_id;
             comboBox_priority.SelectedIndex = planlist[index].priority;

@@ -50,16 +50,19 @@ namespace BugPractice1_4
             string project_managerName = preForm.textBox_managerName.Text;
             int plan_nums = plans.Count;
 
-            try
-            {
+           // try
+           // {
                 string projectID = Global_Database.AddProjectToDatabase(project_name, project_description, project_managerID, project_managerName, plan_nums);
+            MessageBox.Show(projectID);
                 Global_Database.AddPlanToDatabase(plans, projectID);
-            }
-            catch(MySqlException ex)
-            {
-                MessageBox.Show("数据库连接异常！");
-                MessageBox.Show(ex.Message);
-            }
+            MessageBox.Show("项目发布成功！");
+            this.Close();
+          //  }
+          //  catch(MySqlException ex)
+          //  {
+           //     MessageBox.Show("数据库连接异常！");
+           //     MessageBox.Show(ex.Message);
+           // }
         }
 
         private void ReleaseProject_2_Load(object sender, EventArgs e)
