@@ -15,6 +15,9 @@ namespace BugPractice1_4
     public partial class User_manager : Form
     {
         public static bool is_checked = false;
+        public static string Conn = "Database='practice_in_school';" +
+           "Data Source='172.20.10.2';User Id='root';" +
+           "Password='TheFirstDon';charset='utf8';pooling=true";
         public User_manager()
         {
             InitializeComponent();
@@ -44,9 +47,7 @@ namespace BugPractice1_4
                 {
                     MySqlConnection myconn = null;
                     MySqlCommand mycom = null;
-                    myconn = new MySqlConnection("Database='practice_in_school';" +
-                    "Data Source='172.20.10.2';User Id='root';" +
-                    "Password='TheFirstDon';charset='utf8';pooling=true");
+                    myconn = new MySqlConnection(Conn);
                     myconn.Open();
                     //  MessageBox.Show("连接成功");
                     mycom = myconn.CreateCommand();
@@ -74,9 +75,7 @@ namespace BugPractice1_4
                 {
                     MySqlConnection myconn = null;
                     MySqlCommand mycom = null;
-                    myconn = new MySqlConnection("Database='practice_in_school';" +
-                    "Data Source='172.20.10.2';User Id='root';" +
-                    "Password='TheFirstDon';charset='utf8';pooling=true");
+                    myconn = new MySqlConnection(Conn);
                     myconn.Open();
                     //  MessageBox.Show("连接成功");
                     mycom = myconn.CreateCommand();
@@ -106,14 +105,10 @@ namespace BugPractice1_4
         {
             try
             {
-                MySqlConnection myconn = null;
-                MySqlCommand mycom = null;
-                myconn = new MySqlConnection("Database='practice_in_school';" +
-                "Data Source='172.20.10.2';User Id='root';" +
-                "Password='TheFirstDon';charset='utf8';pooling=true");
+                MySqlConnection myconn = null;         
+                myconn = new MySqlConnection(Conn);
                 myconn.Open();
-                MessageBox.Show("连接成功");
-                mycom = myconn.CreateCommand();
+                MessageBox.Show("连接成功");             
                 string sql = "SELECT * FROM table_user_info where is_verified =0";
                 MySqlCommand command = new MySqlCommand(sql, myconn);
                 MySqlDataAdapter adap = new MySqlDataAdapter(command);
@@ -147,9 +142,7 @@ namespace BugPractice1_4
                 is_checked = false;
                 MySqlConnection myconn = null;
                 MySqlCommand mycom = null;
-                myconn = new MySqlConnection("Database='practice_in_school';" +
-                "Data Source='172.20.10.2';User Id='root';" +
-                "Password='TheFirstDon';charset='utf8';pooling=true");
+                myconn = new MySqlConnection(Conn);
                 myconn.Open();
                // MessageBox.Show("连接成功");
                 mycom = myconn.CreateCommand();
@@ -177,9 +170,7 @@ namespace BugPractice1_4
                 is_checked = true;
                 MySqlConnection myconn = null;
                 MySqlCommand mycom = null;
-                myconn = new MySqlConnection("Database='practice_in_school';" +
-                "Data Source='172.20.10.2';User Id='root';" +
-                "Password='TheFirstDon';charset='utf8';pooling=true");
+                myconn = new MySqlConnection(Conn);
                 myconn.Open();
               //  MessageBox.Show("连接成功");
                 mycom = myconn.CreateCommand();
