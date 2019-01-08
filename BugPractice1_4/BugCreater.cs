@@ -18,22 +18,38 @@ namespace BugPractice1_4
         public BugCreater()
         {
             InitializeComponent();
+            table_bug.Head_tag = '1';
         }
         private int pre_id=-1;
-        private int case_id;
+        private int case_id=1;
+
+        
+        private int next_id = -1;
         public BugCreater(int _pre_id,int case_id)
         {
             InitializeComponent();
             this.pre_id = _pre_id;
+            if (_pre_id != -1)
+                table_bug.Head_tag = '0';
+            else
+                table_bug.Head_tag = '1';
+        }
+
+        public int Return_bug_id()
+        {
+            return this.table_bug.Bug_id;
 
         }
+
 
         public BugCreater(int _case_id)
         {
             InitializeComponent();
             this.case_id = _case_id;
+            table_bug.Head_tag = '1';
+
         }
-        private const int OK_LEN = 20;
+        private const int OK_LEN = 5;
         private bool[] is_ok = new bool[OK_LEN] ;
         private Label[] confirm_labels = new Label[8];
 
@@ -55,7 +71,16 @@ namespace BugPractice1_4
                 is_ok[i] = false;
             is_ok[2] = true;
         }
-        private void bug_cre_btn_next1_Click(object sender, EventArgs e)
+        private bool insert_ok()
+        {
+            for (int i = 0; i < OK_LEN; i++)
+                if (!is_ok[i])
+                    return false;
+
+            return true;
+
+        }
+        bool is_info_complete()
         {
             int len_desc = bug_cre_description.Text.Length;
             int len_name = bug_cre_text_bug_name.Text.Length;
@@ -63,20 +88,35 @@ namespace BugPractice1_4
             string desc = bug_cre_description.Text;
             if (len_desc < 5 || len_name < 1)
             {
-                MessageBox.Show("请完善信息");
-                is_ok[0] =false;
+             
+                is_ok[0] = false;
                 is_ok[1] = false;
+
+                return false;
             }
             else
             {
-                bug_cre_tabControl.SelectedIndex = 1;
+                
                 table_bug.Bug_name = name;
                 table_bug.Bug_description = desc;
                 is_ok[0] = true;
                 is_ok[1] = true;
+                return true;
+            }
+        }
+        private void bug_cre_btn_next1_Click(object sender, EventArgs e)
+        {
+            if (!is_info_complete())
+            {
+                MessageBox.Show("请完善信息");
+            }
+            else
+            {
+                bug_cre_tabControl.SelectedIndex = 1;
                 bug_cre_tabControl_SelectedIndexChanged(sender, e);
             }
-
+            
+            
         }
 
         
@@ -96,12 +136,19 @@ namespace BugPractice1_4
         {
             confirm_labels[0].Text = table_bug.Bug_name;
             confirm_labels[1].Text = Global_Userinfo.username;
+
+            table_bug.Bug_reporter = Global_Userinfo.username;
+            table_bug.Reporter_id = Global_Userinfo.user_id;
+
+
             confirm_labels[2].Text = table_bug.Bug_manager;
             confirm_labels[3].Text = TableBug.Str_level[table_bug.Bug_level-1];
             confirm_labels[4].Text = TableBug.Str_status[table_bug.Bug_status-1];
             confirm_labels[5].Text =(table_bug.Case_id).ToString();
             confirm_labels[6].Text = (table_bug.Prior_bug_id).ToString();
             confirm_labels[7].Text = (table_bug.Bug_id).ToString();
+
+            table_bug.Next_bug_id = next_id;
         }
 
         private void BugCreater_Load(object sender, EventArgs e)
@@ -306,6 +353,33 @@ namespace BugPractice1_4
         {
             write_labels();
            
+        }
+
+
+        private void bug_cre_btn_eport_bug_Click(object sender, EventArgs e)
+        {
+            if (!insert_ok())
+            {
+                MessageBox.Show("请完善信息");
+                return;
+            }
+
+            MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
+            mycon.Open();
+             
+            MySqlCommand mycmd =
+                new MySqlCommand(TableBug.Add_Bug(table_bug)
+                , mycon);
+
+            if (mycmd.ExecuteNonQuery() > 0)
+            {
+                MessageBox.Show("Bug报告成功");
+
+            }
+            else
+            {
+                MessageBox.Show("系统维护，请联系管理员");
+            }
         }
     }
 }

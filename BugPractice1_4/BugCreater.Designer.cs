@@ -40,6 +40,7 @@
             this.bug_cre_text_bug_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.bug_cre_fresh_dev = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.bug_cre_search_result = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -55,6 +56,7 @@
             this.bug_cre_col_manager_phonNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bug_cre_col_manager_email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.bug_cre_confirm_info_refresh = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.bug_cre_lbl_bug_id = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -92,8 +94,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.bug_cre_fresh_dev = new System.Windows.Forms.Label();
-            this.bug_cre_confirm_info_refresh = new System.Windows.Forms.Label();
             this.bug_cre_tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -247,6 +247,19 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "负责人指派";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // bug_cre_fresh_dev
+            // 
+            this.bug_cre_fresh_dev.AutoSize = true;
+            this.bug_cre_fresh_dev.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bug_cre_fresh_dev.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bug_cre_fresh_dev.ForeColor = System.Drawing.Color.Blue;
+            this.bug_cre_fresh_dev.Location = new System.Drawing.Point(325, 21);
+            this.bug_cre_fresh_dev.Name = "bug_cre_fresh_dev";
+            this.bug_cre_fresh_dev.Size = new System.Drawing.Size(49, 20);
+            this.bug_cre_fresh_dev.TabIndex = 25;
+            this.bug_cre_fresh_dev.Text = "刷新";
+            this.bug_cre_fresh_dev.Click += new System.EventHandler(this.bug_cre_fresh_dev_Click);
             // 
             // label7
             // 
@@ -412,6 +425,19 @@
             this.tabPage3.Text = "确认信息";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // bug_cre_confirm_info_refresh
+            // 
+            this.bug_cre_confirm_info_refresh.AutoSize = true;
+            this.bug_cre_confirm_info_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bug_cre_confirm_info_refresh.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bug_cre_confirm_info_refresh.ForeColor = System.Drawing.Color.Blue;
+            this.bug_cre_confirm_info_refresh.Location = new System.Drawing.Point(331, 22);
+            this.bug_cre_confirm_info_refresh.Name = "bug_cre_confirm_info_refresh";
+            this.bug_cre_confirm_info_refresh.Size = new System.Drawing.Size(49, 20);
+            this.bug_cre_confirm_info_refresh.TabIndex = 26;
+            this.bug_cre_confirm_info_refresh.Text = "刷新";
+            this.bug_cre_confirm_info_refresh.Click += new System.EventHandler(this.bug_cre_confirm_info_refresh_Click);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -467,6 +493,7 @@
             this.bug_cre_btn_eport_bug.TabIndex = 18;
             this.bug_cre_btn_eport_bug.Text = "确认提交";
             this.bug_cre_btn_eport_bug.UseVisualStyleBackColor = false;
+            this.bug_cre_btn_eport_bug.Click += new System.EventHandler(this.bug_cre_btn_eport_bug_Click);
             // 
             // label18
             // 
@@ -815,32 +842,6 @@
             this.label15.Size = new System.Drawing.Size(100, 15);
             this.label15.TabIndex = 16;
             this.label15.Text = "Bug描述(*)：";
-            // 
-            // bug_cre_fresh_dev
-            // 
-            this.bug_cre_fresh_dev.AutoSize = true;
-            this.bug_cre_fresh_dev.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bug_cre_fresh_dev.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bug_cre_fresh_dev.ForeColor = System.Drawing.Color.Blue;
-            this.bug_cre_fresh_dev.Location = new System.Drawing.Point(325, 21);
-            this.bug_cre_fresh_dev.Name = "bug_cre_fresh_dev";
-            this.bug_cre_fresh_dev.Size = new System.Drawing.Size(49, 20);
-            this.bug_cre_fresh_dev.TabIndex = 25;
-            this.bug_cre_fresh_dev.Text = "刷新";
-            this.bug_cre_fresh_dev.Click += new System.EventHandler(this.bug_cre_fresh_dev_Click);
-            // 
-            // bug_cre_confirm_info_refresh
-            // 
-            this.bug_cre_confirm_info_refresh.AutoSize = true;
-            this.bug_cre_confirm_info_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bug_cre_confirm_info_refresh.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bug_cre_confirm_info_refresh.ForeColor = System.Drawing.Color.Blue;
-            this.bug_cre_confirm_info_refresh.Location = new System.Drawing.Point(331, 22);
-            this.bug_cre_confirm_info_refresh.Name = "bug_cre_confirm_info_refresh";
-            this.bug_cre_confirm_info_refresh.Size = new System.Drawing.Size(49, 20);
-            this.bug_cre_confirm_info_refresh.TabIndex = 26;
-            this.bug_cre_confirm_info_refresh.Text = "刷新";
-            this.bug_cre_confirm_info_refresh.Click += new System.EventHandler(this.bug_cre_confirm_info_refresh_Click);
             // 
             // BugCreater
             // 
