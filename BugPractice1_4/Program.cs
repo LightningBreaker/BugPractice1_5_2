@@ -16,7 +16,7 @@ namespace BugPractice1_4
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ReleaseProject());
+            Application.Run(new Form1());
         }
     }
 }

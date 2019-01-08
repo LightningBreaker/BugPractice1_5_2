@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace BugPractice1_4
         private string bug_reporter;
         private int reporter_id;
         private int bug_level;
-        private string bug_reason;
+        private int bug_reason=1;
         private int case_id=1;
         private int next_bug_id=-1;
         private int prior_bug_id = -1;
@@ -35,7 +36,7 @@ namespace BugPractice1_4
                 " table_bug" +
                 "(bug_manager," +
                 "manager_id," +
-                "bug_name," +
+                "bug_name,bug_description," +
                 "bug_reporter,reporter_id," +
                 "bug_level,case_id," +
                 "head_tag";
@@ -48,6 +49,7 @@ namespace BugPractice1_4
             "'" + tableBug.Bug_manager + "'," +
             " " + tableBug.Manager_id + " ," +
             "'" + tableBug.Bug_name + "'," +
+            "'" + tableBug.Bug_description + "'," +
              "'" + tableBug.Bug_reporter + "'," +
              "" + tableBug.reporter_id.ToString() + "," +
              "" + tableBug.Bug_level + "," +
@@ -64,6 +66,51 @@ namespace BugPractice1_4
 
             return cmd_para+cmd_value;
         }
+        public static  int DEVOLOPER=0;
+        public static int TESTER = 1;
+        public static bool Update_Bug(TableBug tableBug,int identity)
+        {
+            try {
+                if (identity == TableBug.DEVOLOPER)
+                {
+                    MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
+                    mycon.Open();
+                    string str = "update table_bug set bug_reason="
+                        + tableBug.Bug_reason.ToString() +
+                        " ,bug_analysis=" + "'" + tableBug.Bug_analysis + "' " +
+                        ",bug_status=" + tableBug.Bug_status.ToString() +
+                        " where bug_id = " + tableBug.Bug_id;
+                    MySqlCommand mycmd =
+                        new MySqlCommand(str
+                        , mycon);
+
+                    if (mycmd.ExecuteNonQuery() > 0)
+                        return true;
+                    else
+                        return false;
+                }
+                else
+                {
+                    return false;
+                }
+
+            } catch (Exception e)
+            {
+                throw e;
+            }
+            
+
+        }
+        public static List<string> Properties = new List<string>()
+        { "bug_status","bug_manager","manager_id",
+            "bug_name","bug_description","bug_reporter",
+            "reporter_id","bug_level","bug_reason",
+            "case_id","next_bug_id","head_tag",
+            "bug_analysis","bug_id"};
+        
+
+        public static List<string> Names = new List<string>()
+        {"缺陷id","缺陷名称","缺陷等级","缺陷报告人员","bug_next_id" };
         public int Bug_id { get => bug_id; set => bug_id = value; }
         public int Bug_status { get => bug_status; set => bug_status = value; }
         public string Bug_manager { get => bug_manager; set => bug_manager = value; }
@@ -73,7 +120,7 @@ namespace BugPractice1_4
         public string Bug_reporter { get => bug_reporter; set => bug_reporter = value; }
         public int Reporter_id { get => reporter_id; set => reporter_id = value; }
         public int Bug_level { get => bug_level; set => bug_level = value; }
-        public string Bug_reason { get => bug_reason; set => bug_reason = value; }
+        public int Bug_reason { get { return bug_reason; } set => bug_reason = value; }
         public int Case_id { get => case_id; set => case_id = value; }
         public int Next_bug_id { get => next_bug_id; set => next_bug_id = value; }
         public char Head_tag { get => head_tag; set => head_tag = value; }

@@ -35,7 +35,7 @@ namespace BugPractice1_4
             MySqlDataReader dr = mycmd.ExecuteReader();
             if (dr.Read())
             {
-                Global_Userinfo.user_id = (int)dr.GetValue(0);
+                Global_Userinfo.userid = ((int)dr.GetValue(0)).ToString();
                 Global_Userinfo.username = (string)dr.GetValue(1);
                 Global_Userinfo.type = (int)dr.GetValue(3);
                 Global_Userinfo.isLogined = true;
@@ -43,8 +43,11 @@ namespace BugPractice1_4
                 dr.Close();
                 mycon.Close();
                 this.Hide();
-               BugCreater bugCreater=  new BugCreater();
-                bugCreater.Show();
+               // BugCreater bugCreater=  new BugCreater();
+               // bugCreater.Show();
+                BugAnalysisForm bugAnalysis = new BugAnalysisForm();
+                bugAnalysis.Show();
+                
                 
 
             }

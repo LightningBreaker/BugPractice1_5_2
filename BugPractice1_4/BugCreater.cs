@@ -128,8 +128,20 @@ namespace BugPractice1_4
         {
             if (bug_cre_tabControl.SelectedIndex == 2)
             {
+                is_info_complete();
                 write_labels();
             }
+            if (bug_cre_tabControl.SelectedIndex == 3)
+            {
+                init_grid_waiting_audit();     
+            }
+
+        }
+
+        private void init_grid_waiting_audit()
+        {
+
+
         }
 
         private void write_labels()
@@ -138,7 +150,7 @@ namespace BugPractice1_4
             confirm_labels[1].Text = Global_Userinfo.username;
 
             table_bug.Bug_reporter = Global_Userinfo.username;
-            table_bug.Reporter_id = Global_Userinfo.user_id;
+            table_bug.Reporter_id =int.Parse( Global_Userinfo.userid);
 
 
             confirm_labels[2].Text = table_bug.Bug_manager;
@@ -374,12 +386,21 @@ namespace BugPractice1_4
             if (mycmd.ExecuteNonQuery() > 0)
             {
                 MessageBox.Show("Bug报告成功");
-
+                init_is_ok();
+                bug_cre_text_bug_name.Clear();
+                bug_cre_description.Clear();
+                bug_cre_tabControl.SelectedIndex = 1;
+                bug_cre_tabControl_SelectedIndexChanged(sender, e);
             }
             else
             {
                 MessageBox.Show("系统维护，请联系管理员");
             }
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
