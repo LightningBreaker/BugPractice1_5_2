@@ -132,7 +132,9 @@ namespace BugPractice1_4
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            
+            var result = MessageBox.Show("确认要退出？", "退出", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.Cancel) return;
+            this.Close();
         }
 
         private void 待审核人员ToolStripMenuItem_Click(object sender, EventArgs e)
