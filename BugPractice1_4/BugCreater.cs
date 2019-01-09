@@ -18,22 +18,38 @@ namespace BugPractice1_4
         public BugCreater()
         {
             InitializeComponent();
+            table_bug.Head_tag = '1';
         }
         private int pre_id=-1;
-        private int case_id;
+        private int case_id=1;
+
+        
+        private int next_id = -1;
         public BugCreater(int _pre_id,int case_id)
         {
             InitializeComponent();
             this.pre_id = _pre_id;
+            if (_pre_id != -1)
+                table_bug.Head_tag = '0';
+            else
+                table_bug.Head_tag = '1';
+        }
+
+        public int Return_bug_id()
+        {
+            return this.table_bug.Bug_id;
 
         }
+
 
         public BugCreater(int _case_id)
         {
             InitializeComponent();
             this.case_id = _case_id;
+            table_bug.Head_tag = '1';
+
         }
-        private const int OK_LEN = 20;
+        private const int OK_LEN = 5;
         private bool[] is_ok = new bool[OK_LEN] ;
         private Label[] confirm_labels = new Label[8];
 
@@ -55,7 +71,16 @@ namespace BugPractice1_4
                 is_ok[i] = false;
             is_ok[2] = true;
         }
-        private void bug_cre_btn_next1_Click(object sender, EventArgs e)
+        private bool insert_ok()
+        {
+            for (int i = 0; i < OK_LEN; i++)
+                if (!is_ok[i])
+                    return false;
+
+            return true;
+
+        }
+        bool is_info_complete()
         {
             int len_desc = bug_cre_description.Text.Length;
             int len_name = bug_cre_text_bug_name.Text.Length;
@@ -63,20 +88,35 @@ namespace BugPractice1_4
             string desc = bug_cre_description.Text;
             if (len_desc < 5 || len_name < 1)
             {
-                MessageBox.Show("请完善信息");
-                is_ok[0] =false;
+             
+                is_ok[0] = false;
                 is_ok[1] = false;
+
+                return false;
             }
             else
             {
-                bug_cre_tabControl.SelectedIndex = 1;
+                
                 table_bug.Bug_name = name;
                 table_bug.Bug_description = desc;
                 is_ok[0] = true;
                 is_ok[1] = true;
+                return true;
+            }
+        }
+        private void bug_cre_btn_next1_Click(object sender, EventArgs e)
+        {
+            if (!is_info_complete())
+            {
+                MessageBox.Show("请完善信息");
+            }
+            else
+            {
+                bug_cre_tabControl.SelectedIndex = 1;
                 bug_cre_tabControl_SelectedIndexChanged(sender, e);
             }
-
+            
+            
         }
 
         
@@ -88,20 +128,71 @@ namespace BugPractice1_4
         {
             if (bug_cre_tabControl.SelectedIndex == 2)
             {
+                is_info_complete();
                 write_labels();
             }
+            if (bug_cre_tabControl.SelectedIndex == 3)
+            {
+                init_grid_waiting_audit();     
+            }
+
+
+        }
+
+        DataTable tableBug;
+
+
+        
+        private void init_grid_waiting_audit()
+        {
+            MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
+            mycon.Open();
+            MySqlCommand mycmd = new MySqlCommand("select * from table_bug " +
+                "where " + " reporter_id =" + Global_Userinfo.userid + " and head_tag= '1' ", mycon);
+            MySqlDataReader dataReader = mycmd.ExecuteReader();
+            tableBug =TableBug.CreateBugTable(TableBug.Properties, dataReader, "TableBugAuditing");
+
+
+            DataView ListViewInfo = new DataView(tableBug);
+            waiting_audit_grid.Columns.Clear();
+            waiting_audit_grid.AutoGenerateColumns = false;
+            waiting_audit_grid.DataSource = ListViewInfo;
+
+            dataReader.Close();
+            mycon.Close();
+            int[] add_list = new int[] { 13, 3, 7, 1, 10 };
+
+            for (int i = 0; i < add_list.Length; i++)
+            {
+
+                DataGridViewTextBoxColumn dtcTimeStamp = new DataGridViewTextBoxColumn();
+                dtcTimeStamp.DataPropertyName = TableBug.Properties[add_list[i]];//SQL语句得到的列名，可从集合中获得
+                dtcTimeStamp.HeaderText = TableBug.Names[i];//列头显示的汉字
+                dtcTimeStamp.Width = 110;
+                waiting_audit_grid.Columns.Add(dtcTimeStamp);//最后一定要添加进去
+
+            }
+
+
         }
 
         private void write_labels()
         {
             confirm_labels[0].Text = table_bug.Bug_name;
             confirm_labels[1].Text = Global_Userinfo.username;
+
+            table_bug.Bug_reporter = Global_Userinfo.username;
+            table_bug.Reporter_id =int.Parse( Global_Userinfo.userid);
+
+
             confirm_labels[2].Text = table_bug.Bug_manager;
             confirm_labels[3].Text = TableBug.Str_level[table_bug.Bug_level-1];
             confirm_labels[4].Text = TableBug.Str_status[table_bug.Bug_status-1];
             confirm_labels[5].Text =(table_bug.Case_id).ToString();
             confirm_labels[6].Text = (table_bug.Prior_bug_id).ToString();
             confirm_labels[7].Text = (table_bug.Bug_id).ToString();
+
+            table_bug.Next_bug_id = next_id;
         }
 
         private void BugCreater_Load(object sender, EventArgs e)
@@ -306,6 +397,120 @@ namespace BugPractice1_4
         {
             write_labels();
            
+        }
+
+
+        private void bug_cre_btn_eport_bug_Click(object sender, EventArgs e)
+        {
+            if (!insert_ok())
+            {
+                MessageBox.Show("请完善信息");
+                return;
+            }
+
+            if (TableBug.Add_Bug_To_Table(table_bug))
+            {
+                MessageBox.Show("Bug报告成功");
+                init_is_ok();
+                bug_cre_text_bug_name.Clear();
+                bug_cre_description.Clear();
+                bug_cre_tabControl.SelectedIndex = 1;
+                bug_cre_tabControl_SelectedIndexChanged(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("系统维护，请联系管理员");
+            }
+
+            
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
+        private TableBug tableAuditBug = new TableBug();
+        private void waiting_audit_grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row_idx = waiting_audit_grid.CurrentCell.RowIndex;
+            int selected_id = int.Parse(waiting_audit_grid.Rows[row_idx].Cells[0].Value.ToString());
+            tableAuditBug.Bug_id = selected_id;
+
+
+            int reason=0;
+            string bug_analysis="";
+
+            string description = (string)tableBug.Rows[row_idx][4];
+            Console.WriteLine();
+
+            int status = int.Parse(tableBug.Rows[row_idx][0].ToString().Trim());
+
+            if(status!=1)
+            {
+                 reason = int.Parse(tableBug.Rows[row_idx][8].ToString().Trim());
+                 bug_analysis = (string)tableBug.Rows[row_idx][12];
+            }
+
+            int case_id=int.Parse(tableBug.Rows[row_idx][9].ToString().Trim());
+            tableAuditBug.Case_id = case_id;
+
+           
+            
+            
+
+            bug_cre_audit_lbl_id.Text = selected_id.ToString();
+            bug_cre_audit_desc.Text = description;
+          if(status!=1)
+            {
+                bug_cre_audit_reason.SelectedIndex = reason - 1;
+                bug_cre_audit_analysis.Text = bug_analysis;
+            }
+           
+            bug_cre_audit_status.SelectedIndex = status-1;
+            if (status == 3)
+            {
+                bug_cre_audit_status.Enabled = false;
+                bug_audit_btn_accompanished.Enabled = false;
+            }
+            else if (status == 2)
+            {
+                tableAuditBug.Bug_status = 2;
+                bug_cre_audit_status.Enabled = true;
+                bug_audit_btn_accompanished.Enabled = true;
+            }
+            else
+            {
+                tableAuditBug.Bug_status = 1;
+                bug_cre_audit_status.Enabled = false;
+                bug_audit_btn_accompanished.Enabled = true;
+            }
+           
+        }
+
+        private void bug_bug_analysis_refresh_Click(object sender, EventArgs e)
+        {
+            init_grid_waiting_audit();
+        }
+
+        private void bug_audit_btn_accompanished_Click(object sender, EventArgs e)
+        {
+            tableAuditBug.Bug_status = bug_cre_audit_status.SelectedIndex + 1;
+            tableAuditBug.Bug_description = bug_cre_audit_desc.Text;
+
+            int result = TableBug.Update_Bug(tableAuditBug, TableBug.TESTER);
+            if (result== 1)
+            {
+                MessageBox.Show("Bug审核完毕");
+            }
+            else if (result==2)
+            {
+                MessageBox.Show("一个case已经完成");
+            }
+            else
+            {
+                MessageBox.Show("系统维护中");
+            }
+            
         }
     }
 }

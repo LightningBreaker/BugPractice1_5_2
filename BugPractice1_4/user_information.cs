@@ -14,6 +14,9 @@ namespace BugPractice1_4
     public partial class user_information : Form
     {
         public static int current_id;
+        public static string Conn = "Database='practice_in_school';" +
+           "Data Source='172.20.10.2';User Id='root';" +
+           "Password='TheFirstDon';charset='utf8';pooling=true";
         public user_information()
         {
             InitializeComponent();
@@ -38,9 +41,7 @@ namespace BugPractice1_4
     private void user_information_Load(object sender, EventArgs e)
         {
             try {
-                MySqlConnection myconn = new MySqlConnection("Database='practice_in_school';" +
-            "Data Source='172.20.10.2';User Id='root';" +
-            "Password='TheFirstDon';charset='utf8';pooling=true");
+                MySqlConnection myconn = new MySqlConnection(Conn);
                 myconn.Open();
                 string sql = "select * from table_user_info where user_id=" + current_id + "";
                 MySqlCommand com = new MySqlCommand(sql, myconn);
@@ -75,9 +76,7 @@ namespace BugPractice1_4
           
             try
             {
-                MySqlConnection myconn = new MySqlConnection("Database='practice_in_school';" +
-            "Data Source='172.20.10.2';User Id='root';" +
-            "Password='TheFirstDon';charset='utf8';pooling=true");
+                MySqlConnection myconn = new MySqlConnection(Conn);
                 myconn.Open();
                 string sql = "update table_user_info set is_verified = 1 where user_id='"+current_id+"' ";//添加标志位
                 MySqlCommand mysqlupdate = new MySqlCommand(sql, myconn);
@@ -107,9 +106,7 @@ namespace BugPractice1_4
                string type= textBox4.Text;
                 string teilephone =textBox5.Text ;
                  string email =textBox6.Text;
-                MySqlConnection myconn = new MySqlConnection("Database='practice_in_school';" +
-            "Data Source='172.20.10.2';User Id='root';" +
-            "Password='TheFirstDon';charset='utf8';pooling=true");
+                MySqlConnection myconn = new MySqlConnection(Conn);
                 myconn.Open();
                 string sql = 
                     "update table_user_info set user_name='"+user_name+"',password='"+password+ "'where user_id='" + current_id + "'";
@@ -140,9 +137,7 @@ namespace BugPractice1_4
             try
             {
                 string user_id = textBox1.Text;
-                MySqlConnection myconn = new MySqlConnection("Database='practice_in_school';" +
-            "Data Source='172.20.10.2';User Id='root';" +
-            "Password='TheFirstDon';charset='utf8';pooling=true");
+                MySqlConnection myconn = new MySqlConnection(Conn);
                 myconn.Open();
                 string sql = "delete from table_user_info where user_id ='"+current_id+"'";      
                 MySqlCommand mysqlupdate = new MySqlCommand(sql, myconn);

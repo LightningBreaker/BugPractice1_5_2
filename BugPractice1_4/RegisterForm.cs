@@ -178,8 +178,7 @@ namespace BugPractice1_4
         {
             MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
             mycon.Open();
-         //   insert into table_user_info(user_name, password, type, telephone, email) values('vladimir', 'vladimir', 2, '12323232323'
-       //-> , '213123123@gmail.com');
+         
             MySqlCommand mycmd = 
                 new MySqlCommand(" insert into" +
                 " table_user_info" +

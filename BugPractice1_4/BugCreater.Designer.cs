@@ -40,6 +40,7 @@
             this.bug_cre_text_bug_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.bug_cre_fresh_dev = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.bug_cre_search_result = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,34 +74,41 @@
             this.label9 = new System.Windows.Forms.Label();
             this.bug_cre_lbl_bug_name = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.bug_cre_audit_lbl_id = new System.Windows.Forms.Label();
+            this.bug_bug_analysis_refresh = new System.Windows.Forms.Label();
+            this.bug_cre_audit_reason = new System.Windows.Forms.ComboBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
+            this.waiting_audit_grid = new System.Windows.Forms.DataGridView();
+            this.bug_audit_btn_accompanished = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.bug_cre_audit_status = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.bug_cre_audit_analysis = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.bug_cre_audit_desc = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.bug_cre_fresh_dev = new System.Windows.Forms.Label();
-            this.bug_cre_confirm_info_refresh = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.bug_cre_tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bug_cre_dev_gridView)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.waiting_audit_grid)).BeginInit();
             this.SuspendLayout();
             // 
             // bug_cre_tabControl
@@ -149,7 +157,7 @@
             this.bug_cre_bug_level.BackColor = System.Drawing.Color.LemonChiffon;
             this.bug_cre_bug_level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.bug_cre_bug_level.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bug_cre_bug_level.ForeColor = System.Drawing.Color.White;
+            this.bug_cre_bug_level.ForeColor = System.Drawing.Color.Black;
             this.bug_cre_bug_level.FormattingEnabled = true;
             this.bug_cre_bug_level.Items.AddRange(new object[] {
             "次要",
@@ -247,6 +255,19 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "负责人指派";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // bug_cre_fresh_dev
+            // 
+            this.bug_cre_fresh_dev.AutoSize = true;
+            this.bug_cre_fresh_dev.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bug_cre_fresh_dev.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bug_cre_fresh_dev.ForeColor = System.Drawing.Color.Blue;
+            this.bug_cre_fresh_dev.Location = new System.Drawing.Point(325, 21);
+            this.bug_cre_fresh_dev.Name = "bug_cre_fresh_dev";
+            this.bug_cre_fresh_dev.Size = new System.Drawing.Size(49, 20);
+            this.bug_cre_fresh_dev.TabIndex = 25;
+            this.bug_cre_fresh_dev.Text = "刷新";
+            this.bug_cre_fresh_dev.Click += new System.EventHandler(this.bug_cre_fresh_dev_Click);
             // 
             // label7
             // 
@@ -387,7 +408,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.bug_cre_confirm_info_refresh);
             this.tabPage3.Controls.Add(this.label11);
             this.tabPage3.Controls.Add(this.bug_cre_lbl_bug_id);
             this.tabPage3.Controls.Add(this.label8);
@@ -467,6 +487,7 @@
             this.bug_cre_btn_eport_bug.TabIndex = 18;
             this.bug_cre_btn_eport_bug.Text = "确认提交";
             this.bug_cre_btn_eport_bug.UseVisualStyleBackColor = false;
+            this.bug_cre_btn_eport_bug.Click += new System.EventHandler(this.bug_cre_btn_eport_bug_Click);
             // 
             // label18
             // 
@@ -597,38 +618,92 @@
             // tabPage4
             // 
             this.tabPage4.AutoScroll = true;
+            this.tabPage4.Controls.Add(this.button2);
+            this.tabPage4.Controls.Add(this.textBox1);
+            this.tabPage4.Controls.Add(this.label30);
+            this.tabPage4.Controls.Add(this.label29);
+            this.tabPage4.Controls.Add(this.label28);
+            this.tabPage4.Controls.Add(this.comboBox2);
+            this.tabPage4.Controls.Add(this.label27);
+            this.tabPage4.Controls.Add(this.comboBox1);
+            this.tabPage4.Controls.Add(this.bug_cre_audit_lbl_id);
+            this.tabPage4.Controls.Add(this.bug_bug_analysis_refresh);
+            this.tabPage4.Controls.Add(this.bug_cre_audit_reason);
             this.tabPage4.Controls.Add(this.textBox4);
             this.tabPage4.Controls.Add(this.label25);
             this.tabPage4.Controls.Add(this.label26);
-            this.tabPage4.Controls.Add(this.button4);
-            this.tabPage4.Controls.Add(this.dataGridView1);
-            this.tabPage4.Controls.Add(this.button3);
+            this.tabPage4.Controls.Add(this.waiting_audit_grid);
+            this.tabPage4.Controls.Add(this.bug_audit_btn_accompanished);
             this.tabPage4.Controls.Add(this.label24);
-            this.tabPage4.Controls.Add(this.comboBox1);
+            this.tabPage4.Controls.Add(this.bug_cre_audit_status);
             this.tabPage4.Controls.Add(this.label22);
             this.tabPage4.Controls.Add(this.label23);
             this.tabPage4.Controls.Add(this.label20);
-            this.tabPage4.Controls.Add(this.textBox3);
+            this.tabPage4.Controls.Add(this.bug_cre_audit_analysis);
             this.tabPage4.Controls.Add(this.label21);
             this.tabPage4.Controls.Add(this.label17);
-            this.tabPage4.Controls.Add(this.textBox2);
             this.tabPage4.Controls.Add(this.label19);
             this.tabPage4.Controls.Add(this.label13);
-            this.tabPage4.Controls.Add(this.textBox1);
+            this.tabPage4.Controls.Add(this.bug_cre_audit_desc);
             this.tabPage4.Controls.Add(this.label15);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(393, 492);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "bug审核";
+            this.tabPage4.Text = "缺陷审核";
             this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
+            // 
+            // bug_cre_audit_lbl_id
+            // 
+            this.bug_cre_audit_lbl_id.AutoSize = true;
+            this.bug_cre_audit_lbl_id.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bug_cre_audit_lbl_id.ForeColor = System.Drawing.Color.Blue;
+            this.bug_cre_audit_lbl_id.Location = new System.Drawing.Point(131, 431);
+            this.bug_cre_audit_lbl_id.Name = "bug_cre_audit_lbl_id";
+            this.bug_cre_audit_lbl_id.Size = new System.Drawing.Size(0, 24);
+            this.bug_cre_audit_lbl_id.TabIndex = 53;
+            // 
+            // bug_bug_analysis_refresh
+            // 
+            this.bug_bug_analysis_refresh.AutoSize = true;
+            this.bug_bug_analysis_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bug_bug_analysis_refresh.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bug_bug_analysis_refresh.ForeColor = System.Drawing.Color.Blue;
+            this.bug_bug_analysis_refresh.Location = new System.Drawing.Point(297, 435);
+            this.bug_bug_analysis_refresh.Name = "bug_bug_analysis_refresh";
+            this.bug_bug_analysis_refresh.Size = new System.Drawing.Size(49, 20);
+            this.bug_bug_analysis_refresh.TabIndex = 52;
+            this.bug_bug_analysis_refresh.Text = "刷新";
+            this.bug_bug_analysis_refresh.Click += new System.EventHandler(this.bug_bug_analysis_refresh_Click);
+            // 
+            // bug_cre_audit_reason
+            // 
+            this.bug_cre_audit_reason.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bug_cre_audit_reason.Enabled = false;
+            this.bug_cre_audit_reason.FormattingEnabled = true;
+            this.bug_cre_audit_reason.Items.AddRange(new object[] {
+            "功能问题",
+            "接口问题",
+            "逻辑问题",
+            "计算问题",
+            "数据问题",
+            "用户界面问题",
+            "文档问题",
+            "性能问题",
+            "兼容问题",
+            "其他问题"});
+            this.bug_cre_audit_reason.Location = new System.Drawing.Point(96, 651);
+            this.bug_cre_audit_reason.Name = "bug_cre_audit_reason";
+            this.bug_cre_audit_reason.Size = new System.Drawing.Size(207, 23);
+            this.bug_cre_audit_reason.TabIndex = 51;
             // 
             // textBox4
             // 
             this.textBox4.Enabled = false;
             this.textBox4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox4.ForeColor = System.Drawing.Color.Blue;
-            this.textBox4.Location = new System.Drawing.Point(159, 956);
+            this.textBox4.Location = new System.Drawing.Point(159, 900);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
@@ -641,59 +716,48 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(7, 206);
+            this.label25.Location = new System.Drawing.Point(-1, 435);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(99, 20);
+            this.label25.Size = new System.Drawing.Size(139, 20);
             this.label25.TabIndex = 34;
-            this.label25.Text = "bug名称：";
+            this.label25.Text = "审核bug名称：";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label26.ForeColor = System.Drawing.Color.Blue;
-            this.label26.Location = new System.Drawing.Point(118, 206);
+            this.label26.Location = new System.Drawing.Point(114, 435);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(0, 20);
             this.label26.TabIndex = 33;
             // 
-            // button4
+            // waiting_audit_grid
             // 
-            this.button4.BackColor = System.Drawing.Color.Red;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("幼圆", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button4.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button4.Location = new System.Drawing.Point(0, 250);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(358, 71);
-            this.button4.TabIndex = 32;
-            this.button4.Text = "选定bug";
-            this.button4.UseVisualStyleBackColor = false;
+            this.waiting_audit_grid.BackgroundColor = System.Drawing.Color.White;
+            this.waiting_audit_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.waiting_audit_grid.Location = new System.Drawing.Point(3, 30);
+            this.waiting_audit_grid.Name = "waiting_audit_grid";
+            this.waiting_audit_grid.ReadOnly = true;
+            this.waiting_audit_grid.RowTemplate.Height = 27;
+            this.waiting_audit_grid.Size = new System.Drawing.Size(347, 150);
+            this.waiting_audit_grid.TabIndex = 31;
+            this.waiting_audit_grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.waiting_audit_grid_CellClick);
             // 
-            // dataGridView1
+            // bug_audit_btn_accompanished
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 30);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(347, 150);
-            this.dataGridView1.TabIndex = 31;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Red;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("幼圆", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button3.Location = new System.Drawing.Point(15, 1021);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(358, 71);
-            this.button3.TabIndex = 30;
-            this.button3.Text = "审核完毕";
-            this.button3.UseVisualStyleBackColor = false;
+            this.bug_audit_btn_accompanished.BackColor = System.Drawing.Color.Red;
+            this.bug_audit_btn_accompanished.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bug_audit_btn_accompanished.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bug_audit_btn_accompanished.Font = new System.Drawing.Font("幼圆", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bug_audit_btn_accompanished.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.bug_audit_btn_accompanished.Location = new System.Drawing.Point(7, 1030);
+            this.bug_audit_btn_accompanished.Name = "bug_audit_btn_accompanished";
+            this.bug_audit_btn_accompanished.Size = new System.Drawing.Size(347, 71);
+            this.bug_audit_btn_accompanished.TabIndex = 30;
+            this.bug_audit_btn_accompanished.Text = "审核完毕";
+            this.bug_audit_btn_accompanished.UseVisualStyleBackColor = false;
+            this.bug_audit_btn_accompanished.Click += new System.EventHandler(this.bug_audit_btn_accompanished_Click);
             // 
             // label24
             // 
@@ -704,27 +768,27 @@
             this.label24.TabIndex = 29;
             this.label24.Text = "待审核Bug:";
             // 
-            // comboBox1
+            // bug_cre_audit_status
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.LemonChiffon;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.comboBox1.ForeColor = System.Drawing.Color.White;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "次要",
-            "一般",
-            "严重"});
-            this.comboBox1.Location = new System.Drawing.Point(13, 956);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 33);
-            this.comboBox1.TabIndex = 28;
+            this.bug_cre_audit_status.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.bug_cre_audit_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bug_cre_audit_status.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bug_cre_audit_status.ForeColor = System.Drawing.Color.Black;
+            this.bug_cre_audit_status.FormattingEnabled = true;
+            this.bug_cre_audit_status.Items.AddRange(new object[] {
+            "待修复",
+            "待确认修复",
+            "已修复"});
+            this.bug_cre_audit_status.Location = new System.Drawing.Point(13, 900);
+            this.bug_cre_audit_status.Name = "bug_cre_audit_status";
+            this.bug_cre_audit_status.Size = new System.Drawing.Size(121, 33);
+            this.bug_cre_audit_status.TabIndex = 28;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.Color.Red;
-            this.label22.Location = new System.Drawing.Point(108, 650);
+            this.label22.Location = new System.Drawing.Point(108, 751);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(0, 15);
             this.label22.TabIndex = 27;
@@ -732,7 +796,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(10, 925);
+            this.label23.Location = new System.Drawing.Point(10, 869);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(106, 15);
             this.label23.TabIndex = 25;
@@ -742,23 +806,24 @@
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.Color.Red;
-            this.label20.Location = new System.Drawing.Point(106, 740);
+            this.label20.Location = new System.Drawing.Point(106, 684);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(0, 15);
             this.label20.TabIndex = 24;
             // 
-            // textBox3
+            // bug_cre_audit_analysis
             // 
-            this.textBox3.Location = new System.Drawing.Point(7, 763);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(347, 147);
-            this.textBox3.TabIndex = 23;
+            this.bug_cre_audit_analysis.Location = new System.Drawing.Point(7, 707);
+            this.bug_cre_audit_analysis.Multiline = true;
+            this.bug_cre_audit_analysis.Name = "bug_cre_audit_analysis";
+            this.bug_cre_audit_analysis.ReadOnly = true;
+            this.bug_cre_audit_analysis.Size = new System.Drawing.Size(347, 147);
+            this.bug_cre_audit_analysis.TabIndex = 23;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(4, 740);
+            this.label21.Location = new System.Drawing.Point(4, 684);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(76, 15);
             this.label21.TabIndex = 22;
@@ -768,23 +833,15 @@
             // 
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(106, 553);
+            this.label17.Location = new System.Drawing.Point(106, 654);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(0, 15);
             this.label17.TabIndex = 21;
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(7, 576);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(347, 147);
-            this.textBox2.TabIndex = 20;
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(4, 553);
+            this.label19.Location = new System.Drawing.Point(4, 654);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(76, 15);
             this.label19.TabIndex = 19;
@@ -794,53 +851,108 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(106, 366);
+            this.label13.Location = new System.Drawing.Point(106, 467);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(0, 15);
             this.label13.TabIndex = 18;
             // 
-            // textBox1
+            // bug_cre_audit_desc
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 389);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(347, 147);
-            this.textBox1.TabIndex = 17;
+            this.bug_cre_audit_desc.Location = new System.Drawing.Point(7, 490);
+            this.bug_cre_audit_desc.Multiline = true;
+            this.bug_cre_audit_desc.Name = "bug_cre_audit_desc";
+            this.bug_cre_audit_desc.Size = new System.Drawing.Size(347, 147);
+            this.bug_cre_audit_desc.TabIndex = 17;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(4, 366);
+            this.label15.Location = new System.Drawing.Point(4, 467);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(100, 15);
             this.label15.TabIndex = 16;
             this.label15.Text = "Bug描述(*)：";
             // 
-            // bug_cre_fresh_dev
+            // comboBox1
             // 
-            this.bug_cre_fresh_dev.AutoSize = true;
-            this.bug_cre_fresh_dev.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bug_cre_fresh_dev.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bug_cre_fresh_dev.ForeColor = System.Drawing.Color.Blue;
-            this.bug_cre_fresh_dev.Location = new System.Drawing.Point(325, 21);
-            this.bug_cre_fresh_dev.Name = "bug_cre_fresh_dev";
-            this.bug_cre_fresh_dev.Size = new System.Drawing.Size(49, 20);
-            this.bug_cre_fresh_dev.TabIndex = 25;
-            this.bug_cre_fresh_dev.Text = "刷新";
-            this.bug_cre_fresh_dev.Click += new System.EventHandler(this.bug_cre_fresh_dev_Click);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "待修复",
+            "待确认修复",
+            "已修复",
+            ""});
+            this.comboBox1.Location = new System.Drawing.Point(10, 258);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 54;
             // 
-            // bug_cre_confirm_info_refresh
+            // label27
             // 
-            this.bug_cre_confirm_info_refresh.AutoSize = true;
-            this.bug_cre_confirm_info_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bug_cre_confirm_info_refresh.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bug_cre_confirm_info_refresh.ForeColor = System.Drawing.Color.Blue;
-            this.bug_cre_confirm_info_refresh.Location = new System.Drawing.Point(331, 22);
-            this.bug_cre_confirm_info_refresh.Name = "bug_cre_confirm_info_refresh";
-            this.bug_cre_confirm_info_refresh.Size = new System.Drawing.Size(49, 20);
-            this.bug_cre_confirm_info_refresh.TabIndex = 26;
-            this.bug_cre_confirm_info_refresh.Text = "刷新";
-            this.bug_cre_confirm_info_refresh.Click += new System.EventHandler(this.bug_cre_confirm_info_refresh_Click);
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label27.Location = new System.Drawing.Point(7, 192);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(52, 15);
+            this.label27.TabIndex = 55;
+            this.label27.Text = "筛选：";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(10, 338);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 23);
+            this.comboBox2.TabIndex = 56;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label28.ForeColor = System.Drawing.Color.Blue;
+            this.label28.Location = new System.Drawing.Point(7, 228);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(82, 15);
+            this.label28.TabIndex = 57;
+            this.label28.Text = "缺陷状态：";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label29.ForeColor = System.Drawing.Color.Black;
+            this.label29.Location = new System.Drawing.Point(7, 308);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(112, 15);
+            this.label29.TabIndex = 58;
+            this.label29.Text = "缺陷版本控制：";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label30.ForeColor = System.Drawing.Color.Blue;
+            this.label30.Location = new System.Drawing.Point(149, 228);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(138, 15);
+            this.label30.TabIndex = 59;
+            this.label30.Text = "根据case_id查找：";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(152, 258);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 25);
+            this.textBox1.TabIndex = 60;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackgroundImage = global::BugPractice1_4.Properties.Resources._040;
+            this.button2.Location = new System.Drawing.Point(301, 235);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(59, 48);
+            this.button2.TabIndex = 61;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // BugCreater
             // 
@@ -863,7 +975,7 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.waiting_audit_grid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -912,29 +1024,37 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label bug_cre_lbl_bug_id;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox bug_cre_audit_desc;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox bug_cre_audit_analysis;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button bug_audit_btn_accompanished;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox bug_cre_audit_status;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView waiting_audit_grid;
         private System.Windows.Forms.DataGridViewTextBoxColumn bug_cre_manager_col_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn bug_cre_col_manager_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn bug_cre_col_manager_phonNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn bug_cre_col_manager_email;
         private System.Windows.Forms.Label bug_cre_fresh_dev;
-        private System.Windows.Forms.Label bug_cre_confirm_info_refresh;
+        private System.Windows.Forms.ComboBox bug_cre_audit_reason;
+        private System.Windows.Forms.Label bug_bug_analysis_refresh;
+        private System.Windows.Forms.Label bug_cre_audit_lbl_id;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
