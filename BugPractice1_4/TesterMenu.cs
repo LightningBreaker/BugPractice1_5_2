@@ -14,11 +14,12 @@ namespace BugPractice1_4
     public partial class TesterMenu : Form
     {
         DataSet ds,ds2;
-
-        public TesterMenu()
+        Form1 loginForm;
+        public TesterMenu(Form1 LoginForm)
         {
             InitializeComponent();
             comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 1;
             label_username.Text = Global_Userinfo.username;
             string type;
             dataGridView1.AutoGenerateColumns = false;
@@ -32,6 +33,9 @@ namespace BugPractice1_4
                 default: type = "未知用户"; break;
             }
             label_userType.Text = type;
+            initiateDataGridView(0 + 1);
+            initiateDataGridView2(1 + 1);
+            loginForm = LoginForm;
         }
 
         
@@ -64,7 +68,7 @@ namespace BugPractice1_4
             // 1: 未完成 2:已完成
            
                 MySqlConnection conn = new MySqlConnection(Global_Database.Conn);
-                string sql = String.Format("select plan_name, plan_id , project_name, project_id from table_project pr, table_plan pl, where pl.plan_project = pr.project_id and pl.plan_manager = {0} and pl.status = {1}", Global_Userinfo.userid, status);
+                string sql = String.Format("select plan_name, plan_id , project_name, project_id from table_project, table_plan where plan_project = project_id and plan_manager = {0} and plan_status = {1}", Global_Userinfo.userid, status);
                 conn.Open();
                 dataGridView1.AutoGenerateColumns = false;
                 MySqlCommand command = new MySqlCommand(sql, conn);
@@ -83,7 +87,7 @@ namespace BugPractice1_4
             // 1: 未完成 2:已完成
 
             MySqlConnection conn = new MySqlConnection(Global_Database.Conn);
-            string sql = String.Format("select plan_name, plan_id , project_name, project_id, bug_id, bug_name,bug_level from table_project, table_plan p, table_bug b , table_case c where plan_manager = {0} and project_id = p.plan_id and p.plan_id = c.plan_id and c.case_id = b.case_id",Global_Userinfo.userid);
+            string sql = String.Format("select plan_name, p.plan_id , project_name, project_id, bug_id, bug_name,bug_level from table_project, table_plan p, table_bug b , table_case c where plan_manager = {0} and project_id = p.plan_id and p.plan_id = c.plan_id and c.case_id = b.case_id",Global_Userinfo.userid);
             conn.Open();
             dataGridView2.AutoGenerateColumns = false;
             MySqlCommand command = new MySqlCommand(sql, conn);
@@ -141,6 +145,16 @@ namespace BugPractice1_4
         {
             //传bugid 
             new BugCreater().ShowDialog();
+        }
+
+        private void TesterMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TesterMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            loginForm.Close();
         }
 
         private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

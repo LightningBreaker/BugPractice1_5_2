@@ -64,10 +64,22 @@ namespace BugPractice1_4
 
         private void button_uploadResult_Click(object sender, EventArgs e)
         {
-            int status = comboBox_result.SelectedIndex + 1;
+            int status = 3 - comboBox_result.SelectedIndex;
             Global_Database.UploadTestResult(caseID, status);
+            //case 完成情况1 情况2为审核缺陷通过。在那里要先通过bug确定case是否完成。
+            //case 完成 更新plan状态.
+            //plan 完成 更新project状态.
+            string planID = "";
             MessageBox.Show("提交成功！");
+            bool planCompleted = Global_Database.UpdatePlanStatus(caseID, out planID);
+            if (planCompleted)
+            {
+                MessageBox.Show("所属计划已完成！");
+                if(Global_Database.UpdatePojectStatus(planID)) MessageBox.Show("所属项目已完成!");
+            }
+           
             this.Close();
+            
         }
     }
 }

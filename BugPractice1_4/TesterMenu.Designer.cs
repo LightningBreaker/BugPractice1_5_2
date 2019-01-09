@@ -38,26 +38,26 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.page_myPlan = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.page_personalInformation = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPage_auditBug = new System.Windows.Forms.TabPage();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.plan_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.plan_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button_viewProject = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.button_viewPlan = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_bugLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.page_personalInformation = new System.Windows.Forms.TabPage();
+            this.plan_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.plan_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_viewProject = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button_viewPlan = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.page_homePage.SuspendLayout();
             this.page_myPlan.SuspendLayout();
@@ -183,6 +183,29 @@
             this.page_myPlan.UseVisualStyleBackColor = true;
             this.page_myPlan.Click += new System.EventHandler(this.page_myPlan_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "未完成任务",
+            "已完成任务"});
+            this.comboBox1.Location = new System.Drawing.Point(435, 26);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(158, 23);
+            this.comboBox1.TabIndex = 4;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(622, 73);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(103, 38);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "管理用例";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -212,38 +235,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // page_personalInformation
-            // 
-            this.page_personalInformation.Location = new System.Drawing.Point(4, 25);
-            this.page_personalInformation.Name = "page_personalInformation";
-            this.page_personalInformation.Padding = new System.Windows.Forms.Padding(3);
-            this.page_personalInformation.Size = new System.Drawing.Size(754, 424);
-            this.page_personalInformation.TabIndex = 2;
-            this.page_personalInformation.Text = "个人资料";
-            this.page_personalInformation.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(622, 73);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 38);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "管理用例";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "未完成任务",
-            "已完成任务"});
-            this.comboBox1.Location = new System.Drawing.Point(435, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(158, 23);
-            this.comboBox1.TabIndex = 4;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // tabPage_auditBug
             // 
             this.tabPage_auditBug.Controls.Add(this.comboBox2);
@@ -260,6 +251,7 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "待修复缺陷",
@@ -310,41 +302,6 @@
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView2_CellFormatting);
             // 
-            // plan_ID
-            // 
-            this.plan_ID.DataPropertyName = "plan_id";
-            this.plan_ID.HeaderText = "计划ID";
-            this.plan_ID.Name = "plan_ID";
-            this.plan_ID.ReadOnly = true;
-            // 
-            // plan_Name
-            // 
-            this.plan_Name.DataPropertyName = "plan_name";
-            this.plan_Name.HeaderText = "计划名称";
-            this.plan_Name.Name = "plan_Name";
-            this.plan_Name.ReadOnly = true;
-            // 
-            // ProjectName
-            // 
-            this.ProjectName.DataPropertyName = "project_name";
-            this.ProjectName.HeaderText = "所属项目";
-            this.ProjectName.Name = "ProjectName";
-            this.ProjectName.ReadOnly = true;
-            // 
-            // button_viewProject
-            // 
-            this.button_viewProject.HeaderText = "";
-            this.button_viewProject.Name = "button_viewProject";
-            this.button_viewProject.ReadOnly = true;
-            this.button_viewProject.Text = "查看项目";
-            // 
-            // button_viewPlan
-            // 
-            this.button_viewPlan.HeaderText = "";
-            this.button_viewPlan.Name = "button_viewPlan";
-            this.button_viewPlan.ReadOnly = true;
-            this.button_viewPlan.Text = "查看计划";
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "bug_id";
@@ -379,6 +336,59 @@
             this.dataGridViewButtonColumn2.ReadOnly = true;
             this.dataGridViewButtonColumn2.Text = "查看用例";
             // 
+            // page_personalInformation
+            // 
+            this.page_personalInformation.Location = new System.Drawing.Point(4, 25);
+            this.page_personalInformation.Name = "page_personalInformation";
+            this.page_personalInformation.Padding = new System.Windows.Forms.Padding(3);
+            this.page_personalInformation.Size = new System.Drawing.Size(754, 424);
+            this.page_personalInformation.TabIndex = 2;
+            this.page_personalInformation.Text = "个人资料";
+            this.page_personalInformation.UseVisualStyleBackColor = true;
+            // 
+            // plan_ID
+            // 
+            this.plan_ID.DataPropertyName = "plan_id";
+            this.plan_ID.HeaderText = "计划ID";
+            this.plan_ID.Name = "plan_ID";
+            this.plan_ID.ReadOnly = true;
+            this.plan_ID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // plan_Name
+            // 
+            this.plan_Name.DataPropertyName = "plan_name";
+            this.plan_Name.HeaderText = "计划名称";
+            this.plan_Name.Name = "plan_Name";
+            this.plan_Name.ReadOnly = true;
+            this.plan_Name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // ProjectName
+            // 
+            this.ProjectName.DataPropertyName = "project_name";
+            this.ProjectName.HeaderText = "所属项目";
+            this.ProjectName.Name = "ProjectName";
+            this.ProjectName.ReadOnly = true;
+            this.ProjectName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // button_viewProject
+            // 
+            this.button_viewProject.HeaderText = "查看项目";
+            this.button_viewProject.Name = "button_viewProject";
+            this.button_viewProject.ReadOnly = true;
+            this.button_viewProject.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.button_viewProject.Text = "查看项目";
+            this.button_viewProject.ToolTipText = "查看项目";
+            this.button_viewProject.UseColumnTextForButtonValue = true;
+            // 
+            // button_viewPlan
+            // 
+            this.button_viewPlan.HeaderText = "查看计划";
+            this.button_viewPlan.Name = "button_viewPlan";
+            this.button_viewPlan.ReadOnly = true;
+            this.button_viewPlan.Text = "查看计划";
+            this.button_viewPlan.ToolTipText = "查看计划";
+            this.button_viewPlan.UseColumnTextForButtonValue = true;
+            // 
             // TesterMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -387,6 +397,8 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "TesterMenu";
             this.Text = "缺陷管理系统";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TesterMenu_FormClosed);
+            this.Load += new System.EventHandler(this.TesterMenu_Load);
             this.tabControl1.ResumeLayout(false);
             this.page_homePage.ResumeLayout(false);
             this.page_homePage.PerformLayout();
@@ -422,15 +434,15 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn plan_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn plan_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProjectName;
-        private System.Windows.Forms.DataGridViewButtonColumn button_viewProject;
-        private System.Windows.Forms.DataGridViewButtonColumn button_viewPlan;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_bugLevel;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn plan_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn plan_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProjectName;
+        private System.Windows.Forms.DataGridViewButtonColumn button_viewProject;
+        private System.Windows.Forms.DataGridViewButtonColumn button_viewPlan;
     }
 }

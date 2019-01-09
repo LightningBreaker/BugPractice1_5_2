@@ -16,14 +16,16 @@ namespace BugPractice1_4
         int mode=0;
         string planID;
         DataSet ds;
-        int lockStatus;
+        int lockStatus; // 1: locked 2:unlocked
         int button_upload_status;
         public ViewPlan_Tester_2(string planID)
         {
             InitializeComponent();
             this.planID = planID;
-            InititateDataGridView();
             
+            lockStatus = Global_Database.SearchPlanLock(planID);
+            if (lockStatus == 1) mode = 1;
+            InititateDataGridView();
         }
 
         public ViewPlan_Tester_2(string planID, int mode)
@@ -77,11 +79,13 @@ namespace BugPractice1_4
             }*/
             conn.Close();
             
-            if(lockStatus == 2)
+            if(lockStatus == 1)
             {
                 button_addPlan.Enabled = false;
                 button_deletePLan.Enabled = false;
                 button_uploadResult.Enabled = true;
+                button_release.Enabled = false;
+                mode = 1;
             }
         } 
             
@@ -114,8 +118,8 @@ namespace BugPractice1_4
                 string case_step = ds.Tables["table_case"].Rows[rowIndex]["case_step"].ToString();
                 int status = int.Parse(ds.Tables["table_case"].Rows[rowIndex]["case_status"].ToString())-1;
                 string case_id = ds.Tables["table_case"].Rows[rowIndex]["case_id"].ToString();
-                if(mode == 0)new AddCase(planID, this, case_id, case_name, description, case_step, status).ShowDialog();
-                else if(mode == 1) new AddCase(1,planID, this, case_id, case_name, description, case_step, status).ShowDialog();
+                if( mode == 0)new AddCase(planID, this, case_id, case_name, description, case_step, status).ShowDialog();
+                else if( mode == 1) new AddCase(1,planID, this, case_id, case_name, description, case_step, status).ShowDialog();
             }
         }
 
@@ -145,7 +149,8 @@ namespace BugPractice1_4
             if (result == DialogResult.Cancel) return;
 
             Global_Database.AddPlanLock(planID);
-
+            lockStatus = 1;
+            InititateDataGridView();
             MessageBox.Show("用例信息已确认！");
         }
 
@@ -158,8 +163,10 @@ namespace BugPractice1_4
                 string case_name = ds.Tables["table_case"].Rows[rowIndex]["case_name"].ToString();
                 //打开确认测试结果窗口
                 new UploadResult(case_id, case_name).ShowDialog();
+                InititateDataGridView();
             }
-            else if(button_upload_status == 2) { }
+            else if(button_upload_status == 2) {
+            }
                 //打开查看缺陷窗口
         }
 
