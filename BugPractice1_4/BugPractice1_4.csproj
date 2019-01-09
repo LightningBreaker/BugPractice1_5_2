@@ -121,6 +121,18 @@
       <DependentUpon>ReleaseProject_2.cs</DependentUpon>
     </Compile>
     <Compile Include="TableBug.cs" />
+    <Compile Include="TesterMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TesterMenu.Designer.cs">
+      <DependentUpon>TesterMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UploadResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UploadResult.Designer.cs">
+      <DependentUpon>UploadResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserInfo.cs" />
     <Compile Include="user_information.cs">
       <SubType>Form</SubType>
@@ -194,6 +206,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReleaseProject_2.resx">
       <DependentUpon>ReleaseProject_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TesterMenu.resx">
+      <DependentUpon>TesterMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UploadResult.resx">
+      <DependentUpon>UploadResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="user_information.resx">
       <DependentUpon>user_information.cs</DependentUpon>

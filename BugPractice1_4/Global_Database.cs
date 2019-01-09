@@ -11,7 +11,7 @@ namespace BugPractice1_4
     class Global_Database
     {
         public static string Conn = "Database='practice_in_school';" +
-            "Data Source='172.20.10.2';User Id='root';" +
+            "Data Source='192.168.43.116';User Id='root';" +
             "Password='TheFirstDon';charset='utf8';pooling=true";
         
         public static Dictionary<string,string> SearchTesterInfo()
@@ -126,6 +126,58 @@ namespace BugPractice1_4
         {
             MySqlConnection conn = new MySqlConnection(Conn);
             string sql = String.Format("update table_case set case_name = '{0}', case_status={1}, case_description='{2}', case_step='{3}' where case_id = {4}",name,status,description,step,case_id);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            command.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public static void AddPlanLock(string plan_id)
+        {
+            MySqlConnection conn = new MySqlConnection(Conn);
+            string sql = String.Format("update table_plan set plan_lock = 2 where plan_id = {0}",plan_id);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            command.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public static int SearchPlanLock(string plan_id)
+        {
+            MySqlConnection conn = new MySqlConnection(Conn);
+            string sql = String.Format("select plan_lock from table_plan where plan_id = {0}", plan_id);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            var reader = command.ExecuteReader();
+            reader.Read();
+            int Lock = (int)reader[0];
+            conn.Close();
+            return Lock;
+        }
+
+        public static bool WhetherHaveBug(string caseID)
+        {
+            MySqlConnection conn = new MySqlConnection(Conn);
+            string sql = String.Format("select bug_id from table_bug where case_id = {0}", caseID);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            var reader = command.ExecuteReader();
+            bool result;
+            if (reader.NextResult()) result = true;
+            else result = false;
+
+            conn.Close();
+            return result;
+        }
+
+        public static void UploadTestResult(string caseID, int status)
+        {
+            MySqlConnection conn = new MySqlConnection(Conn);
+            string sql = String.Format("update table_case set case_status = {0} where case_id = {1}", status, caseID);
             conn.Open();
             MySqlCommand command = new MySqlCommand(sql, conn);
 
