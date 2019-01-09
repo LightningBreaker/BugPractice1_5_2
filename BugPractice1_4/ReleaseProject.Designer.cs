@@ -42,12 +42,13 @@
             this.textBox_managerName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 61);
+            this.label1.Location = new System.Drawing.Point(40, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 15);
             this.label1.TabIndex = 0;
@@ -55,16 +56,16 @@
             // 
             // textBox_projectName
             // 
-            this.textBox_projectName.Location = new System.Drawing.Point(43, 85);
+            this.textBox_projectName.Location = new System.Drawing.Point(43, 61);
             this.textBox_projectName.Name = "textBox_projectName";
-            this.textBox_projectName.Size = new System.Drawing.Size(347, 25);
+            this.textBox_projectName.Size = new System.Drawing.Size(298, 25);
             this.textBox_projectName.TabIndex = 1;
             this.textBox_projectName.TextChanged += new System.EventHandler(this.textBox_projectName_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 140);
+            this.label2.Location = new System.Drawing.Point(40, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 15);
             this.label2.TabIndex = 2;
@@ -72,25 +73,26 @@
             // 
             // textBox_description
             // 
-            this.textBox_description.Location = new System.Drawing.Point(43, 163);
+            this.textBox_description.Location = new System.Drawing.Point(43, 140);
             this.textBox_description.Multiline = true;
             this.textBox_description.Name = "textBox_description";
-            this.textBox_description.Size = new System.Drawing.Size(347, 86);
+            this.textBox_description.Size = new System.Drawing.Size(588, 165);
             this.textBox_description.TabIndex = 4;
             this.textBox_description.TextChanged += new System.EventHandler(this.textBox_description_TextChanged);
             // 
             // textBox_managerID
             // 
-            this.textBox_managerID.Location = new System.Drawing.Point(43, 298);
+            this.textBox_managerID.Location = new System.Drawing.Point(145, 339);
             this.textBox_managerID.Name = "textBox_managerID";
             this.textBox_managerID.ReadOnly = true;
             this.textBox_managerID.Size = new System.Drawing.Size(157, 25);
             this.textBox_managerID.TabIndex = 6;
+            this.textBox_managerID.TextChanged += new System.EventHandler(this.textBox_managerID_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 274);
+            this.label3.Location = new System.Drawing.Point(40, 344);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 15);
             this.label3.TabIndex = 5;
@@ -98,9 +100,9 @@
             // 
             // button_nextPage
             // 
-            this.button_nextPage.Location = new System.Drawing.Point(43, 366);
+            this.button_nextPage.Location = new System.Drawing.Point(43, 394);
             this.button_nextPage.Name = "button_nextPage";
-            this.button_nextPage.Size = new System.Drawing.Size(157, 33);
+            this.button_nextPage.Size = new System.Drawing.Size(259, 33);
             this.button_nextPage.TabIndex = 7;
             this.button_nextPage.Text = "下一页>>";
             this.button_nextPage.UseVisualStyleBackColor = true;
@@ -126,9 +128,9 @@
             // 
             // button_giveUp
             // 
-            this.button_giveUp.Location = new System.Drawing.Point(240, 366);
+            this.button_giveUp.Location = new System.Drawing.Point(362, 394);
             this.button_giveUp.Name = "button_giveUp";
-            this.button_giveUp.Size = new System.Drawing.Size(150, 33);
+            this.button_giveUp.Size = new System.Drawing.Size(269, 33);
             this.button_giveUp.TabIndex = 10;
             this.button_giveUp.Text = "放弃发布";
             this.button_giveUp.UseVisualStyleBackColor = true;
@@ -136,7 +138,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(43, 419);
+            this.button1.Location = new System.Drawing.Point(472, 32);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 11;
@@ -146,16 +148,17 @@
             // 
             // textBox_managerName
             // 
-            this.textBox_managerName.Location = new System.Drawing.Point(240, 298);
+            this.textBox_managerName.Location = new System.Drawing.Point(481, 339);
             this.textBox_managerName.Name = "textBox_managerName";
             this.textBox_managerName.ReadOnly = true;
             this.textBox_managerName.Size = new System.Drawing.Size(150, 25);
             this.textBox_managerName.TabIndex = 13;
+            this.textBox_managerName.TextChanged += new System.EventHandler(this.textBox_managerName_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(237, 274);
+            this.label4.Location = new System.Drawing.Point(359, 344);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(127, 15);
             this.label4.TabIndex = 12;
@@ -163,7 +166,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(160, 419);
+            this.button2.Location = new System.Drawing.Point(589, 32);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 14;
@@ -171,11 +174,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(235, 394);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(220, 33);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "返回";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // ReleaseProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 466);
+            this.ClientSize = new System.Drawing.Size(707, 461);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox_managerName);
             this.Controls.Add(this.label4);
@@ -216,5 +230,6 @@
         public System.Windows.Forms.TextBox textBox_managerName;
         public System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

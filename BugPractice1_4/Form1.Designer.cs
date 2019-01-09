@@ -36,13 +36,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.user_password = new System.Windows.Forms.TextBox();
             this.label_register = new System.Windows.Forms.Label();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.SuspendLayout();
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Enabled = false;
-            this.button2.Font = new System.Drawing.Font("Tekton Pro Ext", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.Location = new System.Drawing.Point(12, 515);
             this.button2.Name = "button2";
@@ -152,6 +153,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox user_password;
         private System.Windows.Forms.Label label_register;
+        private System.Windows.Forms.FontDialog fontDialog1;
     }
 }
 

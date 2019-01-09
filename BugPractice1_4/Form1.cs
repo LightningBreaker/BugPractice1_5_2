@@ -14,7 +14,7 @@ namespace BugPractice1_4
    
     public partial class Form1 : Form
     {
-        public static string CONSTR = "server=192.168.43.116;" +
+        public static string CONSTR = "server=localhost;" +
            "User Id=root;password=TheFirstDon;" +
            "Database=practice_in_school";
         public Form1()
@@ -35,7 +35,7 @@ namespace BugPractice1_4
             MySqlDataReader dr = mycmd.ExecuteReader();
             if (dr.Read())
             {
-               // Global_Userinfo.user_id = (int)dr.GetValue(0);
+                Global_Userinfo.userid = ((int)dr.GetValue(0)).ToString();
                 Global_Userinfo.username = (string)dr.GetValue(1);
                 Global_Userinfo.type = (int)dr.GetValue(3);
                 Global_Userinfo.isLogined = true;
@@ -43,8 +43,12 @@ namespace BugPractice1_4
                 dr.Close();
                 mycon.Close();
                 this.Hide();
-               BugCreater bugCreater=  new BugCreater();
+                BugCreater bugCreater=  new BugCreater("12");
                 bugCreater.Show();
+                
+               // BugAnalysisForm bugAnalysis = new BugAnalysisForm();
+               // bugAnalysis.Show();
+                
                 
 
             }

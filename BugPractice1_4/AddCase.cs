@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MySql.Data.MySqlClient;
 namespace BugPractice1_4
 {
     public partial class AddCase : Form
@@ -43,10 +43,71 @@ namespace BugPractice1_4
             mode = 2;
         }
 
+        public AddCase(int MODE, string planID, ViewPlan_Tester_2 preF, string case_id, string case_name, string description, string case_step, int status)
+        {
+            if (MODE == 1) // 不能编辑
+            {
+                this.planID = planID;
+                InitializeComponent();
+                textBox_caseName.Text = case_name;
+                textBox_description.Text = description;
+                textBox_step.Text = case_step;
+                comboBox_status.SelectedIndex = status;
+                textBox_ID.Text = case_id;
+                preform = preF;
+                this.Text = "查看用例";
+                this.button_confirm.Text = "确认修改";
+                this.button_confirm.Visible = false;
+                this.button_giveUp.Text = "返回";
+                mode = 2;
+                textBox_caseName.ReadOnly = true;
+                textBox_description.ReadOnly = true;
+                textBox_step.ReadOnly = true;
+                comboBox_status.Enabled = false;
+                textBox_ID.ReadOnly = true;
+            }
+        }
+
+        public AddCase(string caseID, int MODE)
+        {
+            if (MODE == 1) // 不能编辑
+            {
+                InitializeComponent();
+
+                MySqlConnection conn = new MySqlConnection(Global_Database.Conn);
+                string sql = String.Format("select * from table_case where case_id = {0}", caseID);
+                conn.Open();
+                
+                MySqlCommand command = new MySqlCommand(sql, conn);
+                var reader = command.ExecuteReader();
+                reader.Read();
+                textBox_caseName.Text = reader["case_name"].ToString();
+                textBox_description.Text = reader["case_description"].ToString();
+                textBox_step.Text = reader["case_step"].ToString();
+                comboBox_status.SelectedIndex = (int)reader["case_status"]-1;
+                textBox_ID.Text = reader["case_id"].ToString();
+                conn.Close();
+
+                this.Text = "查看用例";
+                this.button_confirm.Text = "确认修改";
+                this.button_confirm.Visible = false;
+                this.button_giveUp.Text = "返回";
+                mode = 2;
+                textBox_caseName.ReadOnly = true;
+                textBox_description.ReadOnly = true;
+                textBox_step.ReadOnly = true;
+                comboBox_status.Enabled = false;
+                textBox_ID.ReadOnly = true;
+            }
+        }
+
         private void button_giveUp_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("确认放弃添加用例吗？已填写的信息将会丢失！", "返回", MessageBoxButtons.OKCancel);
-            if (result == DialogResult.Cancel) return;
+            if (mode == 1)
+            {
+                var result = MessageBox.Show("确认放弃添加用例吗？已填写的信息将会丢失！", "返回", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.Cancel) return;
+            }
             this.Close();
         }
 

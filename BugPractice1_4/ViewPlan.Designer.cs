@@ -228,6 +228,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox_planName);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ViewPlan";
             this.Text = "查看计划";
             this.ResumeLayout(false);
