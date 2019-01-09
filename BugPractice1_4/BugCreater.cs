@@ -35,13 +35,34 @@ namespace BugPractice1_4
                 table_bug.Head_tag = '1';
         }
 
+        int global_bug_id = -1;
         public BugCreater(string bug_id)
         {
             InitializeComponent();
-
+            global_bug_id =int.Parse( bug_id);
+            
         }
 
 
+        private void Search_AuditView(int bug_id)
+        {
+            for (int i = 0; i < this.waiting_audit_grid.Rows.Count; i++)
+            {
+                
+                int search_id =int.Parse(waiting_audit_grid.Rows[i].Cells[0].Value.ToString().Trim());
+
+                
+                if (search_id==bug_id)
+                {
+                    this.waiting_audit_grid.CurrentCell = this.waiting_audit_grid.Rows[i].Cells[0];
+                    break;
+                }
+
+            }
+
+
+
+        }
 
 
         public int Return_bug_id()
@@ -144,7 +165,12 @@ namespace BugPractice1_4
             if (bug_cre_tabControl.SelectedIndex == 3)
             {
                 bug_cre_audit_status_filter.SelectedIndex = 0;
-                init_grid_waiting_audit(0,-1);     
+                init_grid_waiting_audit(0,-1);
+                if (global_bug_id != -1)
+                {
+                    Search_AuditView(global_bug_id);
+                    
+                }
             }
 
 
@@ -188,7 +214,7 @@ namespace BugPractice1_4
 
             dataReader.Close();
             mycon.Close();
-            int[] add_list = new int[] { 13, 3, 7, 1, 10 };
+            int[] add_list = new int[] { 13, 3, 7, 1,9 ,10 };
 
             for (int i = 0; i < add_list.Length; i++)
             {
@@ -229,6 +255,13 @@ namespace BugPractice1_4
             init_is_ok();
             init_developer_gridView();
             init_labels();
+
+            if (global_bug_id != -1)
+            {
+             
+                bug_cre_tabControl.SelectedIndex = 3;
+            }
+
         }
         DataTable m_listViewInfo=null;
         private void init_developer_gridView()
@@ -441,7 +474,7 @@ namespace BugPractice1_4
                 init_is_ok();
                 bug_cre_text_bug_name.Clear();
                 bug_cre_description.Clear();
-                bug_cre_tabControl.SelectedIndex = 1;
+                bug_cre_tabControl.SelectedIndex = 0;
                 bug_cre_tabControl_SelectedIndexChanged(sender, e);
             }
             else
