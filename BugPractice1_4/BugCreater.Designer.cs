@@ -56,8 +56,6 @@
             this.bug_cre_col_manager_phonNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bug_cre_col_manager_email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
-            this.bug_cre_lbl_bug_id = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.bug_cre_lbl_p_bug_id = new System.Windows.Forms.Label();
             this.bug_cre_btn_eport_bug = new System.Windows.Forms.Button();
@@ -94,14 +92,15 @@
             this.label13 = new System.Windows.Forms.Label();
             this.bug_cre_audit_desc = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.bug_cre_audit_status_filter = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bug_cre_audit_case_filter = new System.Windows.Forms.TextBox();
+            this.bug_cre_audit_btn_filter = new System.Windows.Forms.Button();
+            this.label31 = new System.Windows.Forms.Label();
             this.bug_cre_tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -408,8 +407,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.bug_cre_lbl_bug_id);
             this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Controls.Add(this.bug_cre_lbl_p_bug_id);
             this.tabPage3.Controls.Add(this.bug_cre_btn_eport_bug);
@@ -431,27 +428,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "确认信息";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(18, 334);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(89, 20);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "bug id：";
-            // 
-            // bug_cre_lbl_bug_id
-            // 
-            this.bug_cre_lbl_bug_id.AutoSize = true;
-            this.bug_cre_lbl_bug_id.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bug_cre_lbl_bug_id.ForeColor = System.Drawing.Color.Blue;
-            this.bug_cre_lbl_bug_id.Location = new System.Drawing.Point(129, 334);
-            this.bug_cre_lbl_bug_id.Name = "bug_cre_lbl_bug_id";
-            this.bug_cre_lbl_bug_id.Size = new System.Drawing.Size(0, 20);
-            this.bug_cre_lbl_bug_id.TabIndex = 21;
             // 
             // label8
             // 
@@ -618,14 +594,15 @@
             // tabPage4
             // 
             this.tabPage4.AutoScroll = true;
-            this.tabPage4.Controls.Add(this.button2);
-            this.tabPage4.Controls.Add(this.textBox1);
+            this.tabPage4.Controls.Add(this.label31);
+            this.tabPage4.Controls.Add(this.bug_cre_audit_btn_filter);
+            this.tabPage4.Controls.Add(this.bug_cre_audit_case_filter);
             this.tabPage4.Controls.Add(this.label30);
             this.tabPage4.Controls.Add(this.label29);
             this.tabPage4.Controls.Add(this.label28);
             this.tabPage4.Controls.Add(this.comboBox2);
             this.tabPage4.Controls.Add(this.label27);
-            this.tabPage4.Controls.Add(this.comboBox1);
+            this.tabPage4.Controls.Add(this.bug_cre_audit_status_filter);
             this.tabPage4.Controls.Add(this.bug_cre_audit_lbl_id);
             this.tabPage4.Controls.Add(this.bug_bug_analysis_refresh);
             this.tabPage4.Controls.Add(this.bug_cre_audit_reason);
@@ -670,7 +647,7 @@
             this.bug_bug_analysis_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bug_bug_analysis_refresh.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bug_bug_analysis_refresh.ForeColor = System.Drawing.Color.Blue;
-            this.bug_bug_analysis_refresh.Location = new System.Drawing.Point(297, 435);
+            this.bug_bug_analysis_refresh.Location = new System.Drawing.Point(305, 192);
             this.bug_bug_analysis_refresh.Name = "bug_bug_analysis_refresh";
             this.bug_bug_analysis_refresh.Size = new System.Drawing.Size(49, 20);
             this.bug_bug_analysis_refresh.TabIndex = 52;
@@ -736,7 +713,7 @@
             // 
             this.waiting_audit_grid.BackgroundColor = System.Drawing.Color.White;
             this.waiting_audit_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.waiting_audit_grid.Location = new System.Drawing.Point(3, 30);
+            this.waiting_audit_grid.Location = new System.Drawing.Point(10, 30);
             this.waiting_audit_grid.Name = "waiting_audit_grid";
             this.waiting_audit_grid.ReadOnly = true;
             this.waiting_audit_grid.RowTemplate.Height = 27;
@@ -873,18 +850,19 @@
             this.label15.TabIndex = 16;
             this.label15.Text = "Bug描述(*)：";
             // 
-            // comboBox1
+            // bug_cre_audit_status_filter
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.bug_cre_audit_status_filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bug_cre_audit_status_filter.FormattingEnabled = true;
+            this.bug_cre_audit_status_filter.Items.AddRange(new object[] {
+            "全部",
             "待修复",
             "待确认修复",
-            "已修复",
-            ""});
-            this.comboBox1.Location = new System.Drawing.Point(10, 258);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 54;
+            "已修复"});
+            this.bug_cre_audit_status_filter.Location = new System.Drawing.Point(10, 258);
+            this.bug_cre_audit_status_filter.Name = "bug_cre_audit_status_filter";
+            this.bug_cre_audit_status_filter.Size = new System.Drawing.Size(121, 23);
+            this.bug_cre_audit_status_filter.TabIndex = 54;
             // 
             // label27
             // 
@@ -898,6 +876,7 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(10, 338);
             this.comboBox2.Name = "comboBox2";
@@ -937,22 +916,35 @@
             this.label30.TabIndex = 59;
             this.label30.Text = "根据case_id查找：";
             // 
-            // textBox1
+            // bug_cre_audit_case_filter
             // 
-            this.textBox1.Location = new System.Drawing.Point(152, 258);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 25);
-            this.textBox1.TabIndex = 60;
+            this.bug_cre_audit_case_filter.Location = new System.Drawing.Point(152, 258);
+            this.bug_cre_audit_case_filter.Name = "bug_cre_audit_case_filter";
+            this.bug_cre_audit_case_filter.Size = new System.Drawing.Size(100, 25);
+            this.bug_cre_audit_case_filter.TabIndex = 60;
+            this.bug_cre_audit_case_filter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.bug_cre_audit_case_filter_KeyPress);
             // 
-            // button2
+            // bug_cre_audit_btn_filter
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.BackgroundImage = global::BugPractice1_4.Properties.Resources._040;
-            this.button2.Location = new System.Drawing.Point(301, 235);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(59, 48);
-            this.button2.TabIndex = 61;
-            this.button2.UseVisualStyleBackColor = false;
+            this.bug_cre_audit_btn_filter.BackColor = System.Drawing.Color.White;
+            this.bug_cre_audit_btn_filter.BackgroundImage = global::BugPractice1_4.Properties.Resources._040;
+            this.bug_cre_audit_btn_filter.Location = new System.Drawing.Point(301, 235);
+            this.bug_cre_audit_btn_filter.Name = "bug_cre_audit_btn_filter";
+            this.bug_cre_audit_btn_filter.Size = new System.Drawing.Size(59, 48);
+            this.bug_cre_audit_btn_filter.TabIndex = 61;
+            this.bug_cre_audit_btn_filter.UseVisualStyleBackColor = false;
+            this.bug_cre_audit_btn_filter.Click += new System.EventHandler(this.bug_cre_audit_btn_filter_Click);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label31.ForeColor = System.Drawing.Color.Blue;
+            this.label31.Location = new System.Drawing.Point(149, 346);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(142, 15);
+            this.label31.TabIndex = 62;
+            this.label31.Text = "点击更新该缺陷版本";
             // 
             // BugCreater
             // 
@@ -1021,8 +1013,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label bug_cre_lbl_p_bug_id;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label bug_cre_lbl_bug_id;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label13;
@@ -1048,13 +1038,14 @@
         private System.Windows.Forms.ComboBox bug_cre_audit_reason;
         private System.Windows.Forms.Label bug_bug_analysis_refresh;
         private System.Windows.Forms.Label bug_cre_audit_lbl_id;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button bug_cre_audit_btn_filter;
+        private System.Windows.Forms.TextBox bug_cre_audit_case_filter;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox bug_cre_audit_status_filter;
+        private System.Windows.Forms.Label label31;
     }
 }

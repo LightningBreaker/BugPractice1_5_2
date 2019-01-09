@@ -35,6 +35,15 @@ namespace BugPractice1_4
                 table_bug.Head_tag = '1';
         }
 
+        public BugCreater(string bug_id)
+        {
+            InitializeComponent();
+
+        }
+
+
+
+
         public int Return_bug_id()
         {
             return this.table_bug.Bug_id;
@@ -47,6 +56,7 @@ namespace BugPractice1_4
             InitializeComponent();
             this.case_id = _case_id;
             table_bug.Head_tag = '1';
+            table_bug.Case_id = _case_id;
 
         }
         private const int OK_LEN = 5;
@@ -62,7 +72,7 @@ namespace BugPractice1_4
             confirm_labels[4] = bug_cre_lbl_status;
             confirm_labels[5] = bug_cre_lbl_caseId;
             confirm_labels[6] = bug_cre_lbl_p_bug_id;
-            confirm_labels[7] = bug_cre_lbl_bug_id;
+         
 
         }
         private void init_is_ok()
@@ -133,7 +143,8 @@ namespace BugPractice1_4
             }
             if (bug_cre_tabControl.SelectedIndex == 3)
             {
-                init_grid_waiting_audit();     
+                bug_cre_audit_status_filter.SelectedIndex = 0;
+                init_grid_waiting_audit(0,-1);     
             }
 
 
@@ -143,12 +154,29 @@ namespace BugPractice1_4
 
 
         
-        private void init_grid_waiting_audit()
+        private void init_grid_waiting_audit(int para_status,int para_case_id)
         {
             MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
             mycon.Open();
-            MySqlCommand mycmd = new MySqlCommand("select * from table_bug " +
-                "where " + " reporter_id =" + Global_Userinfo.userid + " and head_tag= '1' ", mycon);
+
+            MySqlCommand mycmd = null ;
+            string tmp_str = null;
+            if (para_status == 0)
+                tmp_str = "select * from table_bug " +
+                 "where " + " reporter_id =" + Global_Userinfo.userid + " and head_tag= '1' ";
+
+            else
+            {
+                tmp_str = "select * from table_bug " +
+                "where " + " reporter_id =" + Global_Userinfo.userid + " and head_tag= '1' " + " and bug_status=" + para_status.ToString();
+            }
+
+            if (para_case_id != -1)
+            {
+                tmp_str = tmp_str + " and case_id=" + para_case_id;
+
+            }
+            mycmd = new MySqlCommand(tmp_str, mycon);
             MySqlDataReader dataReader = mycmd.ExecuteReader();
             tableBug =TableBug.CreateBugTable(TableBug.Properties, dataReader, "TableBugAuditing");
 
@@ -190,8 +218,7 @@ namespace BugPractice1_4
             confirm_labels[4].Text = TableBug.Str_status[table_bug.Bug_status-1];
             confirm_labels[5].Text =(table_bug.Case_id).ToString();
             confirm_labels[6].Text = (table_bug.Prior_bug_id).ToString();
-            confirm_labels[7].Text = (table_bug.Bug_id).ToString();
-
+           
             table_bug.Next_bug_id = next_id;
         }
 
@@ -489,7 +516,8 @@ namespace BugPractice1_4
 
         private void bug_bug_analysis_refresh_Click(object sender, EventArgs e)
         {
-            init_grid_waiting_audit();
+            bug_cre_audit_status_filter.SelectedIndex = -1;
+            init_grid_waiting_audit(0,-1);
         }
 
         private void bug_audit_btn_accompanished_Click(object sender, EventArgs e)
@@ -511,6 +539,33 @@ namespace BugPractice1_4
                 MessageBox.Show("系统维护中");
             }
             
+        }
+
+        private void bug_cre_audit_btn_filter_Click(object sender, EventArgs e)
+        {
+            int status = bug_cre_audit_status_filter.SelectedIndex ;
+            string str_case_id = bug_cre_audit_case_filter.Text;
+            if (str_case_id.Length == 0)
+            {
+                init_grid_waiting_audit(status, -1);
+            }
+            else
+            {
+                int tmp_case_id = int.Parse(str_case_id);
+                init_grid_waiting_audit(status, tmp_case_id);
+            }
+
+            
+        }
+
+        private void bug_cre_audit_case_filter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar)||e.KeyChar=='\b')
+            {
+                e.Handled = false;
+            }
+            else
+                e.Handled = true;
         }
     }
 }
