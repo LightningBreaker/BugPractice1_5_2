@@ -303,7 +303,7 @@ namespace BugPractice1_4
         
 
         public static List<string> Names = new List<string>()
-        {"缺陷id","缺陷名称","缺陷等级","缺陷报告人员","bug_next_id" };
+        {"缺陷id","缺陷名称","缺陷等级","缺陷报告人员","用例id","bug_next_id" };
         public int Bug_id { get => bug_id; set => bug_id = value; }
         public int Bug_status { get => bug_status; set => bug_status = value; }
         public string Bug_manager { get => bug_manager; set => bug_manager = value; }
