@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,43 @@ namespace BugPractice1_4
         public static string[] Str_status = new string[] { "待修复", "待确认修复", "已修复" };
         public static string[] Str_level = new string[] {"次要","一般","严重" };
 
+        public static string Add_Bug_To_Case(TableBug tableBug)
+        {
+            string cmd_add_bug_to_case;
+            cmd_add_bug_to_case = "update table_case set bug_nums=bug_nums+1 where case_id=" + tableBug.case_id.ToString();
+
+            return cmd_add_bug_to_case;
+
+        }
+
+
+        public static bool  Add_Bug_To_Table(TableBug tableBug)
+        {
+            MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
+            mycon.Open();
+
+            MySqlCommand mycmd =
+                new MySqlCommand(TableBug.Add_Bug(tableBug)
+                , mycon);
+
+            if (mycmd.ExecuteNonQuery() > 0)
+            {
+
+                
+                mycmd = new MySqlCommand(TableBug.Add_Bug_To_Case(tableBug),mycon);
+
+
+                if (mycmd.ExecuteNonQuery() > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         public static string Add_Bug(TableBug tableBug)
         {
             string cmd_para,cmd_value;
@@ -66,39 +104,194 @@ namespace BugPractice1_4
 
             return cmd_para+cmd_value;
         }
+
+
         public static  int DEVOLOPER=0;
         public static int TESTER = 1;
-        public static bool Update_Bug(TableBug tableBug,int identity)
+
+        
+        public static int Update_Bug(TableBug tableBug,int identity)
         {
-            try {
+            MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
+            mycon.Open();
+
+            try
+            {
+               
+
                 if (identity == TableBug.DEVOLOPER)
                 {
-                    MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
-                    mycon.Open();
+
                     string str = "update table_bug set bug_reason="
                         + tableBug.Bug_reason.ToString() +
                         " ,bug_analysis=" + "'" + tableBug.Bug_analysis + "' " +
                         ",bug_status=" + tableBug.Bug_status.ToString() +
                         " where bug_id = " + tableBug.Bug_id;
+                   
+
+
+
+
                     MySqlCommand mycmd =
                         new MySqlCommand(str
                         , mycon);
 
                     if (mycmd.ExecuteNonQuery() > 0)
-                        return true;
+                    {
+                        return 1;
+
+                    }
+                        
                     else
-                        return false;
+                        return 0;
                 }
                 else
                 {
-                    return false;
+                    string str = "update table_bug set bug_status="
+                        + tableBug.Bug_status +
+                        " ,bug_description= '"+tableBug.Bug_description+"'"+
+                        " where bug_id="
+                        + tableBug.Bug_id + "";
+
+                    string str2 = "update table_case set bug_nums=bug_nums-1 where case_id=" + tableBug.Case_id;
+                    MySqlCommand mycmd =
+                       new MySqlCommand(str
+                       , mycon);
+
+                    if (mycmd.ExecuteNonQuery() > 0)
+                    {
+                        if (tableBug.Bug_status == 3)
+                        {
+                            mycmd = new MySqlCommand(str2, mycon);
+                            if (mycmd.ExecuteNonQuery() > 0)
+                            {
+                                if (Is_Case_Complete(tableBug.Case_id))
+                                    return 2;
+                                else
+                                    return 1;
+                            }
+                            else
+                            {
+
+                                return 0;
+                            }
+
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+
+
+
+                    }
+
+                    else
+                        return 0;
+
+                    
                 }
 
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 throw e;
             }
+            finally
+            {
+                mycon.Close();   
+            }
             
+
+        }
+
+        
+        private static bool Is_Case_Complete(int case_id)
+        {
+            string cmd_case = "select * from table_case where bug_nums=0 and case_id=" + case_id.ToString() + ";";
+            string cmd_case_delete_bug = "update table_case set case_status=3 where case_id=" + case_id.ToString() + ";";
+            MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
+            mycon.Open();
+
+            MySqlCommand mycmd = new MySqlCommand(cmd_case, mycon);
+            MySqlDataReader dr = mycmd.ExecuteReader();
+            if (dr.Read())
+            {
+                dr.Close();
+
+                mycmd = new MySqlCommand(cmd_case_delete_bug, mycon);
+
+                if (mycmd.ExecuteNonQuery() > 0)
+                {
+                    dr.Close();
+                    mycon.Close();
+                    return true;
+                }
+                    
+                else
+                {
+                    dr.Close();
+                    mycon.Close();
+                    return false;
+                }
+                    
+
+            }
+            else
+            {
+                dr.Close();
+                mycon.Close();
+                return false;
+            }
+
+        }
+        public static DataTable CreateBugTable(List<string> arrlist, MySqlDataReader dataReader, string tableName)
+        {
+            DataTable dt = new DataTable(tableName);
+
+            for (int i = 0; i < arrlist.Count; i++)
+            {
+                DataColumn dtColumn = new DataColumn();
+                dtColumn.ColumnName = (string)arrlist[i];
+                dt.Columns.Add(dtColumn);
+
+            }
+
+            DataRow dtRow;
+            while (dataReader.Read())
+            {
+                dtRow = dt.NewRow();
+                //将需要读取的几行
+
+                for (int i = 0; i < arrlist.Count; i++)
+                {
+
+                    try
+                    {
+                        if (i == 1 || i == 3 || i == 4 || i == 5 || i == 11 || i == 12)
+                        {
+                            dtRow[(string)arrlist[i]] = dataReader.GetValue(i).ToString();
+                        }
+                        else
+                            dtRow[(string)arrlist[i]] = (int)dataReader.GetValue(i);
+
+
+
+                    }
+                    catch
+                    {
+                        dtRow[(string)arrlist[i]] = System.DBNull.Value;
+
+
+                    }
+                }
+                //
+                dt.Rows.Add(dtRow);
+
+            }
+
+
+            return dt;
 
         }
         public static List<string> Properties = new List<string>()

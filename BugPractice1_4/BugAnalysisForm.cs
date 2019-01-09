@@ -34,7 +34,6 @@ namespace BugPractice1_4
         }
 
 
-
         private void init_grid(int status)
         {
             MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
@@ -65,7 +64,9 @@ namespace BugPractice1_4
 
             }
 
-
+            bug_analysis_desc.Clear();
+            bug_analysis_main_text.Clear();
+            bug_ays_lbl_sel_id.Text = "";
 
         }
 
@@ -124,6 +125,7 @@ namespace BugPractice1_4
             int row_idx = dataGrid_waiting_bug.CurrentCell.RowIndex;
             int selected_id = int.Parse(dataGrid_waiting_bug.Rows[row_idx].Cells[0].Value.ToString());
             string description = (string)tableBug.Rows[row_idx][4];
+
             bug_ays_lbl_sel_id.Text = selected_id.ToString();
             bug_analysis_desc.Text = description;
             bug_update.Bug_id = selected_id;
@@ -165,10 +167,10 @@ namespace BugPractice1_4
         {
             try
             {
-                if (TableBug.Update_Bug(bug_update, TableBug.DEVOLOPER))
+                if (TableBug.Update_Bug(bug_update, TableBug.DEVOLOPER)==1)
                 {
                     MessageBox.Show("提交成功");
-
+                    init_grid(global_status);
                 }
                 else
                 {

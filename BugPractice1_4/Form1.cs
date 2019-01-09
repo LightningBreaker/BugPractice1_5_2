@@ -43,10 +43,10 @@ namespace BugPractice1_4
                 dr.Close();
                 mycon.Close();
                 this.Hide();
-               // BugCreater bugCreater=  new BugCreater();
-               // bugCreater.Show();
-                BugAnalysisForm bugAnalysis = new BugAnalysisForm();
-                bugAnalysis.Show();
+                BugCreater bugCreater=  new BugCreater();
+                bugCreater.Show();
+               // BugAnalysisForm bugAnalysis = new BugAnalysisForm();
+               // bugAnalysis.Show();
                 
                 
 
