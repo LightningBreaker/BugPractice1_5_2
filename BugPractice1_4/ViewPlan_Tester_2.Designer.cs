@@ -33,12 +33,13 @@
             this.button_addPlan = new System.Windows.Forms.Button();
             this.button_deletePLan = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.Column_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.case_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.case_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.case_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button_uploadResult = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,15 +102,7 @@
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 15);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "测试用例";
+            this.dataGridView1.CurrentCellChanged += new System.EventHandler(this.dataGridView1_CurrentCellChanged);
             // 
             // Column_number
             // 
@@ -156,11 +149,32 @@
             this.ButtonColumn.UseColumnTextForButtonValue = true;
             this.ButtonColumn.Width = 70;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(40, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 15);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "测试用例";
+            // 
+            // button_uploadResult
+            // 
+            this.button_uploadResult.Enabled = false;
+            this.button_uploadResult.Location = new System.Drawing.Point(762, 204);
+            this.button_uploadResult.Name = "button_uploadResult";
+            this.button_uploadResult.Size = new System.Drawing.Size(136, 33);
+            this.button_uploadResult.TabIndex = 14;
+            this.button_uploadResult.Text = "测试结果";
+            this.button_uploadResult.UseVisualStyleBackColor = true;
+            this.button_uploadResult.Click += new System.EventHandler(this.button_uploadResult_Click);
+            // 
             // ViewPlan_Tester_2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 452);
+            this.Controls.Add(this.button_uploadResult);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_giveup);
             this.Controls.Add(this.button_release);
@@ -170,7 +184,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewPlan_Tester_2";
-            this.Text = "添加测试用例";
+            this.Text = "测试用例";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -190,5 +204,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn case_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn case_status;
         private System.Windows.Forms.DataGridViewButtonColumn ButtonColumn;
+        private System.Windows.Forms.Button button_uploadResult;
     }
 }

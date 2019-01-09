@@ -20,6 +20,19 @@ namespace BugPractice1_4
             InitializeComponent();
             textBox_managerName.Text = Global_Userinfo.username;
             textBox_managerID.Text = Global_Userinfo.userid;
+            button3.Visible = false;
+            
+        }
+
+        public ReleaseProject(int mode, string ID)
+        {
+            InitializeComponent();
+            button_giveUp.Visible = false;
+            button_nextPage.Visible = false;
+            textBox_description.ReadOnly = true;
+            textBox_projectName.ReadOnly = true;
+            this.Text = "查看项目信息";
+            initiateInfos(ID);
         }
 
         private void ReleaseProject_Load(object sender, EventArgs e)
@@ -84,6 +97,40 @@ namespace BugPractice1_4
         private void button2_Click(object sender, EventArgs e)
         {
             new ViewPlan_Tester("2").ShowDialog();
+        }
+
+        private void textBox_managerID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_managerName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        public void initiateInfos(string projectID)
+        {
+            MySqlConnection conn = new MySqlConnection(Global_Database.Conn);
+            string sql = String.Format("select * from table_project where project_id = {0}", projectID);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+
+            var reader = command.ExecuteReader();
+            reader.Read();
+
+            textBox_description.Text = reader["project_description"].ToString();
+            textBox_projectName.Text = reader["project_name"].ToString();
+            textBox_managerName.Text = reader["project_manager"].ToString();
+            textBox_managerID.Text = reader["manager_id"].ToString();
+
+            conn.Close();
+            
         }
     }
 }
