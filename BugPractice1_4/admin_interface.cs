@@ -14,9 +14,7 @@ namespace BugPractice1_4
     public partial class admin_interface : Form
     {
         public static int num = 3;
-        public static string Conn = "Database='practice_in_school';" +
-          "Data Source='172.20.10.2';User Id='root';" +
-          "Password='TheFirstDon';charset='utf8';pooling=true";
+     
         public admin_interface()
         {
             InitializeComponent();
@@ -84,7 +82,7 @@ namespace BugPractice1_4
                 string type = textBox4.Text;
                 string telephone = textBox5.Text;
                 string email = textBox6.Text;
-                MySqlConnection myconn = new MySqlConnection(Conn);
+                MySqlConnection myconn = new MySqlConnection(Global_Database.Conn);
                 myconn.Open();
                 string sql =
                     "update table_user_info set user_name='" + user_name + "',password='" + password + "',telephone='" + telephone + "',email='" + email + "'where user_id='" + Global_Userinfo.userid + "'";
@@ -107,7 +105,7 @@ namespace BugPractice1_4
         {
             try
             {
-                MySqlConnection myconn = new MySqlConnection(Conn);
+                MySqlConnection myconn = new MySqlConnection(Global_Database.Conn);
                 myconn.Open();
                 string sql = "select * from table_user_info where user_id=" + Global_Userinfo.userid + "";
                 MySqlCommand com = new MySqlCommand(sql, myconn);

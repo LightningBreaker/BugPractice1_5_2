@@ -107,6 +107,7 @@
             // 
             this.textBox7.Location = new System.Drawing.Point(125, 31);
             this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(100, 21);
             this.textBox7.TabIndex = 17;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
@@ -133,6 +134,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(125, 164);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(100, 21);
             this.textBox4.TabIndex = 21;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
