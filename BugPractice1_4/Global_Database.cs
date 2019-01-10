@@ -136,7 +136,7 @@ namespace BugPractice1_4
         public static void AddPlanLock(string plan_id)
         {
             MySqlConnection conn = new MySqlConnection(Conn);
-            string sql = String.Format("update table_plan set plan_lock = 2 where plan_id = {0}",plan_id);
+            string sql = String.Format("update table_plan set plan_lock = 1 where plan_id = {0}",plan_id);
             conn.Open();
             MySqlCommand command = new MySqlCommand(sql, conn);
 
@@ -184,5 +184,81 @@ namespace BugPractice1_4
             command.ExecuteNonQuery();
             conn.Close();
         }
+
+        public static bool UpdatePlanStatus(string caseID, out string planID)
+        {
+            // 1: plan is completed.
+            planID = "";
+            MySqlConnection conn = new MySqlConnection(Conn);
+            string sql = String.Format("select plan_id from table_case where case_id = {0} ", caseID);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                planID = reader["plan_id"].ToString();
+            }
+            conn.Close();
+
+            conn = new MySqlConnection(Conn);
+             sql = String.Format("select * from table_plan p, table_case c where p.plan_id = c.plan_id and case_status != 3", planID);
+            conn.Open();
+            command = new MySqlCommand(sql, conn);
+            reader = command.ExecuteReader();
+            if (!reader.Read())
+            {
+                conn.Close();
+                conn = new MySqlConnection(Conn);
+                sql = String.Format("update table_plan set plan_status = 2 where plan_id = {0}", planID);
+                conn.Open();
+                command = new MySqlCommand(sql, conn);
+                command.ExecuteNonQuery();
+                conn.Close();
+                return true;
+            }
+            else
+            {
+                conn.Close();
+                return false;
+            }
+            
+            
+        }
+
+        public static bool UpdateProjectStatus(string planID)
+        {
+            string projectID = "";
+            MySqlConnection conn = new MySqlConnection(Conn);
+            string sql = String.Format("select plan_project from table_plan where plan_id = {0} ", planID);
+            conn.Open();
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                projectID = reader["project_id"].ToString();
+                
+            }
+            conn.Close();
+
+            conn = new MySqlConnection(Conn);
+            sql = String.Format("select * from table_plan p, table_project pr where p.plan_project = pr.project_d and plan_status != 2", projectID);
+            conn.Open();
+            command = new MySqlCommand(sql, conn);
+            reader = command.ExecuteReader();
+            if (!reader.Read())
+            {
+                conn.Close();
+                conn = new MySqlConnection(Conn);
+                sql = String.Format("update table_project set project_status = 2 where project_id = {0}", projectID);
+                conn.Open();
+                command = new MySqlCommand(sql, conn);
+                command.ExecuteNonQuery();
+                conn.Close();
+                return true;
+            }
+            else return false;
+
+        }
+
     }
 }

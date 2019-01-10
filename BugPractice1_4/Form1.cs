@@ -14,7 +14,7 @@ namespace BugPractice1_4
    
     public partial class Form1 : Form
     {
-        public static string CONSTR = "server=localhost;" +
+        public static string CONSTR = "server=192.168.43.116;" +
            "User Id=root;password=TheFirstDon;" +
            "Database=practice_in_school";
         public Form1()
@@ -42,14 +42,33 @@ namespace BugPractice1_4
 
                 dr.Close();
                 mycon.Close();
+
+                
+                MessageBox.Show(Global_Userinfo.type.ToString());
+                if(Global_Userinfo.type == Global_Userinfo.TESTER)
+                {
+                    new TesterMenu(this).Show();
+                }
+                else if(Global_Userinfo.type == Global_Userinfo.ADMINISTRATOR)
+                {
+
+                }
+                else if(Global_Userinfo.type == Global_Userinfo.DEVELOPER)
+                {
+
+                }
+                else
+                {
+                    // project manager:
+
+                }
                 this.Hide();
-                BugCreater bugCreater=  new BugCreater("12");
-                bugCreater.Show();
-                
-               // BugAnalysisForm bugAnalysis = new BugAnalysisForm();
-               // bugAnalysis.Show();
-                
-                
+                //  BugCreater bugCreater=  new BugCreater(2);
+                // bugCreater.Show();
+                // BugAnalysisForm bugAnalysis = new BugAnalysisForm();
+                // bugAnalysis.Show();
+
+
 
             }
             else

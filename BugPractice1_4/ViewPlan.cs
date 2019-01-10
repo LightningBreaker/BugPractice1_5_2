@@ -29,10 +29,17 @@ namespace BugPractice1_4
 
         public ViewPlan(string planID)
         {
+            mode = 2;
+            InitializeComponent();
             planid = planID;
             initiateInfos(planID);
             button_nextPage.Text = "用例管理 >>";
-            mode = 2;
+            textBox_description.ReadOnly = true;
+            textBox_managerID.ReadOnly = true;
+            textBox_planName.ReadOnly = true;
+            comboBox_managerName.Enabled = false;
+            comboBox_priority.Enabled = false;
+            
         }
 
         private void button_nextPage_Click(object sender, EventArgs e)
@@ -83,21 +90,23 @@ namespace BugPractice1_4
 
         private void comboBox_managerName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (label_managerError.Text.Length > 0)
+            if (mode != 2)
             {
-                label_managerError.Text = "";
-            }
-            string id = "", name = comboBox_managerName.SelectedItem.ToString();
-            // MessageBox.Show(name);
-            if (name.Length == 0)
-            {
-                textBox_managerID.Text = ""; return;
-            }
+                if (label_managerError.Text.Length > 0)
+                {
+                    label_managerError.Text = "";
+                }
+                string id = "", name = comboBox_managerName.SelectedItem.ToString();
+                // MessageBox.Show(name);
+                if (name.Length == 0)
+                {
+                    textBox_managerID.Text = ""; return;
+                }
 
-            dict.TryGetValue(name, out id);
-            // MessageBox.Show(id);
-            textBox_managerID.Text = id;
-
+                dict.TryGetValue(name, out id);
+                // MessageBox.Show(id);
+                textBox_managerID.Text = id;
+            }
         }
 
         private void button_giveUp_Click(object sender, EventArgs e)
@@ -116,14 +125,20 @@ namespace BugPractice1_4
         public void initiateInfos(string planID)
         {
             MySqlConnection conn = new MySqlConnection(Global_Database.Conn);
-            string sql = String.Format("select * from table_plan and table_user_info where plan_id = {0} and user_id = plan_manager", planID);
+            string sql = String.Format("select * from table_plan,table_user_info where plan_id = {0} and user_id = plan_manager", planID);
             conn.Open();
             MySqlCommand command = new MySqlCommand(sql, conn);
 
             var reader = command.ExecuteReader();
-            reader.Read();
-
+            if(!reader.Read())
+            {
+                MessageBox.Show("fuck");
+                return;
+            }
+            //reader.Read();
+            
             textBox_description.Text = reader["description"].ToString();
+            
             textBox_managerID.Text = reader["plan_manager"].ToString();
             textBox_planName.Text = reader["plan_name"].ToString();
             comboBox_priority.SelectedIndex = (int)reader["plan_priority"] - 1;
