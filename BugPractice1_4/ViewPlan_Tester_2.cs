@@ -38,7 +38,7 @@ namespace BugPractice1_4
             {
                 button_addPlan.Enabled = false;
                 button_deletePLan.Enabled = false;
-
+                button_release.Visible = false;
             }
         }
 

@@ -44,14 +44,14 @@ namespace BugPractice1_4
                 mycon.Close();
 
                 
-                MessageBox.Show(Global_Userinfo.type.ToString());
+               
                 if(Global_Userinfo.type == Global_Userinfo.TESTER)
                 {
                     new TesterMenu(this).Show();
                 }
                 else if(Global_Userinfo.type == Global_Userinfo.ADMINISTRATOR)
                 {
-
+                    
                 }
                 else if(Global_Userinfo.type == Global_Userinfo.DEVELOPER)
                 {
@@ -60,7 +60,7 @@ namespace BugPractice1_4
                 else
                 {
                     // project manager:
-
+                    new ProjectManagerMenu(this).Show();
                 }
                 this.Hide();
                 //  BugCreater bugCreater=  new BugCreater(2);

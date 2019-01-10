@@ -149,9 +149,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btn_sign_in;
         private System.Windows.Forms.Label label_user;
-        private System.Windows.Forms.TextBox user_name;
+        public System.Windows.Forms.TextBox user_name;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox user_password;
+        public System.Windows.Forms.TextBox user_password;
         private System.Windows.Forms.Label label_register;
         private System.Windows.Forms.FontDialog fontDialog1;
     }

@@ -38,10 +38,8 @@
             this.label_nameError = new System.Windows.Forms.Label();
             this.label_descriptionError = new System.Windows.Forms.Label();
             this.button_giveUp = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox_managerName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -112,7 +110,7 @@
             // 
             this.label_nameError.AutoSize = true;
             this.label_nameError.ForeColor = System.Drawing.Color.Red;
-            this.label_nameError.Location = new System.Drawing.Point(127, 61);
+            this.label_nameError.Location = new System.Drawing.Point(131, 32);
             this.label_nameError.Name = "label_nameError";
             this.label_nameError.Size = new System.Drawing.Size(0, 15);
             this.label_nameError.TabIndex = 8;
@@ -121,7 +119,7 @@
             // 
             this.label_descriptionError.AutoSize = true;
             this.label_descriptionError.ForeColor = System.Drawing.Color.Red;
-            this.label_descriptionError.Location = new System.Drawing.Point(142, 140);
+            this.label_descriptionError.Location = new System.Drawing.Point(142, 112);
             this.label_descriptionError.Name = "label_descriptionError";
             this.label_descriptionError.Size = new System.Drawing.Size(0, 15);
             this.label_descriptionError.TabIndex = 9;
@@ -135,16 +133,6 @@
             this.button_giveUp.Text = "放弃发布";
             this.button_giveUp.UseVisualStyleBackColor = true;
             this.button_giveUp.Click += new System.EventHandler(this.button_giveUp_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(472, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "测试连接";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox_managerName
             // 
@@ -164,16 +152,6 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "项目负责人姓名：";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(589, 32);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(235, 394);
@@ -190,10 +168,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 461);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox_managerName);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.button_giveUp);
             this.Controls.Add(this.label_descriptionError);
             this.Controls.Add(this.label_nameError);
@@ -226,10 +202,8 @@
         public System.Windows.Forms.Label label_nameError;
         public System.Windows.Forms.Label label_descriptionError;
         public System.Windows.Forms.Button button_giveUp;
-        public System.Windows.Forms.Button button1;
         public System.Windows.Forms.TextBox textBox_managerName;
         public System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
     }
 }

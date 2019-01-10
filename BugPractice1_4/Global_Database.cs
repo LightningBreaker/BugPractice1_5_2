@@ -44,7 +44,7 @@ namespace BugPractice1_4
             foreach(var p in plans)
             {
                 string sql = "insert into table_plan(plan_name,plan_priority,plan_status,plan_project,plan_manager,case_nums,description) " +
-                    String.Format("values('{0}','{1}',1,'{2}','{3}','0',{4})", p.name, p.priority, project_id, p.manager_id,p.description);
+                    String.Format("values('{0}','{1}',1,'{2}','{3}','0','{4}')", p.name, p.priority, project_id, p.manager_id,p.description);
                 MessageBox.Show(sql);
                 command = new MySqlCommand(sql,conn);
                 command.ExecuteNonQuery();
@@ -58,7 +58,7 @@ namespace BugPractice1_4
             MySqlCommand command;
             conn.Open();
             string sql = "insert into table_project(project_name,project_status,project_manager,project_description,manager_id,plan_nums) " +
-                    String.Format("values('{0}',0,'{1}','{2}',{3},{4})",name,managerName,description,managerID,planNums);
+                    String.Format("values('{0}',1,'{1}','{2}',{3},{4})",name,managerName,description,managerID,planNums);
             command = new MySqlCommand(sql, conn);
             command.ExecuteNonQuery();
 
@@ -235,7 +235,7 @@ namespace BugPractice1_4
             var reader = command.ExecuteReader();
             if (reader.Read())
             {
-                projectID = reader["project_id"].ToString();
+                projectID = reader["plan_project"].ToString();
                 
             }
             conn.Close();
