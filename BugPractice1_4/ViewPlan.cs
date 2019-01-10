@@ -21,15 +21,17 @@ namespace BugPractice1_4
         public ViewPlan(BindingList<plan> PLANS,int index)
         {
             InitializeComponent();
+            this.index = index;
             planlist = PLANS;
             InitiateInfo();
             InitiateComponentInfos();
+            
             mode = 1;
         }
 
         public ViewPlan(string planID)
         {
-            mode = 2;
+            this.mode = 2;
             InitializeComponent();
             planid = planID;
             initiateInfos(planID);
@@ -40,6 +42,21 @@ namespace BugPractice1_4
             comboBox_managerName.Enabled = false;
             comboBox_priority.Enabled = false;
             
+        }
+
+        public ViewPlan(string planID, int mode)
+        {
+            this.mode = 3;
+            InitializeComponent();
+            planid = planID;
+            initiateInfos(planID);
+            button_nextPage.Text = "查看用例 >>";
+            textBox_description.ReadOnly = true;
+            textBox_managerID.ReadOnly = true;
+            textBox_planName.ReadOnly = true;
+            comboBox_managerName.Enabled = false;
+            comboBox_priority.Enabled = false;
+
         }
 
         private void button_nextPage_Click(object sender, EventArgs e)
@@ -67,7 +84,7 @@ namespace BugPractice1_4
                 planlist[index].description = textBox_description.Text;
                 planlist[index].manager_name = comboBox_managerName.Text;
                 planlist[index].manager_id = textBox_managerID.Text;
-                planlist[index].priority = comboBox_priority.SelectedIndex;
+                planlist[index].priority = comboBox_priority.SelectedIndex+1;
                 planlist.Add(new plan("", "", "", "", 2));
                 planlist.RemoveAt(planlist.Count - 1);
                 MessageBox.Show("修改成功！");
@@ -76,6 +93,10 @@ namespace BugPractice1_4
             else if (mode == 2)
             {
                 new ViewPlan_Tester_2(planid).ShowDialog();
+            }
+            else if(mode == 3)
+            {
+                new ViewPlan_Tester_2(planid,1).ShowDialog();
             }
         }
 
@@ -115,12 +136,13 @@ namespace BugPractice1_4
         }
         public void InitiateComponentInfos()
         {
+            MessageBox.Show(index.ToString());
             textBox_planName.Text = planlist[index].name;
             textBox_description.Text = planlist[index].description;
-            MessageBox.Show(planlist[index].manager_name + planlist[index].manager_id);
+           // MessageBox.Show(planlist[index].manager_name + planlist[index].manager_id);
             comboBox_managerName.Text = planlist[index].manager_name;
             textBox_managerID.Text = planlist[index].manager_id;
-            comboBox_priority.SelectedIndex = planlist[index].priority;
+            comboBox_priority.SelectedIndex = planlist[index].priority-1;
         }
         public void initiateInfos(string planID)
         {
@@ -141,7 +163,7 @@ namespace BugPractice1_4
             
             textBox_managerID.Text = reader["plan_manager"].ToString();
             textBox_planName.Text = reader["plan_name"].ToString();
-            comboBox_priority.SelectedIndex = (int)reader["plan_priority"] - 1;
+            comboBox_priority.SelectedIndex = (int)reader["plan_priority"]-1;
             comboBox_managerName.Items.Add(reader["user_name"].ToString());
             comboBox_managerName.SelectedIndex = 0;
             conn.Close();
