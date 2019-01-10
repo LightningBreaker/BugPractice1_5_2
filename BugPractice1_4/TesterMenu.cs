@@ -13,9 +13,7 @@ namespace BugPractice1_4
 {
     public partial class TesterMenu : Form
     {
-        public static string Conn = "Database='practice_in_school';" +
-         "Data Source='172.20.10.2';User Id='root';" +
-         "Password='TheFirstDon';charset='utf8';pooling=true";
+        
         DataSet ds,ds2;
 
         public TesterMenu()
@@ -200,7 +198,7 @@ namespace BugPractice1_4
         {
             try
             {
-                MySqlConnection myconn = new MySqlConnection(Conn);
+                MySqlConnection myconn = new MySqlConnection(Global_Database.Conn);
                 myconn.Open();
                 string sql = "select * from table_user_info where user_id=" + Global_Userinfo.userid + "";
                 MySqlCommand com = new MySqlCommand(sql, myconn);
