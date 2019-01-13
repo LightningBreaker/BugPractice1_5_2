@@ -16,9 +16,7 @@ namespace BugPractice1_4
 {
     public partial class Data_Visualization_Analysis : Form
     {
-        public static string Conn = "Database='practice_in_school';" +
-           "Data Source='172.20.10.2';User Id='root';" +
-           "Password='TheFirstDon';charset='utf8';pooling=true";
+        
         public static DataTable dtb;
         public Data_Visualization_Analysis()
         {
@@ -134,7 +132,7 @@ namespace BugPractice1_4
             try
             {
                 MySqlConnection myconn = null;
-                myconn = new MySqlConnection(Conn);
+                myconn = new MySqlConnection(Global_Database.Conn);
                 myconn.Open();
                 MessageBox.Show("连接成功");
                 string sql = "SELECT * FROM table_bug";

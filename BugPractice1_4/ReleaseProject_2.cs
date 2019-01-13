@@ -15,14 +15,56 @@ namespace BugPractice1_4
     {
         ReleaseProject preForm;
         BindingList<plan> plans = new BindingList<plan>();
+        string projectID;
+        DataSet ds;
+        int mode;
         public ReleaseProject_2(ReleaseProject pref)
         {
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = plans;
-            
+            this.mode = 0;
             preForm = pref;
         }
+
+        public ReleaseProject_2(int mode, string projectID)
+        {
+            
+            InitializeComponent();
+            dataGridView1.AutoGenerateColumns = false;
+ //           dataGridView1.DataSource = plans;
+            button_addPlan.Enabled = false;
+            button_deletePLan.Enabled = false;
+            this.projectID = projectID;
+            initDataGridView();
+            this.Text = "查看项目计划";
+            this.label.Text = "查看测试计划";
+            //this.button_addPlan.Visible = false;
+            //this.button_deletePLan.Visible = false;
+            this.button_back.Visible = true;
+            this.button_giveup.Visible = false;
+            this.button_release.Visible = false;
+            this.mode = mode;
+        }
+
+        public void initDataGridView()
+        {
+            dataGridView1.Columns[0].DataPropertyName = "plan_name";
+            dataGridView1.Columns[1].DataPropertyName = "user_name";
+
+            MySqlConnection conn = new MySqlConnection(Global_Database.Conn);
+            string sql = String.Format("select * from table_plan, table_user_info where plan_project = {0} and plan_manager = user_id", projectID);
+            conn.Open();
+            dataGridView1.AutoGenerateColumns = false;
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataAdapter da = new MySqlDataAdapter(command);
+            ds = new DataSet();
+            da.Fill(ds, "table_project_plan");
+            dataGridView1.DataSource = ds.Tables["table_project_plan"];
+            dataGridView1.Refresh();
+            conn.Close();
+        }
+
 
         private void button_giveup_Click(object sender, EventArgs e)
         {
@@ -53,7 +95,7 @@ namespace BugPractice1_4
            // try
            // {
                 string projectID = Global_Database.AddProjectToDatabase(project_name, project_description, project_managerID, project_managerName, plan_nums);
-            MessageBox.Show(projectID);
+            //MessageBox.Show(projectID);
                 Global_Database.AddPlanToDatabase(plans, projectID);
             MessageBox.Show("项目发布成功！");
             this.Close();
@@ -72,7 +114,7 @@ namespace BugPractice1_4
 
         private void ReleaseProject_2_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+         if(preForm != null)   
             preForm.Close();
         }
 
@@ -86,9 +128,10 @@ namespace BugPractice1_4
             if(e.ColumnIndex == 2)
             {
                 int index = e.RowIndex;
-               // MessageBox.Show(index.ToString()+plans[0].name);
-                
-                new ViewPlan(plans, index).ShowDialog();
+                // MessageBox.Show(index.ToString()+plans[0].name);
+                MessageBox.Show("mode:"+mode.ToString());
+                if (mode == 0) { new ViewPlan(plans, index).ShowDialog(); }
+                if (mode == 1) { new ViewPlan(ds.Tables["table_project_plan"].Rows[index]["plan_id"].ToString(),2).ShowDialog(); }
             }
         }
 
@@ -99,6 +142,11 @@ namespace BugPractice1_4
             int index = dataGridView1.SelectedCells[0].RowIndex;
             plans.RemoveAt(index);
             MessageBox.Show("删除成功");
+        }
+
+        private void button_back_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
     public class plan

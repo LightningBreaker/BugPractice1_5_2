@@ -59,9 +59,9 @@ namespace BugPractice1_4
                 noProblem = false;
             }
             if (!noProblem) return;
-            Form nextForm = new ReleaseProject_2(this);
-            nextForm.Show();
-            this.Hide();
+            this.Close();
+            new ReleaseProject_2(this).ShowDialog();
+            
         }
 
         private void textBox_description_TextChanged(object sender, EventArgs e)

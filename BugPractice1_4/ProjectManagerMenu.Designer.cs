@@ -1,6 +1,6 @@
 ﻿namespace BugPractice1_4
 {
-    partial class TesterMenu
+    partial class ProjectManagerMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -37,16 +37,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.page_myPlan = new System.Windows.Forms.TabPage();
+            this.page_projectManage = new System.Windows.Forms.TabPage();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabPage_auditBug = new System.Windows.Forms.TabPage();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.page_viewChart = new System.Windows.Forms.TabPage();
+            this.comboBox_projectName = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.page_personalInformation = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -61,37 +60,32 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.plan_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.project_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plan_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_viewProject = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.button_viewPlan = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_bugLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column_plan = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.page_homePage.SuspendLayout();
-            this.page_myPlan.SuspendLayout();
+            this.page_projectManage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.tabPage_auditBug.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.page_viewChart.SuspendLayout();
             this.page_personalInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.page_homePage);
-            this.tabControl1.Controls.Add(this.page_myPlan);
-            this.tabControl1.Controls.Add(this.tabPage_auditBug);
+            this.tabControl1.Controls.Add(this.page_projectManage);
+            this.tabControl1.Controls.Add(this.page_viewChart);
             this.tabControl1.Controls.Add(this.page_personalInformation);
             this.tabControl1.Location = new System.Drawing.Point(15, 14);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(763, 452);
-            this.tabControl1.TabIndex = 0;
+            this.tabControl1.TabIndex = 1;
             // 
             // page_homePage
             // 
@@ -144,7 +138,6 @@
             this.label_userType.Size = new System.Drawing.Size(67, 25);
             this.label_userType.TabIndex = 4;
             this.label_userType.Text = "label5";
-            this.label_userType.Click += new System.EventHandler(this.label_userType_Click);
             // 
             // label_username
             // 
@@ -187,29 +180,28 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "欢迎进入缺陷管理系统！";
             // 
-            // page_myPlan
+            // page_projectManage
             // 
-            this.page_myPlan.Controls.Add(this.comboBox1);
-            this.page_myPlan.Controls.Add(this.button1);
-            this.page_myPlan.Controls.Add(this.label4);
-            this.page_myPlan.Controls.Add(this.dataGridView1);
-            this.page_myPlan.Location = new System.Drawing.Point(4, 25);
-            this.page_myPlan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.page_myPlan.Name = "page_myPlan";
-            this.page_myPlan.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.page_myPlan.Size = new System.Drawing.Size(755, 423);
-            this.page_myPlan.TabIndex = 1;
-            this.page_myPlan.Text = "测试任务";
-            this.page_myPlan.UseVisualStyleBackColor = true;
-            this.page_myPlan.Click += new System.EventHandler(this.page_myPlan_Click);
+            this.page_projectManage.Controls.Add(this.comboBox1);
+            this.page_projectManage.Controls.Add(this.button1);
+            this.page_projectManage.Controls.Add(this.label4);
+            this.page_projectManage.Controls.Add(this.dataGridView1);
+            this.page_projectManage.Location = new System.Drawing.Point(4, 25);
+            this.page_projectManage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.page_projectManage.Name = "page_projectManage";
+            this.page_projectManage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.page_projectManage.Size = new System.Drawing.Size(755, 423);
+            this.page_projectManage.TabIndex = 1;
+            this.page_projectManage.Text = "项目管理";
+            this.page_projectManage.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "未完成任务",
-            "已完成任务"});
+            "未完成项目",
+            "已完成项目"});
             this.comboBox1.Location = new System.Drawing.Point(435, 26);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
@@ -219,12 +211,12 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(621, 72);
+            this.button1.Location = new System.Drawing.Point(626, 72);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 38);
             this.button1.TabIndex = 3;
-            this.button1.Text = "管理用例";
+            this.button1.Text = "添加项目";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -234,10 +226,9 @@
             this.label4.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.Location = new System.Drawing.Point(15, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(164, 25);
+            this.label4.Size = new System.Drawing.Size(88, 25);
             this.label4.TabIndex = 2;
-            this.label4.Text = "被分配的测试任务";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.label4.Text = "项目管理";
             // 
             // dataGridView1
             // 
@@ -247,11 +238,10 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.plan_ID,
+            this.project_ID,
             this.plan_Name,
-            this.ProjectName,
             this.button_viewProject,
-            this.button_viewPlan});
+            this.Column_plan});
             this.dataGridView1.Location = new System.Drawing.Point(20, 72);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
@@ -260,46 +250,41 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // tabPage_auditBug
+            // page_viewChart
             // 
-            this.tabPage_auditBug.Controls.Add(this.comboBox2);
-            this.tabPage_auditBug.Controls.Add(this.button2);
-            this.tabPage_auditBug.Controls.Add(this.label5);
-            this.tabPage_auditBug.Controls.Add(this.dataGridView2);
-            this.tabPage_auditBug.Location = new System.Drawing.Point(4, 25);
-            this.tabPage_auditBug.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage_auditBug.Name = "tabPage_auditBug";
-            this.tabPage_auditBug.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage_auditBug.Size = new System.Drawing.Size(755, 423);
-            this.tabPage_auditBug.TabIndex = 3;
-            this.tabPage_auditBug.Text = "审核修复缺陷";
-            this.tabPage_auditBug.UseVisualStyleBackColor = true;
+            this.page_viewChart.Controls.Add(this.label13);
+            this.page_viewChart.Controls.Add(this.label12);
+            this.page_viewChart.Controls.Add(this.comboBox_projectName);
+            this.page_viewChart.Controls.Add(this.button2);
+            this.page_viewChart.Controls.Add(this.label5);
+            this.page_viewChart.Location = new System.Drawing.Point(4, 25);
+            this.page_viewChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.page_viewChart.Name = "page_viewChart";
+            this.page_viewChart.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.page_viewChart.Size = new System.Drawing.Size(755, 423);
+            this.page_viewChart.TabIndex = 3;
+            this.page_viewChart.Text = "查看报表";
+            this.page_viewChart.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // comboBox_projectName
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "待修复缺陷",
-            "待审核缺陷",
-            "已修复缺陷"});
-            this.comboBox2.Location = new System.Drawing.Point(433, 28);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(161, 23);
-            this.comboBox2.TabIndex = 8;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBox_projectName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_projectName.FormattingEnabled = true;
+            this.comboBox_projectName.Location = new System.Drawing.Point(286, 122);
+            this.comboBox_projectName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox_projectName.Name = "comboBox_projectName";
+            this.comboBox_projectName.Size = new System.Drawing.Size(258, 23);
+            this.comboBox_projectName.TabIndex = 8;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(624, 74);
+            this.button2.Location = new System.Drawing.Point(286, 183);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 38);
+            this.button2.Size = new System.Drawing.Size(97, 29);
             this.button2.TabIndex = 7;
-            this.button2.Text = "审核缺陷";
+            this.button2.Text = "XX报表";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
             // 
@@ -309,29 +294,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 25);
             this.label5.TabIndex = 6;
-            this.label5.Text = "审核缺陷";
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.Column_bugLevel,
-            this.dataGridViewButtonColumn2});
-            this.dataGridView2.Location = new System.Drawing.Point(21, 74);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 27;
-            this.dataGridView2.Size = new System.Drawing.Size(573, 312);
-            this.dataGridView2.TabIndex = 5;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            this.dataGridView2.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView2_CellFormatting);
+            this.label5.Text = "查看报表";
             // 
             // page_personalInformation
             // 
@@ -366,7 +329,6 @@
             this.button3.TabIndex = 37;
             this.button3.Text = "修改";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox6
             // 
@@ -479,100 +441,80 @@
             this.label11.TabIndex = 29;
             this.label11.Text = "电话";
             // 
-            // plan_ID
+            // label12
             // 
-            this.plan_ID.DataPropertyName = "plan_id";
-            this.plan_ID.HeaderText = "计划ID";
-            this.plan_ID.Name = "plan_ID";
-            this.plan_ID.ReadOnly = true;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label12.Location = new System.Drawing.Point(196, 122);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 20);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "项目名称";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label13.Location = new System.Drawing.Point(196, 183);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 20);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "报表类型";
+            // 
+            // project_ID
+            // 
+            this.project_ID.DataPropertyName = "project_id";
+            this.project_ID.Frozen = true;
+            this.project_ID.HeaderText = "项目ID";
+            this.project_ID.Name = "project_ID";
+            this.project_ID.ReadOnly = true;
             // 
             // plan_Name
             // 
-            this.plan_Name.DataPropertyName = "plan_name";
-            this.plan_Name.HeaderText = "计划名称";
+            this.plan_Name.DataPropertyName = "project_name";
+            this.plan_Name.Frozen = true;
+            this.plan_Name.HeaderText = "项目名称";
             this.plan_Name.Name = "plan_Name";
             this.plan_Name.ReadOnly = true;
             // 
-            // ProjectName
-            // 
-            this.ProjectName.DataPropertyName = "project_name";
-            this.ProjectName.HeaderText = "所属项目";
-            this.ProjectName.Name = "ProjectName";
-            this.ProjectName.ReadOnly = true;
-            // 
             // button_viewProject
             // 
+            this.button_viewProject.Frozen = true;
             this.button_viewProject.HeaderText = "查看项目";
             this.button_viewProject.Name = "button_viewProject";
             this.button_viewProject.ReadOnly = true;
             this.button_viewProject.Text = "查看项目";
             this.button_viewProject.UseColumnTextForButtonValue = true;
             // 
-            // button_viewPlan
+            // Column_plan
             // 
-            this.button_viewPlan.HeaderText = "查看计划";
-            this.button_viewPlan.Name = "button_viewPlan";
-            this.button_viewPlan.ReadOnly = true;
-            this.button_viewPlan.Text = "查看计划";
-            this.button_viewPlan.UseColumnTextForButtonValue = true;
+            this.Column_plan.Frozen = true;
+            this.Column_plan.HeaderText = "查看计划";
+            this.Column_plan.Name = "Column_plan";
+            this.Column_plan.ReadOnly = true;
+            this.Column_plan.Text = "查看计划";
+            this.Column_plan.UseColumnTextForButtonValue = true;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "bug_id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "缺陷ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "bug_name";
-            this.dataGridViewTextBoxColumn2.HeaderText = "缺陷名称";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "project_name";
-            this.dataGridViewTextBoxColumn3.HeaderText = "所属项目";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // Column_bugLevel
-            // 
-            this.Column_bugLevel.DataPropertyName = "bug_level";
-            this.Column_bugLevel.HeaderText = "缺陷等级";
-            this.Column_bugLevel.Name = "Column_bugLevel";
-            // 
-            // dataGridViewButtonColumn2
-            // 
-            this.dataGridViewButtonColumn2.HeaderText = "查看用例";
-            this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
-            this.dataGridViewButtonColumn2.ReadOnly = true;
-            this.dataGridViewButtonColumn2.Text = "查看用例";
-            this.dataGridViewButtonColumn2.UseColumnTextForButtonValue = true;
-            // 
-            // TesterMenu
+            // ProjectManagerMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(948, 498);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "TesterMenu";
+            this.Name = "ProjectManagerMenu";
             this.Text = "缺陷管理系统";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TesterMenu_FormClosed);
-            this.Load += new System.EventHandler(this.TesterMenu_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectManagerMenu_FormClosed);
             this.tabControl1.ResumeLayout(false);
             this.page_homePage.ResumeLayout(false);
             this.page_homePage.PerformLayout();
-            this.page_myPlan.ResumeLayout(false);
-            this.page_myPlan.PerformLayout();
+            this.page_projectManage.ResumeLayout(false);
+            this.page_projectManage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.tabPage_auditBug.ResumeLayout(false);
-            this.tabPage_auditBug.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.page_viewChart.ResumeLayout(false);
+            this.page_viewChart.PerformLayout();
             this.page_personalInformation.ResumeLayout(false);
             this.page_personalInformation.PerformLayout();
             this.ResumeLayout(false);
@@ -583,8 +525,6 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage page_homePage;
-        private System.Windows.Forms.TabPage page_myPlan;
-        private System.Windows.Forms.TabPage page_personalInformation;
         private System.Windows.Forms.Button button_exit;
         private System.Windows.Forms.Button button_logOut;
         private System.Windows.Forms.Label label_userType;
@@ -592,15 +532,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage page_projectManage;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TabPage tabPage_auditBug;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TabPage page_viewChart;
+        private System.Windows.Forms.ComboBox comboBox_projectName;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TabPage page_personalInformation;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
@@ -614,15 +555,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn plan_ID;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn project_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn plan_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProjectName;
         private System.Windows.Forms.DataGridViewButtonColumn button_viewProject;
-        private System.Windows.Forms.DataGridViewButtonColumn button_viewPlan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_bugLevel;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
+        private System.Windows.Forms.DataGridViewButtonColumn Column_plan;
     }
 }

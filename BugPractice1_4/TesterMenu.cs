@@ -13,13 +13,17 @@ namespace BugPractice1_4
 {
     public partial class TesterMenu : Form
     {
+        
         DataSet ds,ds2;
-        Form1 loginForm;
-        public TesterMenu(Form1 LoginForm)
+        Form1 LoginForm; 
+        bool logOut = false;
+
+        public TesterMenu(Form1 loginForm)
         {
+            LoginForm = loginForm;
             InitializeComponent();
             comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 1;
+            comboBox2.SelectedIndex = 0;
             label_username.Text = Global_Userinfo.username;
             string type;
             dataGridView1.AutoGenerateColumns = false;
@@ -33,9 +37,8 @@ namespace BugPractice1_4
                 default: type = "未知用户"; break;
             }
             label_userType.Text = type;
-            initiateDataGridView(0 + 1);
-            initiateDataGridView2(1 + 1);
-            loginForm = LoginForm;
+            initiateDataGridView(comboBox1.SelectedIndex+1);
+            initiateDataGridView2(comboBox2.SelectedIndex + 1);
         }
 
         
@@ -48,7 +51,7 @@ namespace BugPractice1_4
 
         private void button_exit_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("确认要退出？", "退出", MessageBoxButtons.OKCancel);
+            var result = MessageBox.Show("确认要退出缺陷管理系统吗？", "退出", MessageBoxButtons.OKCancel);
             if (result == DialogResult.Cancel) return;
             this.Close();
         }
@@ -68,7 +71,7 @@ namespace BugPractice1_4
             // 1: 未完成 2:已完成
            
                 MySqlConnection conn = new MySqlConnection(Global_Database.Conn);
-                string sql = String.Format("select plan_name, plan_id , project_name, project_id from table_project, table_plan where plan_project = project_id and plan_manager = {0} and plan_status = {1}", Global_Userinfo.userid, status);
+                string sql = String.Format("select plan_name, plan_id , project_name, project_id from table_project pr, table_plan pl where pl.plan_project = pr.project_id and pl.plan_manager = {0} and pl.plan_status = {1}", Global_Userinfo.userid, status);
                 conn.Open();
                 dataGridView1.AutoGenerateColumns = false;
                 MySqlCommand command = new MySqlCommand(sql, conn);
@@ -87,14 +90,14 @@ namespace BugPractice1_4
             // 1: 未完成 2:已完成
 
             MySqlConnection conn = new MySqlConnection(Global_Database.Conn);
-            string sql = String.Format("select plan_name, p.plan_id , project_name, project_id, bug_id, bug_name,bug_level from table_project, table_plan p, table_bug b , table_case c where plan_manager = {0} and project_id = p.plan_id and p.plan_id = c.plan_id and c.case_id = b.case_id",Global_Userinfo.userid);
+            string sql = String.Format("select c.case_id, plan_name, p.plan_id , project_name, project_id, bug_id, bug_name,bug_level from table_project, table_plan p, table_bug b , table_case c where plan_manager = {0} and project_id = p.plan_id and p.plan_id = c.plan_id and c.case_id = b.case_id and c.case_status = {1}",Global_Userinfo.userid,status);
             conn.Open();
             dataGridView2.AutoGenerateColumns = false;
             MySqlCommand command = new MySqlCommand(sql, conn);
             MySqlDataAdapter da = new MySqlDataAdapter(command);
             ds2 = new DataSet();
-            da.Fill(ds, "table_bug");
-            dataGridView2.DataSource = ds.Tables["table_bug"];
+            da.Fill(ds2, "table_bug");
+            dataGridView2.DataSource = ds2.Tables["table_bug"];
             dataGridView2.Refresh();
 
             conn.Close();
@@ -110,6 +113,7 @@ namespace BugPractice1_4
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int columnIndex = e.ColumnIndex, rowIndex = e.RowIndex;
+            if (rowIndex == -1) return;
             if(columnIndex == 3)
             {
                 new ReleaseProject(1,ds.Tables["table_mytask"].Rows[rowIndex]["project_id"].ToString()).ShowDialog();
@@ -130,8 +134,10 @@ namespace BugPractice1_4
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView2.CurrentCell == null) { MessageBox.Show("请先选择一个单元格！"); return; }
-            int rowIndex = dataGridView2.CurrentCell.RowIndex;
+            //if (dataGridView2.CurrentCell == null) { MessageBox.Show("请先选择一个单元格！"); return; }
+            
+            int rowIndex = e.RowIndex;
+            if (rowIndex == -1) return;
             string caseID = ds2.Tables["table_bug"].Rows[rowIndex]["case_id"].ToString();
             new AddCase(caseID, 1).ShowDialog();
         }
@@ -147,14 +153,22 @@ namespace BugPractice1_4
             new BugCreater().ShowDialog();
         }
 
-        private void TesterMenu_Load(object sender, EventArgs e)
+        private void button_logOut_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("确定要注销登录吗?", "注销", MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
+            else
+            {
+                logOut = true;
+                this.Close();
+                LoginForm.user_name.Text = "";
+                LoginForm.user_password.Text = "";
+                LoginForm.Show();
+            }
         }
 
-        private void TesterMenu_FormClosed(object sender, FormClosedEventArgs e)
+        private void TesterMenu_Load(object sender, EventArgs e)
         {
-            loginForm.Close();
+            this.get_information();
         }
 
         private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -164,6 +178,73 @@ namespace BugPractice1_4
                 if((int)e.Value == 1) { e.Value = "次要"; e.CellStyle.ForeColor = Color.Green; }
                 else if((int)e.Value == 2) { e.Value = "一般"; e.CellStyle.ForeColor = Color.Yellow; }
                 else { e.Value = "严重"; e.CellStyle.ForeColor = Color.Red; }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string user_id = textBox7.Text;
+                string user_name = textBox2.Text;
+                string password = textBox3.Text;
+                string type = textBox4.Text;
+                string telephone = textBox5.Text;
+                string email = textBox6.Text;
+                MySqlConnection myconn = new MySqlConnection(Global_Database.Conn);
+                myconn.Open();
+                string sql =
+                    "update table_user_info set user_name='" + user_name + "',password='" + password + "',telephone='" + telephone + "',email='" + email + "'where user_id='" + Global_Userinfo.userid + "'";
+
+
+                MySqlCommand mysqlupdate = new MySqlCommand(sql, myconn);
+                mysqlupdate.ExecuteNonQuery();
+                myconn.Close();
+
+                MessageBox.Show("修改成功");
+                this.get_information();
+            }
+            catch (MySqlException ex)
+            {
+                string message = ex.Message;
+                Console.WriteLine("修改数据失败! " + message);
+            }
+        }
+
+        private void TesterMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (logOut == true) return;
+            else LoginForm.Close();
+        }
+
+        public void get_information()
+        {
+            try
+            {
+                MySqlConnection myconn = new MySqlConnection(Global_Database.Conn);
+                myconn.Open();
+                string sql = "select * from table_user_info where user_id=" + Global_Userinfo.userid + "";
+                MySqlCommand com = new MySqlCommand(sql, myconn);
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    textBox7.Text = read["user_id"].ToString();
+                    textBox2.Text = read["user_name"].ToString();
+                    textBox3.Text = read["password"].ToString();
+                    switch (char.Parse(read["type"].ToString()))
+                    {
+                        case '1': textBox4.Text = "软件测试工程师"; break;
+                        case '2': textBox4.Text = "软件开发工程师"; break;
+                        case '3': textBox4.Text = "程序员"; break;
+                    };
+                    textBox5.Text = read["telephone"].ToString();
+                    textBox6.Text = read["email"].ToString();
+                }
+                myconn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

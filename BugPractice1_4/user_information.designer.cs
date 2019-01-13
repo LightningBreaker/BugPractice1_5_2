@@ -203,6 +203,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "user_information";
             this.Text = "user_information";
             this.Load += new System.EventHandler(this.user_information_Load);

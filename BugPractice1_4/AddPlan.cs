@@ -42,7 +42,7 @@ namespace BugPractice1_4
            
             if (!noProblem) return;
 
-            planlist.Add(new plan(textBox_planName.Text, textBox_description.Text, comboBox_managerName.SelectedItem.ToString(), textBox_managerID.Text,comboBox_priority.SelectedIndex));
+            planlist.Add(new plan(textBox_planName.Text, textBox_description.Text, comboBox_managerName.SelectedItem.ToString(), textBox_managerID.Text,comboBox_priority.SelectedIndex+1));
             
             MessageBox.Show("添加成功！");
             this.Close();
