@@ -71,13 +71,23 @@
             this.bug_cre_lbl_reporter = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.bug_cre_lbl_bug_name = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage_audit = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.bug_audit_lbl_update_vision = new System.Windows.Forms.Label();
+            this.bug_cre_audit_btn_filter = new System.Windows.Forms.Button();
+            this.bug_cre_audit_case_filter = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.bug_audit_vision_combo = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.bug_cre_audit_status_filter = new System.Windows.Forms.ComboBox();
             this.bug_cre_audit_lbl_id = new System.Windows.Forms.Label();
             this.bug_bug_analysis_refresh = new System.Windows.Forms.Label();
             this.bug_cre_audit_reason = new System.Windows.Forms.ComboBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.bug_audit_auditing_id = new System.Windows.Forms.Label();
             this.waiting_audit_grid = new System.Windows.Forms.DataGridView();
             this.bug_audit_btn_accompanished = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
@@ -92,21 +102,12 @@
             this.label13 = new System.Windows.Forms.Label();
             this.bug_cre_audit_desc = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.bug_cre_audit_status_filter = new System.Windows.Forms.ComboBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.bug_cre_audit_case_filter = new System.Windows.Forms.TextBox();
-            this.bug_cre_audit_btn_filter = new System.Windows.Forms.Button();
-            this.label31 = new System.Windows.Forms.Label();
             this.bug_cre_tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bug_cre_dev_gridView)).BeginInit();
             this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
+            this.tabPage_audit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waiting_audit_grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,7 +116,7 @@
             this.bug_cre_tabControl.Controls.Add(this.tabPage1);
             this.bug_cre_tabControl.Controls.Add(this.tabPage2);
             this.bug_cre_tabControl.Controls.Add(this.tabPage3);
-            this.bug_cre_tabControl.Controls.Add(this.tabPage4);
+            this.bug_cre_tabControl.Controls.Add(this.tabPage_audit);
             this.bug_cre_tabControl.Location = new System.Drawing.Point(1, 1);
             this.bug_cre_tabControl.Name = "bug_cre_tabControl";
             this.bug_cre_tabControl.SelectedIndex = 0;
@@ -214,9 +215,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(20, 124);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 15);
+            this.label2.Size = new System.Drawing.Size(166, 15);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Bug描述(*)：";
+            this.label2.Text = "缺陷描述(6个字以上)：";
             // 
             // bug_cre_text_bug_name
             // 
@@ -230,9 +231,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(20, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 15);
+            this.label1.Size = new System.Drawing.Size(91, 15);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Bug名(*)：";
+            this.label1.Text = "缺陷名(*)：";
             // 
             // tabPage2
             // 
@@ -436,9 +437,9 @@
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(18, 301);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(129, 20);
+            this.label8.Size = new System.Drawing.Size(139, 20);
             this.label8.TabIndex = 20;
-            this.label8.Text = "前驱bug_id：";
+            this.label8.Text = "前驱缺陷_id：";
             // 
             // bug_cre_lbl_p_bug_id
             // 
@@ -493,9 +494,9 @@
             this.label16.ForeColor = System.Drawing.Color.Black;
             this.label16.Location = new System.Drawing.Point(18, 211);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(99, 20);
+            this.label16.Size = new System.Drawing.Size(109, 20);
             this.label16.TabIndex = 10;
-            this.label16.Text = "bug状态：";
+            this.label16.Text = "缺陷状态：";
             // 
             // bug_cre_lbl_status
             // 
@@ -514,9 +515,9 @@
             this.label14.ForeColor = System.Drawing.Color.Black;
             this.label14.Location = new System.Drawing.Point(18, 162);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(99, 20);
+            this.label14.Size = new System.Drawing.Size(109, 20);
             this.label14.TabIndex = 8;
-            this.label14.Text = "bug等级：";
+            this.label14.Text = "缺陷等级：";
             // 
             // bug_cre_lbl_level
             // 
@@ -577,9 +578,9 @@
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(18, 22);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 20);
+            this.label9.Size = new System.Drawing.Size(109, 20);
             this.label9.TabIndex = 2;
-            this.label9.Text = "bug名称：";
+            this.label9.Text = "缺陷名称：";
             // 
             // bug_cre_lbl_bug_name
             // 
@@ -591,52 +592,163 @@
             this.bug_cre_lbl_bug_name.Size = new System.Drawing.Size(0, 20);
             this.bug_cre_lbl_bug_name.TabIndex = 1;
             // 
-            // tabPage4
+            // tabPage_audit
             // 
-            this.tabPage4.AutoScroll = true;
-            this.tabPage4.Controls.Add(this.label31);
-            this.tabPage4.Controls.Add(this.bug_cre_audit_btn_filter);
-            this.tabPage4.Controls.Add(this.bug_cre_audit_case_filter);
-            this.tabPage4.Controls.Add(this.label30);
-            this.tabPage4.Controls.Add(this.label29);
-            this.tabPage4.Controls.Add(this.label28);
-            this.tabPage4.Controls.Add(this.comboBox2);
-            this.tabPage4.Controls.Add(this.label27);
-            this.tabPage4.Controls.Add(this.bug_cre_audit_status_filter);
-            this.tabPage4.Controls.Add(this.bug_cre_audit_lbl_id);
-            this.tabPage4.Controls.Add(this.bug_bug_analysis_refresh);
-            this.tabPage4.Controls.Add(this.bug_cre_audit_reason);
-            this.tabPage4.Controls.Add(this.textBox4);
-            this.tabPage4.Controls.Add(this.label25);
-            this.tabPage4.Controls.Add(this.label26);
-            this.tabPage4.Controls.Add(this.waiting_audit_grid);
-            this.tabPage4.Controls.Add(this.bug_audit_btn_accompanished);
-            this.tabPage4.Controls.Add(this.label24);
-            this.tabPage4.Controls.Add(this.bug_cre_audit_status);
-            this.tabPage4.Controls.Add(this.label22);
-            this.tabPage4.Controls.Add(this.label23);
-            this.tabPage4.Controls.Add(this.label20);
-            this.tabPage4.Controls.Add(this.bug_cre_audit_analysis);
-            this.tabPage4.Controls.Add(this.label21);
-            this.tabPage4.Controls.Add(this.label17);
-            this.tabPage4.Controls.Add(this.label19);
-            this.tabPage4.Controls.Add(this.label13);
-            this.tabPage4.Controls.Add(this.bug_cre_audit_desc);
-            this.tabPage4.Controls.Add(this.label15);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(393, 492);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "缺陷审核";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
+            this.tabPage_audit.AutoScroll = true;
+            this.tabPage_audit.Controls.Add(this.label11);
+            this.tabPage_audit.Controls.Add(this.bug_audit_lbl_update_vision);
+            this.tabPage_audit.Controls.Add(this.bug_cre_audit_btn_filter);
+            this.tabPage_audit.Controls.Add(this.bug_cre_audit_case_filter);
+            this.tabPage_audit.Controls.Add(this.label30);
+            this.tabPage_audit.Controls.Add(this.label29);
+            this.tabPage_audit.Controls.Add(this.label28);
+            this.tabPage_audit.Controls.Add(this.bug_audit_vision_combo);
+            this.tabPage_audit.Controls.Add(this.label27);
+            this.tabPage_audit.Controls.Add(this.bug_cre_audit_status_filter);
+            this.tabPage_audit.Controls.Add(this.bug_cre_audit_lbl_id);
+            this.tabPage_audit.Controls.Add(this.bug_bug_analysis_refresh);
+            this.tabPage_audit.Controls.Add(this.bug_cre_audit_reason);
+            this.tabPage_audit.Controls.Add(this.textBox4);
+            this.tabPage_audit.Controls.Add(this.label25);
+            this.tabPage_audit.Controls.Add(this.bug_audit_auditing_id);
+            this.tabPage_audit.Controls.Add(this.waiting_audit_grid);
+            this.tabPage_audit.Controls.Add(this.bug_audit_btn_accompanished);
+            this.tabPage_audit.Controls.Add(this.label24);
+            this.tabPage_audit.Controls.Add(this.bug_cre_audit_status);
+            this.tabPage_audit.Controls.Add(this.label22);
+            this.tabPage_audit.Controls.Add(this.label23);
+            this.tabPage_audit.Controls.Add(this.label20);
+            this.tabPage_audit.Controls.Add(this.bug_cre_audit_analysis);
+            this.tabPage_audit.Controls.Add(this.label21);
+            this.tabPage_audit.Controls.Add(this.label17);
+            this.tabPage_audit.Controls.Add(this.label19);
+            this.tabPage_audit.Controls.Add(this.label13);
+            this.tabPage_audit.Controls.Add(this.bug_cre_audit_desc);
+            this.tabPage_audit.Controls.Add(this.label15);
+            this.tabPage_audit.Location = new System.Drawing.Point(4, 25);
+            this.tabPage_audit.Name = "tabPage_audit";
+            this.tabPage_audit.Size = new System.Drawing.Size(393, 492);
+            this.tabPage_audit.TabIndex = 3;
+            this.tabPage_audit.Text = "缺陷审核";
+            this.tabPage_audit.UseVisualStyleBackColor = true;
+            this.tabPage_audit.Click += new System.EventHandler(this.tabPage4_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(7, 417);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(129, 20);
+            this.label11.TabIndex = 63;
+            this.label11.Text = "审核缺陷id：";
+            // 
+            // bug_audit_lbl_update_vision
+            // 
+            this.bug_audit_lbl_update_vision.AutoSize = true;
+            this.bug_audit_lbl_update_vision.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bug_audit_lbl_update_vision.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bug_audit_lbl_update_vision.ForeColor = System.Drawing.Color.Blue;
+            this.bug_audit_lbl_update_vision.Location = new System.Drawing.Point(149, 375);
+            this.bug_audit_lbl_update_vision.Name = "bug_audit_lbl_update_vision";
+            this.bug_audit_lbl_update_vision.Size = new System.Drawing.Size(142, 15);
+            this.bug_audit_lbl_update_vision.TabIndex = 62;
+            this.bug_audit_lbl_update_vision.Text = "点击更新该缺陷版本";
+            this.bug_audit_lbl_update_vision.Click += new System.EventHandler(this.bug_audit_lbl_update_vision_Click);
+            // 
+            // bug_cre_audit_btn_filter
+            // 
+            this.bug_cre_audit_btn_filter.BackColor = System.Drawing.Color.White;
+            this.bug_cre_audit_btn_filter.BackgroundImage = global::BugPractice1_4.Properties.Resources._040;
+            this.bug_cre_audit_btn_filter.Location = new System.Drawing.Point(301, 264);
+            this.bug_cre_audit_btn_filter.Name = "bug_cre_audit_btn_filter";
+            this.bug_cre_audit_btn_filter.Size = new System.Drawing.Size(59, 48);
+            this.bug_cre_audit_btn_filter.TabIndex = 61;
+            this.bug_cre_audit_btn_filter.UseVisualStyleBackColor = false;
+            this.bug_cre_audit_btn_filter.Click += new System.EventHandler(this.bug_cre_audit_btn_filter_Click);
+            // 
+            // bug_cre_audit_case_filter
+            // 
+            this.bug_cre_audit_case_filter.Location = new System.Drawing.Point(152, 287);
+            this.bug_cre_audit_case_filter.Name = "bug_cre_audit_case_filter";
+            this.bug_cre_audit_case_filter.Size = new System.Drawing.Size(100, 25);
+            this.bug_cre_audit_case_filter.TabIndex = 60;
+            this.bug_cre_audit_case_filter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.bug_cre_audit_case_filter_KeyPress);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label30.ForeColor = System.Drawing.Color.Blue;
+            this.label30.Location = new System.Drawing.Point(149, 257);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(138, 15);
+            this.label30.TabIndex = 59;
+            this.label30.Text = "根据case_id查找：";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label29.ForeColor = System.Drawing.Color.Black;
+            this.label29.Location = new System.Drawing.Point(7, 337);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(112, 15);
+            this.label29.TabIndex = 58;
+            this.label29.Text = "缺陷版本控制：";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label28.ForeColor = System.Drawing.Color.Blue;
+            this.label28.Location = new System.Drawing.Point(7, 257);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(82, 15);
+            this.label28.TabIndex = 57;
+            this.label28.Text = "缺陷状态：";
+            // 
+            // bug_audit_vision_combo
+            // 
+            this.bug_audit_vision_combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bug_audit_vision_combo.FormattingEnabled = true;
+            this.bug_audit_vision_combo.Location = new System.Drawing.Point(10, 367);
+            this.bug_audit_vision_combo.Name = "bug_audit_vision_combo";
+            this.bug_audit_vision_combo.Size = new System.Drawing.Size(121, 23);
+            this.bug_audit_vision_combo.TabIndex = 56;
+            this.bug_audit_vision_combo.SelectedIndexChanged += new System.EventHandler(this.bug_audit_vision_combo_SelectedIndexChanged);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label27.Location = new System.Drawing.Point(7, 221);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(52, 15);
+            this.label27.TabIndex = 55;
+            this.label27.Text = "筛选：";
+            // 
+            // bug_cre_audit_status_filter
+            // 
+            this.bug_cre_audit_status_filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bug_cre_audit_status_filter.FormattingEnabled = true;
+            this.bug_cre_audit_status_filter.Items.AddRange(new object[] {
+            "全部",
+            "待修复",
+            "待确认修复",
+            "已修复"});
+            this.bug_cre_audit_status_filter.Location = new System.Drawing.Point(10, 287);
+            this.bug_cre_audit_status_filter.Name = "bug_cre_audit_status_filter";
+            this.bug_cre_audit_status_filter.Size = new System.Drawing.Size(121, 23);
+            this.bug_cre_audit_status_filter.TabIndex = 54;
             // 
             // bug_cre_audit_lbl_id
             // 
             this.bug_cre_audit_lbl_id.AutoSize = true;
             this.bug_cre_audit_lbl_id.Font = new System.Drawing.Font("宋体", 13.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bug_cre_audit_lbl_id.ForeColor = System.Drawing.Color.Blue;
-            this.bug_cre_audit_lbl_id.Location = new System.Drawing.Point(131, 431);
+            this.bug_cre_audit_lbl_id.Location = new System.Drawing.Point(158, 193);
             this.bug_cre_audit_lbl_id.Name = "bug_cre_audit_lbl_id";
             this.bug_cre_audit_lbl_id.Size = new System.Drawing.Size(0, 24);
             this.bug_cre_audit_lbl_id.TabIndex = 53;
@@ -647,7 +759,7 @@
             this.bug_bug_analysis_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bug_bug_analysis_refresh.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.bug_bug_analysis_refresh.ForeColor = System.Drawing.Color.Blue;
-            this.bug_bug_analysis_refresh.Location = new System.Drawing.Point(305, 192);
+            this.bug_bug_analysis_refresh.Location = new System.Drawing.Point(305, 221);
             this.bug_bug_analysis_refresh.Name = "bug_bug_analysis_refresh";
             this.bug_bug_analysis_refresh.Size = new System.Drawing.Size(49, 20);
             this.bug_bug_analysis_refresh.TabIndex = 52;
@@ -693,21 +805,21 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(-1, 435);
+            this.label25.Location = new System.Drawing.Point(7, 193);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(139, 20);
+            this.label25.Size = new System.Drawing.Size(129, 20);
             this.label25.TabIndex = 34;
-            this.label25.Text = "审核bug名称：";
+            this.label25.Text = "选中缺陷id：";
             // 
-            // label26
+            // bug_audit_auditing_id
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label26.ForeColor = System.Drawing.Color.Blue;
-            this.label26.Location = new System.Drawing.Point(114, 435);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(0, 20);
-            this.label26.TabIndex = 33;
+            this.bug_audit_auditing_id.AutoSize = true;
+            this.bug_audit_auditing_id.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bug_audit_auditing_id.ForeColor = System.Drawing.Color.Blue;
+            this.bug_audit_auditing_id.Location = new System.Drawing.Point(149, 417);
+            this.bug_audit_auditing_id.Name = "bug_audit_auditing_id";
+            this.bug_audit_auditing_id.Size = new System.Drawing.Size(0, 20);
+            this.bug_audit_auditing_id.TabIndex = 33;
             // 
             // waiting_audit_grid
             // 
@@ -840,6 +952,7 @@
             this.bug_cre_audit_desc.Name = "bug_cre_audit_desc";
             this.bug_cre_audit_desc.Size = new System.Drawing.Size(347, 147);
             this.bug_cre_audit_desc.TabIndex = 17;
+            this.bug_cre_audit_desc.TextChanged += new System.EventHandler(this.bug_cre_audit_desc_TextChanged);
             // 
             // label15
             // 
@@ -849,102 +962,6 @@
             this.label15.Size = new System.Drawing.Size(100, 15);
             this.label15.TabIndex = 16;
             this.label15.Text = "Bug描述(*)：";
-            // 
-            // bug_cre_audit_status_filter
-            // 
-            this.bug_cre_audit_status_filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.bug_cre_audit_status_filter.FormattingEnabled = true;
-            this.bug_cre_audit_status_filter.Items.AddRange(new object[] {
-            "全部",
-            "待修复",
-            "待确认修复",
-            "已修复"});
-            this.bug_cre_audit_status_filter.Location = new System.Drawing.Point(10, 258);
-            this.bug_cre_audit_status_filter.Name = "bug_cre_audit_status_filter";
-            this.bug_cre_audit_status_filter.Size = new System.Drawing.Size(121, 23);
-            this.bug_cre_audit_status_filter.TabIndex = 54;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label27.Location = new System.Drawing.Point(7, 192);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(52, 15);
-            this.label27.TabIndex = 55;
-            this.label27.Text = "筛选：";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(10, 338);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 23);
-            this.comboBox2.TabIndex = 56;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label28.ForeColor = System.Drawing.Color.Blue;
-            this.label28.Location = new System.Drawing.Point(7, 228);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(82, 15);
-            this.label28.TabIndex = 57;
-            this.label28.Text = "缺陷状态：";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label29.ForeColor = System.Drawing.Color.Black;
-            this.label29.Location = new System.Drawing.Point(7, 308);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(112, 15);
-            this.label29.TabIndex = 58;
-            this.label29.Text = "缺陷版本控制：";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label30.ForeColor = System.Drawing.Color.Blue;
-            this.label30.Location = new System.Drawing.Point(149, 228);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(138, 15);
-            this.label30.TabIndex = 59;
-            this.label30.Text = "根据case_id查找：";
-            // 
-            // bug_cre_audit_case_filter
-            // 
-            this.bug_cre_audit_case_filter.Location = new System.Drawing.Point(152, 258);
-            this.bug_cre_audit_case_filter.Name = "bug_cre_audit_case_filter";
-            this.bug_cre_audit_case_filter.Size = new System.Drawing.Size(100, 25);
-            this.bug_cre_audit_case_filter.TabIndex = 60;
-            this.bug_cre_audit_case_filter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.bug_cre_audit_case_filter_KeyPress);
-            // 
-            // bug_cre_audit_btn_filter
-            // 
-            this.bug_cre_audit_btn_filter.BackColor = System.Drawing.Color.White;
-            this.bug_cre_audit_btn_filter.BackgroundImage = global::BugPractice1_4.Properties.Resources._040;
-            this.bug_cre_audit_btn_filter.Location = new System.Drawing.Point(301, 235);
-            this.bug_cre_audit_btn_filter.Name = "bug_cre_audit_btn_filter";
-            this.bug_cre_audit_btn_filter.Size = new System.Drawing.Size(59, 48);
-            this.bug_cre_audit_btn_filter.TabIndex = 61;
-            this.bug_cre_audit_btn_filter.UseVisualStyleBackColor = false;
-            this.bug_cre_audit_btn_filter.Click += new System.EventHandler(this.bug_cre_audit_btn_filter_Click);
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label31.ForeColor = System.Drawing.Color.Blue;
-            this.label31.Location = new System.Drawing.Point(149, 346);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(142, 15);
-            this.label31.TabIndex = 62;
-            this.label31.Text = "点击更新该缺陷版本";
             // 
             // BugCreater
             // 
@@ -965,8 +982,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bug_cre_dev_gridView)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
+            this.tabPage_audit.ResumeLayout(false);
+            this.tabPage_audit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waiting_audit_grid)).EndInit();
             this.ResumeLayout(false);
 
@@ -1012,7 +1029,7 @@
         private System.Windows.Forms.Label bug_cre_lbl_bug_name;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label bug_cre_lbl_p_bug_id;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage_audit;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label13;
@@ -1028,7 +1045,7 @@
         private System.Windows.Forms.ComboBox bug_cre_audit_status;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label bug_audit_auditing_id;
         private System.Windows.Forms.DataGridView waiting_audit_grid;
         private System.Windows.Forms.DataGridViewTextBoxColumn bug_cre_manager_col_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn bug_cre_col_manager_name;
@@ -1043,9 +1060,10 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox bug_audit_vision_combo;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ComboBox bug_cre_audit_status_filter;
-        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label bug_audit_lbl_update_vision;
+        private System.Windows.Forms.Label label11;
     }
 }

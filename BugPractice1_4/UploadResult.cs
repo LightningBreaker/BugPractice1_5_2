@@ -75,7 +75,7 @@ namespace BugPractice1_4
             if (planCompleted)
             {
                 MessageBox.Show("所属计划已完成！");
-                if(Global_Database.UpdatePojectStatus(planID)) MessageBox.Show("所属项目已完成!");
+                if(Global_Database.UpdateProjectStatus(planID)) MessageBox.Show("所属项目已完成!");
             }
            
             this.Close();

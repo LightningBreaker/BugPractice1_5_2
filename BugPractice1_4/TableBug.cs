@@ -10,7 +10,7 @@ namespace BugPractice1_4
 {
     public class TableBug
     {
-        private int bug_id;
+        private int bug_id=-1;
         private int bug_status=1;
         private string bug_manager;
         private int manager_id;
@@ -40,7 +40,7 @@ namespace BugPractice1_4
         }
 
 
-        public static bool  Add_Bug_To_Table(TableBug tableBug)
+        public static int  Add_Bug_To_Table(TableBug tableBug,bool is_child)
         {
             MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
             mycon.Open();
@@ -52,20 +52,128 @@ namespace BugPractice1_4
             if (mycmd.ExecuteNonQuery() > 0)
             {
 
-                
-                mycmd = new MySqlCommand(TableBug.Add_Bug_To_Case(tableBug),mycon);
+                if (!is_child)
+                {
+                    mycmd = new MySqlCommand(TableBug.Add_Bug_To_Case(tableBug), mycon);
 
 
-                if (mycmd.ExecuteNonQuery() > 0)
-                    return true;
+                    if (mycmd.ExecuteNonQuery() > 0)
+                    {
+                        mycon.Close();
+                        return -1;
+                        
+                    }
+                       
+                    else
+                    {
+                        mycon.Close();
+                        return -2;
+                    }
+                        
+                }
                 else
-                    return false;
+                {
+                    mycmd = new MySqlCommand(TableBug.Add_Link_To_Table(tableBug), mycon);
+
+                    MySqlDataReader dr= mycmd.ExecuteReader();
+                    if (dr.Read())
+                    {
+
+                     int res=   (int)dr.GetValue(0);
+                        dr.Close();
+                        mycon.Close();
+                        return res;
+                    }
+                    else
+                    {
+                        dr.Close();
+                        mycon.Close();
+                        return -2;
+                    }
+                    
+                }
+                
             }
             else
             {
+                mycon.Close();
+                return -2;
+            }
+
+        }
+
+        public static TableBug Select_From_Table_Bug2(int id)
+        {
+            TableBug tableBug = new TableBug();
+            string cmd_str = "select * from table_bug where bug_id=" + id.ToString();
+            MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
+            mycon.Open();
+            MySqlCommand mycmd = new MySqlCommand(cmd_str, mycon);
+
+            MySqlDataReader dr = mycmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                tableBug.Bug_id = id;
+                tableBug.Bug_description= dr["bug_description"].ToString();
+                tableBug.Bug_status = int.Parse(dr["bug_status"].ToString());
+                if (tableBug.Bug_status != 1)
+                {
+                    tableBug.Bug_reason = int.Parse(dr["bug_reason"].ToString());
+                    tableBug.Bug_analysis = dr["bug_analysis"].ToString();
+                    if (dr["next_bug_id"].ToString().Length != 0)
+                    {
+                        tableBug.Next_bug_id = int.Parse(dr["next_bug_id"].ToString());
+                    }
+                    else
+                    {
+                        tableBug.Next_bug_id = -1;
+                    }
+                }
+
+                dr.Close();
+                mycon.Close();
+                return tableBug;
+            }
+            else
+            {
+                dr.Close();
+                mycon.Close();
+                return null;
+            }
+
+        }
+        public static bool Update_Next_Id(TableBug tableBug)
+        {
+            string cmd_str = "update table_bug set next_bug_id="
+                + tableBug.Next_bug_id.ToString() +
+                " where bug_id=" + tableBug.Bug_id;
+
+            MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
+            mycon.Open();
+            MySqlCommand mycmd = new MySqlCommand(cmd_str,mycon);
+
+            if (mycmd.ExecuteNonQuery() > 0)
+            {
+                mycon.Close();
+                return true;
+            }
+            else
+            {
+                mycon.Close();
                 return false;
             }
 
+
+
+        }
+
+        public static string Add_Link_To_Table(TableBug tableBug)
+        {
+            string cmd_para;
+            cmd_para = "select max(bug_id) from table_bug where case_id=" + tableBug.Case_id;
+
+            return cmd_para;
         }
         public static string Add_Bug(TableBug tableBug)
         {
@@ -138,12 +246,17 @@ namespace BugPractice1_4
 
                     if (mycmd.ExecuteNonQuery() > 0)
                     {
+                        mycon.Close();
                         return 1;
 
                     }
                         
                     else
+                    {
+                        mycon.Close();
                         return 0;
+                    }
+                      
                 }
                 else
                 {
@@ -165,20 +278,39 @@ namespace BugPractice1_4
                             mycmd = new MySqlCommand(str2, mycon);
                             if (mycmd.ExecuteNonQuery() > 0)
                             {
+                                mycon.Close();
                                 if (Is_Case_Complete(tableBug.Case_id))
-                                    return 2;
+                                {
+                                    string plan_id;
+                                    if (Global_Database.UpdatePlanStatus(tableBug.Case_id.ToString(), out plan_id))
+                                    {
+                                        if (Global_Database.UpdateProjectStatus(plan_id))
+                                        {
+                                            return 4;
+                                        }
+                                        else
+                                        {
+                                            return 3;
+                                        }
+                                    } else
+                                    {
+                                        return 2;
+                                    }
+                                }
+                                   
                                 else
                                     return 1;
                             }
                             else
                             {
-
+                                mycon.Close();
                                 return 0;
                             }
 
                         }
                         else
                         {
+                            mycon.Close();
                             return 1;
                         }
 
@@ -187,7 +319,11 @@ namespace BugPractice1_4
                     }
 
                     else
+                    {
+                        mycon.Close();
                         return 0;
+                    }
+                        
 
                     
                 }
@@ -205,7 +341,64 @@ namespace BugPractice1_4
 
         }
 
-        
+        public static int Select_From_Table_Bug(int id)
+        {
+            string cmd_str = "select bug_status from table_bug where bug_id=" + id.ToString();
+            MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
+            mycon.Open();
+            MySqlCommand mycmd = new MySqlCommand(cmd_str, mycon);
+
+            MySqlDataReader dr = mycmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                if (dr.GetValue(0).ToString().Length == 0)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return int.Parse(dr.GetValue(0).ToString());
+
+                }
+
+            }
+            else
+            {
+                return  -1;
+            }
+
+        }
+
+        public static int Get_Next_Id(int id)
+        {
+            string cmd_str = "select next_bug_id from table_bug where bug_id=" + id.ToString();
+            MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
+            mycon.Open();
+            MySqlCommand mycmd = new MySqlCommand(cmd_str,mycon);
+
+            MySqlDataReader dr = mycmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                if (dr.GetValue(0).ToString().Length==0)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return int.Parse(dr.GetValue(0).ToString());
+
+                }
+
+            }
+            else
+            {
+                return -1;
+            }
+
+        }
+
         private static bool Is_Case_Complete(int case_id)
         {
             string cmd_case = "select * from table_case where bug_nums=0 and case_id=" + case_id.ToString() + ";";
@@ -217,12 +410,15 @@ namespace BugPractice1_4
             MySqlDataReader dr = mycmd.ExecuteReader();
             if (dr.Read())
             {
-                dr.Close();
+                
+                
+                
 
                 mycmd = new MySqlCommand(cmd_case_delete_bug, mycon);
 
                 if (mycmd.ExecuteNonQuery() > 0)
                 {
+
                     dr.Close();
                     mycon.Close();
                     return true;

@@ -46,6 +46,8 @@
             this.bug_analysis_bugReason = new System.Windows.Forms.ComboBox();
             this.bug_bug_analysis_refresh = new System.Windows.Forms.Label();
             this.bug_analysis_status_select = new System.Windows.Forms.ComboBox();
+            this.bug_ays_version_combo = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_waiting_bug)).BeginInit();
             this.SuspendLayout();
             // 
@@ -246,14 +248,35 @@
             this.bug_analysis_status_select.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.bug_analysis_status_select.FormattingEnabled = true;
             this.bug_analysis_status_select.Items.AddRange(new object[] {
-            "查看待修复bug:",
-            "查看待确认修复bug:",
-            "查看已修复bug"});
+            "查看待修复缺陷:",
+            "查看待确认修复缺陷:",
+            "查看已修复缺陷"});
             this.bug_analysis_status_select.Location = new System.Drawing.Point(39, 13);
             this.bug_analysis_status_select.Name = "bug_analysis_status_select";
             this.bug_analysis_status_select.Size = new System.Drawing.Size(148, 23);
             this.bug_analysis_status_select.TabIndex = 52;
             this.bug_analysis_status_select.SelectedIndexChanged += new System.EventHandler(this.bug_analysis_status_select_SelectedIndexChanged);
+            // 
+            // bug_ays_version_combo
+            // 
+            this.bug_ays_version_combo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.bug_ays_version_combo.FormattingEnabled = true;
+            this.bug_ays_version_combo.Location = new System.Drawing.Point(265, 241);
+            this.bug_ays_version_combo.Name = "bug_ays_version_combo";
+            this.bug_ays_version_combo.Size = new System.Drawing.Size(121, 23);
+            this.bug_ays_version_combo.TabIndex = 53;
+            this.bug_ays_version_combo.SelectedIndexChanged += new System.EventHandler(this.bug_ays_version_combo_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.Blue;
+            this.label1.Location = new System.Drawing.Point(177, 245);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 15);
+            this.label1.TabIndex = 54;
+            this.label1.Text = "版本选择：";
             // 
             // BugAnalysisForm
             // 
@@ -261,7 +284,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(478, 547);
+            this.ClientSize = new System.Drawing.Size(499, 547);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.bug_ays_version_combo);
             this.Controls.Add(this.bug_analysis_status_select);
             this.Controls.Add(this.bug_bug_analysis_refresh);
             this.Controls.Add(this.bug_analysis_bugReason);
@@ -309,5 +334,7 @@
         private System.Windows.Forms.ComboBox bug_analysis_bugReason;
         private System.Windows.Forms.Label bug_bug_analysis_refresh;
         private System.Windows.Forms.ComboBox bug_analysis_status_select;
+        private System.Windows.Forms.ComboBox bug_ays_version_combo;
+        private System.Windows.Forms.Label label1;
     }
 }
