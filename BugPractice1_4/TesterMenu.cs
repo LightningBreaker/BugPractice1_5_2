@@ -233,9 +233,10 @@ namespace BugPractice1_4
                     textBox3.Text = read["password"].ToString();
                     switch (char.Parse(read["type"].ToString()))
                     {
-                        case '1': textBox4.Text = "软件测试工程师"; break;
-                        case '2': textBox4.Text = "软件开发工程师"; break;
-                        case '3': textBox4.Text = "程序员"; break;
+                        case '1': textBox4.Text = "系统管理员"; break;
+                        case '2': textBox4.Text = "项目管理者"; break;
+                        case '3': textBox4.Text = "测试工程师"; break;
+                        case '4': textBox4.Text = "开发工程师"; break;
                     };
                     textBox5.Text = read["telephone"].ToString();
                     textBox6.Text = read["email"].ToString();

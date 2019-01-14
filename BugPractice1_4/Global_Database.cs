@@ -11,7 +11,7 @@ namespace BugPractice1_4
     class Global_Database
     {
         public static string Conn = "Database='practice_in_school';" +
-            "Data Source='192.168.43.116';User Id='root';" +
+            "Data Source='localhost';User Id='root';" +
             "Password='TheFirstDon';charset='utf8';pooling=true";
         
         public static Dictionary<string,string> SearchTesterInfo()
@@ -198,6 +198,7 @@ namespace BugPractice1_4
             {
                 planID = reader["plan_id"].ToString();
             }
+            reader.Close();
             conn.Close();
 
             conn = new MySqlConnection(Conn);
@@ -207,6 +208,7 @@ namespace BugPractice1_4
             reader = command.ExecuteReader();
             if (!reader.Read())
             {
+                reader.Close();
                 conn.Close();
                 conn = new MySqlConnection(Conn);
                 sql = String.Format("update table_plan set plan_status = 2 where plan_id = {0}", planID);
@@ -218,6 +220,7 @@ namespace BugPractice1_4
             }
             else
             {
+                reader.Close();
                 conn.Close();
                 return false;
             }
@@ -238,25 +241,32 @@ namespace BugPractice1_4
                 projectID = reader["plan_project"].ToString();
                 
             }
+            reader.Close();
             conn.Close();
 
             conn = new MySqlConnection(Conn);
-            sql = String.Format("select * from table_plan p, table_project pr where p.plan_project = pr.project_d and plan_status != 2", projectID);
+            sql = String.Format("select * from table_plan p, table_project pr where pr.project_id={0} and p.plan_project = pr.project_id and plan_status != 2", projectID);
             conn.Open();
             command = new MySqlCommand(sql, conn);
             reader = command.ExecuteReader();
             if (!reader.Read())
             {
+                reader.Close();
                 conn.Close();
                 conn = new MySqlConnection(Conn);
                 sql = String.Format("update table_project set project_status = 2 where project_id = {0}", projectID);
                 conn.Open();
                 command = new MySqlCommand(sql, conn);
                 command.ExecuteNonQuery();
+                reader.Close();
                 conn.Close();
                 return true;
             }
-            else return false;
+            else
+            {
+                reader.Close();
+                conn.Close();
+                return false; }
 
         }
 
