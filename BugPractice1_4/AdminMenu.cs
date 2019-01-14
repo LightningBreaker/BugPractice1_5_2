@@ -11,11 +11,11 @@ using MySql.Data.MySqlClient;
 
 namespace BugPractice1_4
 {
-    public partial class admin_interface : Form
+    public partial class AdminMenu : Form
     {
         public static int num = 3;
      
-        public admin_interface()
+        public AdminMenu()
         {
             InitializeComponent();
         }
@@ -189,6 +189,11 @@ namespace BugPractice1_4
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void page_personalInformation_Click(object sender, EventArgs e)
         {
 
         }

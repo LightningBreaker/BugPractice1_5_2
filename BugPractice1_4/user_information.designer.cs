@@ -1,6 +1,6 @@
 ﻿namespace BugPractice1_4
 {
-    partial class user_information
+    partial class User_information
     {
         /// <summary>
         /// Required designer variable.

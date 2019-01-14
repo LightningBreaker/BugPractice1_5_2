@@ -34,7 +34,7 @@ namespace BugPractice1_4
             this.chart1.Visible = false;
             this.chart3.Visible = false;
         }
-        public void Bar_Load()
+        public void Bar_Load()//柱状图
         {
             try
             {
@@ -118,16 +118,19 @@ namespace BugPractice1_4
                 this.panel2.Visible = false;
             }
         }
-        public void Pie_Load()
+        public void Pie_Load()//饼状图
         {
             List<string> xData = new List<string>() { "功能缺陷", "设计缺陷", "性能缺陷", "配置缺陷" };
+            Random rd = new Random();
+            int num1 = rd.Next(1, 50), num2 = rd.Next(1, 50);
+            List<int> yData1 = new List<int>() {num1,50-num1,num2,50-num2 };
             List<int> yData = new List<int>() { 10, 20, 30, 40 };
             this.chart2.Titles.Add("缺陷数量报表");
             chart2.Series["Series1"].Label = "#PERCENT{P}";
             chart2.Series["Series1"].LegendText = "#VALX";
-            chart2.Series[0].Points.DataBindXY(xData, yData);
+            chart2.Series[0].Points.DataBindXY(xData, yData1);
         }
-        public void Line_Load()
+        public void Line_Load()//折线图
         {
             try
             {
@@ -274,6 +277,13 @@ namespace BugPractice1_4
         private void chart3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("确认要退出吗？", "退出", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.Cancel) return;
+            this.Close();
         }
     }
 }

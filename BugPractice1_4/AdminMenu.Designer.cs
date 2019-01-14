@@ -1,6 +1,6 @@
 ﻿namespace BugPractice1_4
 {
-    partial class admin_interface
+    partial class AdminMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -84,6 +84,7 @@
             this.page_personalInformation.TabIndex = 2;
             this.page_personalInformation.Text = "个人资料";
             this.page_personalInformation.UseVisualStyleBackColor = true;
+            this.page_personalInformation.Click += new System.EventHandler(this.page_personalInformation_Click);
             // 
             // button3
             // 
@@ -171,6 +172,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(125, 77);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(100, 21);
             this.textBox2.TabIndex = 19;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
@@ -358,14 +360,14 @@
             this.tabControl1.Size = new System.Drawing.Size(579, 364);
             this.tabControl1.TabIndex = 1;
             // 
-            // admin_interface
+            // AdminMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 402);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "admin_interface";
+            this.Name = "AdminMenu";
             this.Text = "用户管理系统";
             this.Load += new System.EventHandler(this.admin_interface_Load);
             this.page_personalInformation.ResumeLayout(false);
