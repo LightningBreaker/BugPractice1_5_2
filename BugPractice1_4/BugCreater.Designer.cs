@@ -818,6 +818,7 @@
             this.waiting_audit_grid.Size = new System.Drawing.Size(672, 150);
             this.waiting_audit_grid.TabIndex = 31;
             this.waiting_audit_grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.waiting_audit_grid_CellClick);
+            this.waiting_audit_grid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.waiting_audit_grid_CellContentClick);
             // 
             // bug_audit_btn_accompanished
             // 

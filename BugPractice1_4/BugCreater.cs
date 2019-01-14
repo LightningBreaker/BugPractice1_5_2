@@ -23,8 +23,23 @@ namespace BugPractice1_4
         private int pre_id=-1;
         private int case_id=1;
         private int ret_id = -1;
+        public static int OPEN_FOR_LOOK=1;
+        public BugCreater(int open_type, int case_id, int defaults)
+        {
+            InitializeComponent();
+            if (open_type == BugCreater.OPEN_FOR_LOOK)
+            {
+              
+                bug_cre_tabControl.TabPages.Remove(tabPage1);
+                bug_cre_tabControl.TabPages.Remove(tabPage2);
+                bug_cre_tabControl.TabPages.Remove(tabPage3);
+                bug_audit_btn_accompanished.Visible = false;
+                bug_cre_audit_btn_filter.Enabled = false;
+                bug_cre_audit_status.Enabled = false;
+                init_grid_waiting_audit(4, case_id);
+            }
 
-        
+        }
         private int next_id = -1;
         public BugCreater(int _pre_id,int case_id)
         {
@@ -45,7 +60,7 @@ namespace BugPractice1_4
         {
             InitializeComponent();
             global_bug_id =int.Parse( bug_id);
-            
+            Search_AuditView(global_bug_id);
         }
 
 
@@ -193,21 +208,33 @@ namespace BugPractice1_4
 
             MySqlCommand mycmd = null ;
             string tmp_str = null;
-            if (para_status == 0)
-                tmp_str = "select * from table_bug " +
-                 "where " + " reporter_id =" + Global_Userinfo.userid + " and head_tag= '1' ";
 
-            else
+            if (para_status == 4)
             {
                 tmp_str = "select * from table_bug " +
-                "where " + " reporter_id =" + Global_Userinfo.userid + " and head_tag= '1' " + " and bug_status=" + para_status.ToString();
-            }
-
-            if (para_case_id != -1)
-            {
-                tmp_str = tmp_str + " and case_id=" + para_case_id;
+                 "where " + " case_id =" + para_case_id.ToString();
 
             }
+            else {
+                if (para_status == 0)
+                    tmp_str = "select * from table_bug " +
+                     "where " + " reporter_id =" + Global_Userinfo.userid + " and head_tag= '1' ";
+
+                else
+                {
+                    tmp_str = "select * from table_bug " +
+                    "where " + " reporter_id =" + Global_Userinfo.userid + " and head_tag= '1' " + " and bug_status=" + para_status.ToString();
+                }
+
+                if (para_case_id != -1)
+                {
+                    tmp_str = tmp_str + " and case_id=" + para_case_id;
+
+                }
+
+            }
+
+            
             mycmd = new MySqlCommand(tmp_str, mycon);
             MySqlDataReader dataReader = mycmd.ExecuteReader();
             tableBug =TableBug.CreateBugTable(TableBug.Properties, dataReader, "TableBugAuditing");
@@ -840,6 +867,11 @@ namespace BugPractice1_4
         }
 
         private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void waiting_audit_grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

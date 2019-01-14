@@ -131,12 +131,14 @@ namespace BugPractice1_4
             new ViewPlan_Tester_2(ds.Tables["table_mytask"].Rows[rowIndex]["plan_id"].ToString()).ShowDialog();
 
         }
-
+        // 请不要删除，谢谢
+        private int global_rowIndex_id = -1;
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //if (dataGridView2.CurrentCell == null) { MessageBox.Show("请先选择一个单元格！"); return; }
             
             int rowIndex = e.RowIndex;
+            global_rowIndex_id = rowIndex;
             if (rowIndex == -1) return;
             string caseID = ds2.Tables["table_bug"].Rows[rowIndex]["case_id"].ToString();
             new AddCase(caseID, 1).ShowDialog();
@@ -149,8 +151,10 @@ namespace BugPractice1_4
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //传bugid 
-            new BugCreater().ShowDialog();
+            int rowIndex =global_rowIndex_id;
+            if (rowIndex == -1) return;
+            string bug_id = ds2.Tables["table_bug"].Rows[rowIndex]["bug_id"].ToString();
+            new BugCreater(bug_id).ShowDialog();
         }
 
         private void button_logOut_Click(object sender, EventArgs e)
