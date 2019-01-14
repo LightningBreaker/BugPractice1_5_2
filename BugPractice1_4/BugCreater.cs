@@ -833,5 +833,15 @@ namespace BugPractice1_4
             }
             
         }
+
+        private void bug_cre_audit_analysis_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -129,7 +129,7 @@ namespace BugPractice1_4
             {
                 int index = e.RowIndex;
                 // MessageBox.Show(index.ToString()+plans[0].name);
-                MessageBox.Show("mode:"+mode.ToString());
+               // MessageBox.Show("mode:"+mode.ToString());
                 if (mode == 0) { new ViewPlan(plans, index).ShowDialog(); }
                 if (mode == 1) { new ViewPlan(ds.Tables["table_project_plan"].Rows[index]["plan_id"].ToString(),2).ShowDialog(); }
             }

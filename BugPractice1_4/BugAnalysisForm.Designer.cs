@@ -59,16 +59,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button_logOut = new System.Windows.Forms.Button();
             this.button_exit = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.bug_ays_change_user_info = new System.Windows.Forms.Button();
+            this.text_change_user_email = new System.Windows.Forms.TextBox();
+            this.text_change_user_id = new System.Windows.Forms.TextBox();
+            this.text_change_phoneNums = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.text_change_user_type = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.text_change_user_password = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.text_change_user_name = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -316,6 +316,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(763, 452);
             this.tabControl1.TabIndex = 55;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -367,16 +368,16 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button3);
-            this.tabPage3.Controls.Add(this.textBox6);
-            this.tabPage3.Controls.Add(this.textBox7);
-            this.tabPage3.Controls.Add(this.textBox5);
+            this.tabPage3.Controls.Add(this.bug_ays_change_user_info);
+            this.tabPage3.Controls.Add(this.text_change_user_email);
+            this.tabPage3.Controls.Add(this.text_change_user_id);
+            this.tabPage3.Controls.Add(this.text_change_phoneNums);
             this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Controls.Add(this.textBox4);
+            this.tabPage3.Controls.Add(this.text_change_user_type);
             this.tabPage3.Controls.Add(this.label9);
-            this.tabPage3.Controls.Add(this.textBox3);
+            this.tabPage3.Controls.Add(this.text_change_user_password);
             this.tabPage3.Controls.Add(this.label8);
-            this.tabPage3.Controls.Add(this.textBox2);
+            this.tabPage3.Controls.Add(this.text_change_user_name);
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.label11);
@@ -461,40 +462,41 @@
             this.button_exit.UseVisualStyleBackColor = true;
             this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
             // 
-            // button3
+            // bug_ays_change_user_info
             // 
-            this.button3.Location = new System.Drawing.Point(496, 165);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(107, 51);
-            this.button3.TabIndex = 37;
-            this.button3.Text = "修改";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bug_ays_change_user_info.Location = new System.Drawing.Point(496, 165);
+            this.bug_ays_change_user_info.Margin = new System.Windows.Forms.Padding(4);
+            this.bug_ays_change_user_info.Name = "bug_ays_change_user_info";
+            this.bug_ays_change_user_info.Size = new System.Drawing.Size(107, 51);
+            this.bug_ays_change_user_info.TabIndex = 37;
+            this.bug_ays_change_user_info.Text = "修改";
+            this.bug_ays_change_user_info.UseVisualStyleBackColor = true;
+            this.bug_ays_change_user_info.Click += new System.EventHandler(this.bug_ays_change_user_info_Click);
             // 
-            // textBox6
+            // text_change_user_email
             // 
-            this.textBox6.Location = new System.Drawing.Point(171, 340);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(171, 25);
-            this.textBox6.TabIndex = 36;
+            this.text_change_user_email.Location = new System.Drawing.Point(171, 340);
+            this.text_change_user_email.Margin = new System.Windows.Forms.Padding(4);
+            this.text_change_user_email.Name = "text_change_user_email";
+            this.text_change_user_email.Size = new System.Drawing.Size(171, 25);
+            this.text_change_user_email.TabIndex = 36;
             // 
-            // textBox7
+            // text_change_user_id
             // 
-            this.textBox7.Location = new System.Drawing.Point(171, 49);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(132, 25);
-            this.textBox7.TabIndex = 30;
+            this.text_change_user_id.Location = new System.Drawing.Point(171, 49);
+            this.text_change_user_id.Margin = new System.Windows.Forms.Padding(4);
+            this.text_change_user_id.Name = "text_change_user_id";
+            this.text_change_user_id.ReadOnly = true;
+            this.text_change_user_id.Size = new System.Drawing.Size(132, 25);
+            this.text_change_user_id.TabIndex = 30;
             // 
-            // textBox5
+            // text_change_phoneNums
             // 
-            this.textBox5.Location = new System.Drawing.Point(171, 279);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(132, 25);
-            this.textBox5.TabIndex = 35;
+            this.text_change_phoneNums.Location = new System.Drawing.Point(171, 279);
+            this.text_change_phoneNums.Margin = new System.Windows.Forms.Padding(4);
+            this.text_change_phoneNums.Name = "text_change_phoneNums";
+            this.text_change_phoneNums.Size = new System.Drawing.Size(132, 25);
+            this.text_change_phoneNums.TabIndex = 35;
             // 
             // label10
             // 
@@ -506,14 +508,14 @@
             this.label10.TabIndex = 25;
             this.label10.Text = "ID";
             // 
-            // textBox4
+            // text_change_user_type
             // 
-            this.textBox4.Location = new System.Drawing.Point(171, 215);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(132, 25);
-            this.textBox4.TabIndex = 34;
+            this.text_change_user_type.Location = new System.Drawing.Point(171, 215);
+            this.text_change_user_type.Margin = new System.Windows.Forms.Padding(4);
+            this.text_change_user_type.Name = "text_change_user_type";
+            this.text_change_user_type.ReadOnly = true;
+            this.text_change_user_type.Size = new System.Drawing.Size(132, 25);
+            this.text_change_user_type.TabIndex = 34;
             // 
             // label9
             // 
@@ -525,13 +527,13 @@
             this.label9.TabIndex = 26;
             this.label9.Text = "密码";
             // 
-            // textBox3
+            // text_change_user_password
             // 
-            this.textBox3.Location = new System.Drawing.Point(171, 165);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(132, 25);
-            this.textBox3.TabIndex = 33;
+            this.text_change_user_password.Location = new System.Drawing.Point(171, 165);
+            this.text_change_user_password.Margin = new System.Windows.Forms.Padding(4);
+            this.text_change_user_password.Name = "text_change_user_password";
+            this.text_change_user_password.Size = new System.Drawing.Size(132, 25);
+            this.text_change_user_password.TabIndex = 33;
             // 
             // label8
             // 
@@ -543,13 +545,13 @@
             this.label8.TabIndex = 27;
             this.label8.Text = "用户名";
             // 
-            // textBox2
+            // text_change_user_name
             // 
-            this.textBox2.Location = new System.Drawing.Point(171, 106);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(132, 25);
-            this.textBox2.TabIndex = 32;
+            this.text_change_user_name.Location = new System.Drawing.Point(171, 106);
+            this.text_change_user_name.Margin = new System.Windows.Forms.Padding(4);
+            this.text_change_user_name.Name = "text_change_user_name";
+            this.text_change_user_name.Size = new System.Drawing.Size(132, 25);
+            this.text_change_user_name.TabIndex = 32;
             // 
             // label7
             // 
@@ -638,16 +640,16 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button_logOut;
         private System.Windows.Forms.Button button_exit;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Button bug_ays_change_user_info;
+        private System.Windows.Forms.TextBox text_change_user_email;
+        private System.Windows.Forms.TextBox text_change_user_id;
+        private System.Windows.Forms.TextBox text_change_phoneNums;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox text_change_user_type;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox text_change_user_password;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox text_change_user_name;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label11;

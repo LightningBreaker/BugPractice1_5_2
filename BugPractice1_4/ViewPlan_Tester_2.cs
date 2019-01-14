@@ -184,5 +184,10 @@ namespace BugPractice1_4
                 button_uploadResult.Text = "已完成";
             }
         }
+
+        private void ViewPlan_Tester_2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

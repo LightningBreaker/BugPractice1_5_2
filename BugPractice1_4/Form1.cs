@@ -53,7 +53,7 @@ namespace BugPractice1_4
                 }
                 else if(Global_Userinfo.type == Global_Userinfo.ADMINISTRATOR)
                 {
-                    new AdminMenu().Show();
+                    new AdminMenu(this).Show();
                 }
                 else if(Global_Userinfo.type == Global_Userinfo.DEVELOPER)
                 {
