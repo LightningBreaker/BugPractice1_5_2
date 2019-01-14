@@ -14,9 +14,13 @@ namespace BugPractice1_4
     public partial class AdminMenu : Form
     {
         public static int num = 3;
-     
-        public AdminMenu()
+
+        public bool logout = false;
+
+        public Form1 LoginForm;
+        public AdminMenu(Form1 form1)
         {
+            this.LoginForm = form1;
             InitializeComponent();
         }
 
@@ -27,7 +31,15 @@ namespace BugPractice1_4
 
         private void button_logOut_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("确定要注销登录吗?", "注销", MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
+            else
+            {
+               logout = true;
+                this.Close();
+                LoginForm.user_name.Text = "";
+                LoginForm.user_password.Text = "";
+                LoginForm.Show();
+            }
         }
 
         private void button_exit_Click(object sender, EventArgs e)
@@ -196,6 +208,19 @@ namespace BugPractice1_4
         private void page_personalInformation_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void AdminMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (MessageBox.Show("确定要注销登录吗?", "注销", MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
+            else
+            {
+                logout = true;
+                this.Close();
+                LoginForm.user_name.Text = "";
+                LoginForm.user_password.Text = "";
+                LoginForm.Show();
+            }
         }
     }
 }

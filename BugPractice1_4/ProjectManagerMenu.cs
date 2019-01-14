@@ -132,12 +132,12 @@ namespace BugPractice1_4
         {
             try
             {
-                string user_id = textBox7.Text;
-                string user_name = textBox2.Text;
-                string password = textBox3.Text;
-                string type = textBox4.Text;
-                string telephone = textBox5.Text;
-                string email = textBox6.Text;
+                string user_id = text_pro_id.Text;
+                string user_name = text_pro_user.Text;
+                string password = text_pro_pass.Text;
+                string type = text_pro_type.Text;
+                string telephone = text_pro_phone.Text;
+                string email = text_pro_email.Text;
                 MySqlConnection myconn = new MySqlConnection(Global_Database.Conn);
                 myconn.Open();
                 string sql =
@@ -200,18 +200,18 @@ namespace BugPractice1_4
                 MySqlDataReader read = com.ExecuteReader();
                 while (read.Read())
                 {
-                    textBox7.Text = read["user_id"].ToString();
-                    textBox2.Text = read["user_name"].ToString();
-                    textBox3.Text = read["password"].ToString();
+                    text_pro_id.Text = read["user_id"].ToString();
+                    text_pro_user.Text = read["user_name"].ToString();
+                    text_pro_pass.Text = read["password"].ToString();
                     switch (char.Parse(read["type"].ToString()))
                     {
-                        case '1': textBox4.Text = "软件测试工程师"; break;
-                        case '2': textBox4.Text = "软件开发工程师"; break;
-                        case '3': textBox4.Text = "程序员"; break;
-                        default: textBox4.Text = "未知用户"; break;
+                        case '1': text_pro_type.Text = "系统管理员"; break;
+                        case '2': text_pro_type.Text = "项目管理者"; break;
+                        case '3': text_pro_type.Text = "测试工程师"; break;
+                        case '4': text_pro_type.Text = "开发工程师"; break;
                     };
-                    textBox5.Text = read["telephone"].ToString();
-                    textBox6.Text = read["email"].ToString();
+                    text_pro_phone.Text = read["telephone"].ToString();
+                    text_pro_email.Text = read["email"].ToString();
                 }
                 myconn.Close();
             }
@@ -237,41 +237,8 @@ namespace BugPractice1_4
 
         }
 
-        private void ProjectManagerMenu_Load(object sender, EventArgs e)
-        {
-            this.get_information();
-        }
-        public void get_information()
-        {
-            try
-            {
-                MySqlConnection myconn = new MySqlConnection(Global_Database.Conn);
-                myconn.Open();
-                string sql = "select * from table_user_info where user_id=" + Global_Userinfo.userid + "";
-                MySqlCommand com = new MySqlCommand(sql, myconn);
-                MySqlDataReader read = com.ExecuteReader();
-                while (read.Read())
-                {
-                    text_pro_id.Text = read["user_id"].ToString();
-                    text_pro_user.Text = read["user_name"].ToString();
-                    text_pro_pass.Text = read["password"].ToString();
-                    switch (char.Parse(read["type"].ToString()))
-                    {
-                        case '1': text_pro_type.Text = "系统管理员"; break;
-                        case '2': text_pro_type.Text = "项目管理者"; break;
-                        case '3': text_pro_type.Text = "测试工程师"; break;
-                        case '4': text_pro_type.Text = "开发工程师"; break;
-                    };
-                    text_pro_phone.Text = read["telephone"].ToString();
-                    text_pro_email.Text = read["email"].ToString();
-                }
-                myconn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+      
+       
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -279,34 +246,7 @@ namespace BugPractice1_4
                  get_information();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string user_id = text_pro_id.Text;
-                string user_name = text_pro_user.Text;
-                string password = text_pro_pass.Text;
-                string type = text_pro_type.Text;
-                string telephone = text_pro_phone.Text;
-                string email = text_pro_email.Text;
-                MySqlConnection myconn = new MySqlConnection(Global_Database.Conn);
-                myconn.Open();
-                string sql =
-                    "update table_user_info set user_name='" + user_name + "',password='" + password + "',telephone='" + telephone + "',email='" + email + "'where user_id='" + Global_Userinfo.userid + "'";
-
-
-                MySqlCommand mysqlupdate = new MySqlCommand(sql, myconn);
-                mysqlupdate.ExecuteNonQuery();
-                myconn.Close();
-
-                MessageBox.Show("修改成功");
-                this.get_information();
-            }
-            catch (MySqlException ex)
-            {
-                string message = ex.Message;
-                Console.WriteLine("修改数据失败! " + message);
-            }
-        }
+      
+        
     }
 }
