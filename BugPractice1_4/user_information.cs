@@ -11,15 +11,15 @@ using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 namespace BugPractice1_4
 {
-    public partial class user_information : Form
+    public partial class User_information : Form
     {
         public static int current_id;
         
-        public user_information()
+        public User_information()
         {
             InitializeComponent();
         }
-        public user_information (int num,bool is_checked)
+        public User_information (int num,bool is_checked)
         {        
              InitializeComponent();
               current_id = num;//这句必须放在InitializeComponent();的后面，否则会引起“空引用异常”

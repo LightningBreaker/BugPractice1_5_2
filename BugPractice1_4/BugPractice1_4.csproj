@@ -62,11 +62,11 @@
     <Compile Include="AddPlan.Designer.cs">
       <DependentUpon>AddPlan.cs</DependentUpon>
     </Compile>
-    <Compile Include="admin_interface.cs">
+    <Compile Include="AdminMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="admin_interface.Designer.cs">
-      <DependentUpon>admin_interface.cs</DependentUpon>
+    <Compile Include="AdminMenu.Designer.cs">
+      <DependentUpon>AdminMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="BugAnalysisForm.cs">
       <SubType>Form</SubType>
@@ -152,11 +152,11 @@
       <DependentUpon>UploadResult.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInfo.cs" />
-    <Compile Include="user_information.cs">
+    <Compile Include="User_information.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="user_information.designer.cs">
-      <DependentUpon>user_information.cs</DependentUpon>
+    <Compile Include="User_information.designer.cs">
+      <DependentUpon>User_information.cs</DependentUpon>
     </Compile>
     <Compile Include="User_manager.cs">
       <SubType>Form</SubType>
@@ -188,8 +188,8 @@
     <EmbeddedResource Include="AddPlan.resx">
       <DependentUpon>AddPlan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="admin_interface.resx">
-      <DependentUpon>admin_interface.cs</DependentUpon>
+    <EmbeddedResource Include="AdminMenu.resx">
+      <DependentUpon>AdminMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BugAnalysisForm.resx">
       <DependentUpon>BugAnalysisForm.cs</DependentUpon>
@@ -237,8 +237,8 @@
     <EmbeddedResource Include="UploadResult.resx">
       <DependentUpon>UploadResult.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="user_information.resx">
-      <DependentUpon>user_information.cs</DependentUpon>
+    <EmbeddedResource Include="User_information.resx">
+      <DependentUpon>User_information.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User_manager.resx">
       <DependentUpon>User_manager.cs</DependentUpon>

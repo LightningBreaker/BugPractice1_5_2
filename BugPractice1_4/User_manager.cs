@@ -37,7 +37,7 @@ namespace BugPractice1_4
             
             //将整个窗体作为值传给Form2
             
-            var frm2 = new user_information(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value),is_checked);       
+            var frm2 = new User_information(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value),is_checked);       
             frm2.ShowDialog();
             if (frm2.DialogResult == DialogResult.OK)
             {
