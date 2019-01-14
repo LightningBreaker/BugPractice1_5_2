@@ -217,7 +217,26 @@ namespace BugPractice1_4
         public static  int DEVOLOPER=0;
         public static int TESTER = 1;
 
-        
+
+        public static bool Update_status_comp(int id)
+        {
+            string str = "update table_bug set bug_status = 3 where bug_id=" + id.ToString();
+            MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
+            mycon.Open();
+
+            MySqlCommand mycmd = new MySqlCommand(str, mycon);
+
+            if (mycmd.ExecuteNonQuery() == 1)
+            {
+                mycon.Close();
+                return true;
+            }
+            else
+            {
+                mycon.Close();
+                return false;
+            }
+        }
         public static int Update_Bug(TableBug tableBug,int identity)
         {
             MySqlConnection mycon = new MySqlConnection(Form1.CONSTR);
@@ -273,19 +292,27 @@ namespace BugPractice1_4
 
                     if (mycmd.ExecuteNonQuery() > 0)
                     {
+                        Console.WriteLine("11111111");
                         if (tableBug.Bug_status == 3)
                         {
                             mycmd = new MySqlCommand(str2, mycon);
                             if (mycmd.ExecuteNonQuery() > 0)
                             {
+                                Console.WriteLine("22222222");
                                 mycon.Close();
+
                                 if (Is_Case_Complete(tableBug.Case_id))
                                 {
+                                    Console.WriteLine("33333333");
                                     string plan_id;
+
                                     if (Global_Database.UpdatePlanStatus(tableBug.Case_id.ToString(), out plan_id))
                                     {
+                                        Console.WriteLine("4444444 plan_id= "+plan_id.ToString());
+                                        
                                         if (Global_Database.UpdateProjectStatus(plan_id))
                                         {
+                                            Console.WriteLine("5555555");
                                             return 4;
                                         }
                                         else
@@ -354,17 +381,24 @@ namespace BugPractice1_4
             {
                 if (dr.GetValue(0).ToString().Length == 0)
                 {
+                    dr.Close();
+                    mycon.Close();
                     return -1;
                 }
                 else
                 {
-                    return int.Parse(dr.GetValue(0).ToString());
+                    int tmp= int.Parse(dr.GetValue(0).ToString());
+                    dr.Close();
+                    mycon.Close();
+                    return tmp;
 
                 }
 
             }
             else
             {
+                dr.Close();
+                mycon.Close();
                 return  -1;
             }
 
@@ -383,10 +417,14 @@ namespace BugPractice1_4
             {
                 if (dr.GetValue(0).ToString().Length==0)
                 {
+                    dr.Close();
+                    mycon.Close();
                     return -1;
                 }
                 else
                 {
+                    dr.Close();
+                    mycon.Close();
                     return int.Parse(dr.GetValue(0).ToString());
 
                 }
@@ -394,6 +432,8 @@ namespace BugPractice1_4
             }
             else
             {
+                dr.Close();
+                mycon.Close();
                 return -1;
             }
 
@@ -410,23 +450,23 @@ namespace BugPractice1_4
             MySqlDataReader dr = mycmd.ExecuteReader();
             if (dr.Read())
             {
-                
-                
-                
 
+
+
+                dr.Close();
                 mycmd = new MySqlCommand(cmd_case_delete_bug, mycon);
 
                 if (mycmd.ExecuteNonQuery() > 0)
                 {
 
-                    dr.Close();
+                    
                     mycon.Close();
                     return true;
                 }
                     
                 else
                 {
-                    dr.Close();
+                    
                     mycon.Close();
                     return false;
                 }
@@ -469,7 +509,19 @@ namespace BugPractice1_4
                             dtRow[(string)arrlist[i]] = dataReader.GetValue(i).ToString();
                         }
                         else
-                            dtRow[(string)arrlist[i]] = (int)dataReader.GetValue(i);
+                        {
+                            string obj_tmp = dataReader.GetValue(i).ToString();
+                            if (obj_tmp.Length!=0)
+                            {
+                                dtRow[(string)arrlist[i]] = int.Parse(obj_tmp);
+                            }
+                            else
+                            {
+                                dtRow[(string)arrlist[i]] = System.DBNull.Value;
+                            }
+                           
+                        }
+                          
 
 
 
@@ -485,7 +537,7 @@ namespace BugPractice1_4
                 dt.Rows.Add(dtRow);
 
             }
-
+            
 
             return dt;
 

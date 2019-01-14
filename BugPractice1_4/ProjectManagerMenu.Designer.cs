@@ -42,7 +42,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.project_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.plan_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_viewProject = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column_plan = new System.Windows.Forms.DataGridViewButtonColumn();
             this.page_viewChart = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.comboBox_projectName = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -60,12 +66,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.project_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.plan_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button_viewProject = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column_plan = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.page_homePage.SuspendLayout();
             this.page_projectManage.SuspendLayout();
@@ -250,6 +250,40 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // project_ID
+            // 
+            this.project_ID.DataPropertyName = "project_id";
+            this.project_ID.Frozen = true;
+            this.project_ID.HeaderText = "项目ID";
+            this.project_ID.Name = "project_ID";
+            this.project_ID.ReadOnly = true;
+            // 
+            // plan_Name
+            // 
+            this.plan_Name.DataPropertyName = "project_name";
+            this.plan_Name.Frozen = true;
+            this.plan_Name.HeaderText = "项目名称";
+            this.plan_Name.Name = "plan_Name";
+            this.plan_Name.ReadOnly = true;
+            // 
+            // button_viewProject
+            // 
+            this.button_viewProject.Frozen = true;
+            this.button_viewProject.HeaderText = "查看项目";
+            this.button_viewProject.Name = "button_viewProject";
+            this.button_viewProject.ReadOnly = true;
+            this.button_viewProject.Text = "查看项目";
+            this.button_viewProject.UseColumnTextForButtonValue = true;
+            // 
+            // Column_plan
+            // 
+            this.Column_plan.Frozen = true;
+            this.Column_plan.HeaderText = "查看计划";
+            this.Column_plan.Name = "Column_plan";
+            this.Column_plan.ReadOnly = true;
+            this.Column_plan.Text = "查看计划";
+            this.Column_plan.UseColumnTextForButtonValue = true;
+            // 
             // page_viewChart
             // 
             this.page_viewChart.Controls.Add(this.label13);
@@ -265,6 +299,26 @@
             this.page_viewChart.TabIndex = 3;
             this.page_viewChart.Text = "查看报表";
             this.page_viewChart.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label13.Location = new System.Drawing.Point(196, 183);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 20);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "报表类型";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label12.Location = new System.Drawing.Point(196, 122);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 20);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "项目名称";
             // 
             // comboBox_projectName
             // 
@@ -285,6 +339,7 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "XX报表";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
             // 
@@ -440,60 +495,6 @@
             this.label11.Size = new System.Drawing.Size(37, 15);
             this.label11.TabIndex = 29;
             this.label11.Text = "电话";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.Location = new System.Drawing.Point(196, 122);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 20);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "项目名称";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.Location = new System.Drawing.Point(196, 183);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 20);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "报表类型";
-            // 
-            // project_ID
-            // 
-            this.project_ID.DataPropertyName = "project_id";
-            this.project_ID.Frozen = true;
-            this.project_ID.HeaderText = "项目ID";
-            this.project_ID.Name = "project_ID";
-            this.project_ID.ReadOnly = true;
-            // 
-            // plan_Name
-            // 
-            this.plan_Name.DataPropertyName = "project_name";
-            this.plan_Name.Frozen = true;
-            this.plan_Name.HeaderText = "项目名称";
-            this.plan_Name.Name = "plan_Name";
-            this.plan_Name.ReadOnly = true;
-            // 
-            // button_viewProject
-            // 
-            this.button_viewProject.Frozen = true;
-            this.button_viewProject.HeaderText = "查看项目";
-            this.button_viewProject.Name = "button_viewProject";
-            this.button_viewProject.ReadOnly = true;
-            this.button_viewProject.Text = "查看项目";
-            this.button_viewProject.UseColumnTextForButtonValue = true;
-            // 
-            // Column_plan
-            // 
-            this.Column_plan.Frozen = true;
-            this.Column_plan.HeaderText = "查看计划";
-            this.Column_plan.Name = "Column_plan";
-            this.Column_plan.ReadOnly = true;
-            this.Column_plan.Text = "查看计划";
-            this.Column_plan.UseColumnTextForButtonValue = true;
             // 
             // ProjectManagerMenu
             // 

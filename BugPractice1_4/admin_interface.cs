@@ -14,12 +14,20 @@ namespace BugPractice1_4
     public partial class admin_interface : Form
     {
         public static int num = 3;
-     
+
+        private Form1 LoginForm;
+        private bool logout = false;
+
         public admin_interface()
         {
             InitializeComponent();
         }
 
+        public admin_interface(Form1 loginForm)
+        {
+            this.LoginForm = loginForm;
+            InitializeComponent();
+        }
         private void admin_interface_Load(object sender, EventArgs e)
         {
             this.get_information();
@@ -27,7 +35,15 @@ namespace BugPractice1_4
 
         private void button_logOut_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("确定要注销登录吗?", "注销", MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
+            else
+            {
+                logout = true;
+                this.Close();
+                LoginForm.user_name.Text = "";
+                LoginForm.user_password.Text = "";
+                LoginForm.Show();
+            }
         }
 
         private void button_exit_Click(object sender, EventArgs e)
@@ -191,6 +207,12 @@ namespace BugPractice1_4
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void admin_interface_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (logout == true) return;
+            else LoginForm.Close();
         }
     }
 }

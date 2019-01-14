@@ -47,23 +47,22 @@ namespace BugPractice1_4
                 //MessageBox.Show(Global_Userinfo.type.ToString());
                 if(Global_Userinfo.type == Global_Userinfo.TESTER)
                 {
-                    //new TesterMenu(this).Show();
-                      BugCreater bugCreater=  new BugCreater(2);
-                     bugCreater.Show();
+                    new TesterMenu(this).Show();
+                   
                     
                 }
                 else if(Global_Userinfo.type == Global_Userinfo.ADMINISTRATOR)
                 {
-
+                    new admin_interface(this).Show();
                 }
                 else if(Global_Userinfo.type == Global_Userinfo.DEVELOPER)
                 {
-                    BugAnalysisForm bugAnalysis = new BugAnalysisForm();
+                    BugAnalysisForm bugAnalysis = new BugAnalysisForm(this);
                     bugAnalysis.Show();
                 }
                 else
                 {
-                    // project manager:
+                    new ProjectManagerMenu(this).Show();
 
                 }
                 this.Hide();

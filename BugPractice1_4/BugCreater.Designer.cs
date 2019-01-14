@@ -872,6 +872,7 @@
             this.bug_cre_audit_status.Name = "bug_cre_audit_status";
             this.bug_cre_audit_status.Size = new System.Drawing.Size(121, 33);
             this.bug_cre_audit_status.TabIndex = 28;
+            this.bug_cre_audit_status.SelectedIndexChanged += new System.EventHandler(this.bug_cre_audit_status_SelectedIndexChanged);
             // 
             // label22
             // 

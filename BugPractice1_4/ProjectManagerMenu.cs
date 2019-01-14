@@ -126,5 +126,10 @@ namespace BugPractice1_4
             if (logOut == true) return;
             else LoginForm.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

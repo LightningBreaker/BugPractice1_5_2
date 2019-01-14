@@ -13,16 +13,29 @@ namespace BugPractice1_4
 {
     public partial class BugAnalysisForm : Form
     {
+        private bool logOut = false;
         private List<int> bug_sequences   = new List<int>();
 
         private int global_status = 1;
 
+        private List<string> status_combo_list = new List<string>() { "待修复", "待确认修复" };
+        private string status_combo_ok = "已修复";
         public BugAnalysisForm()
         {
             InitializeComponent();
             bug_sequences.Clear();
 
         }
+
+        private Form1 LoginForm;
+        public BugAnalysisForm(Form1 loginForm)
+        {
+            LoginForm = loginForm;
+            InitializeComponent();
+            bug_sequences.Clear();
+
+        }
+
         DataTable tableBug;
         private void BugAnalysisForm_Load(object sender, EventArgs e)
         {
@@ -160,6 +173,7 @@ namespace BugPractice1_4
 
                 init_next_list(row_idx);
             }
+          
             
             
         }
@@ -270,6 +284,7 @@ namespace BugPractice1_4
         }
         private void bug_analysis_status_select_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             if (bug_analysis_status.SelectedIndex == 1)
             {
                
@@ -279,6 +294,19 @@ namespace BugPractice1_4
             else
             {
                 bug_ays_version_combo.Enabled = false;
+            }
+            if (bug_analysis_status.SelectedIndex == 2)
+            {
+                bug_analysis_status.Items.Clear();
+                bug_analysis_status.Items.Add(status_combo_ok);
+                bug_analysis_status.SelectedIndex = 0;
+            }
+            else
+            {
+                bug_analysis_status.Items.Clear();
+                for (int i = 0; i < status_combo_list.Count; i++)
+                    bug_analysis_status.Items.Add(status_combo_list[i]);
+                bug_analysis_status.SelectedIndex = bug_analysis_status.SelectedIndex;
             }
 
             global_status = bug_analysis_status_select.SelectedIndex + 1;
@@ -352,6 +380,42 @@ namespace BugPractice1_4
                     break;
             }
 
+        }
+
+        private void button_logOut_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_userType_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_logOut_Click_1(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("确定要注销登录吗?", "注销", MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
+            else
+            {
+                logOut = true;
+                this.Close();
+                LoginForm.user_name.Text = "";
+                LoginForm.user_password.Text = "";
+                LoginForm.Show();
+            }
+        }
+
+        private void BugAnalysisForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (logOut == true) return;
+            else LoginForm.Close();
+        }
+
+        private void button_exit_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("确认要退出？", "退出", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.Cancel) return;
+            this.Close();
         }
     }
 }

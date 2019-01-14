@@ -256,6 +256,7 @@ namespace BugPractice1_4
 
         private void BugCreater_Load(object sender, EventArgs e)
         {
+            bug_cre_audit_desc.Enabled = false;
             bug_cre_bug_level.SelectedIndex = 0;
             table_bug.Bug_level = 1;
             init_is_ok();
@@ -546,6 +547,7 @@ namespace BugPractice1_4
 
             if (status != 1)
             {
+               
                 reason = int.Parse(tableBug.Rows[row_idx][8].ToString().Trim());
                 bug_analysis = (string)tableBug.Rows[row_idx][12];
                 bug_cre_audit_reason.SelectedIndex = reason - 1;
@@ -562,6 +564,17 @@ namespace BugPractice1_4
                    
                     
                 }
+                if (next_id_list.Count > 1)
+                {
+                    bug_audit_btn_accompanished.Enabled = false;
+                    
+                }
+                else
+                {
+                  if(status==2)
+                    bug_audit_btn_accompanished.Enabled = true;
+                }
+
                 int tail_id = next_id_list[next_id_list.Count - 1];
                 lastTable.Bug_id = tail_id;
                 lastTable.Bug_status = TableBug.Select_From_Table_Bug(tail_id);
@@ -586,6 +599,8 @@ namespace BugPractice1_4
                 //next_id_list.Clear();
                 bug_audit_vision_combo.Enabled = false;
                 bug_audit_vision_combo.Items.Clear();
+               
+            
             }
 
             int case_id=int.Parse(tableBug.Rows[row_idx][9].ToString().Trim());
@@ -605,7 +620,7 @@ namespace BugPractice1_4
             {
                 tableAuditBug.Bug_status = 2;
                 bug_cre_audit_status.Enabled = true;
-                bug_audit_btn_accompanished.Enabled = true;
+            //    bug_audit_btn_accompanished.Enabled = true;
             }
             else
             {
@@ -624,9 +639,23 @@ namespace BugPractice1_4
 
         private void bug_audit_btn_accompanished_Click(object sender, EventArgs e)
         {
+            if (!is_enable)
+            {
+                MessageBox.Show("若要更新缺陷，请添加新的缺陷版本");
+                return;
+            }
+
 
             tableAuditBug.Bug_status = bug_cre_audit_status.SelectedIndex + 1;
             tableAuditBug.Bug_description = bug_cre_audit_desc.Text;
+
+            if (tableAuditBug.Bug_status == 3)
+            {
+                tableAuditBug.Bug_id = next_id_list[0];
+                for (int i = 1; i < next_id_list.Count; i++)
+                    TableBug.Update_status_comp(next_id_list[i]);
+                
+            }
 
             int result = TableBug.Update_Bug(tableAuditBug, TableBug.TESTER);
 
@@ -791,6 +820,18 @@ namespace BugPractice1_4
             
             
            
+        }
+
+        private bool is_enable = true;
+        private void bug_cre_audit_status_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (bug_cre_audit_status.SelectedIndex == 0)
+                is_enable = false;
+            else
+            {
+                is_enable = true;
+            }
+            
         }
     }
 }
