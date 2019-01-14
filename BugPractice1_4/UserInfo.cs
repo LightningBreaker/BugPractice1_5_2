@@ -15,6 +15,7 @@ namespace BugPractice1_4
         private string email;
         private string password;
         private char is_verified = '0';
+        
 
         public int User_id { get => user_id; set => user_id = value; }
         public string User_name { get => user_name; set => user_name = value; }

@@ -54,15 +54,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.page_personalInformation = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.text_pro_email = new System.Windows.Forms.TextBox();
+            this.text_pro_id = new System.Windows.Forms.TextBox();
+            this.text_pro_phone = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.text_pro_type = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.text_pro_pass = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.text_pro_user = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -86,6 +86,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(763, 452);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // page_homePage
             // 
@@ -354,15 +355,15 @@
             // page_personalInformation
             // 
             this.page_personalInformation.Controls.Add(this.button3);
-            this.page_personalInformation.Controls.Add(this.textBox6);
-            this.page_personalInformation.Controls.Add(this.textBox7);
-            this.page_personalInformation.Controls.Add(this.textBox5);
+            this.page_personalInformation.Controls.Add(this.text_pro_email);
+            this.page_personalInformation.Controls.Add(this.text_pro_id);
+            this.page_personalInformation.Controls.Add(this.text_pro_phone);
             this.page_personalInformation.Controls.Add(this.label10);
-            this.page_personalInformation.Controls.Add(this.textBox4);
+            this.page_personalInformation.Controls.Add(this.text_pro_type);
             this.page_personalInformation.Controls.Add(this.label9);
-            this.page_personalInformation.Controls.Add(this.textBox3);
+            this.page_personalInformation.Controls.Add(this.text_pro_pass);
             this.page_personalInformation.Controls.Add(this.label8);
-            this.page_personalInformation.Controls.Add(this.textBox2);
+            this.page_personalInformation.Controls.Add(this.text_pro_user);
             this.page_personalInformation.Controls.Add(this.label7);
             this.page_personalInformation.Controls.Add(this.label6);
             this.page_personalInformation.Controls.Add(this.label11);
@@ -384,31 +385,32 @@
             this.button3.TabIndex = 37;
             this.button3.Text = "修改";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // textBox6
+            // text_pro_email
             // 
-            this.textBox6.Location = new System.Drawing.Point(203, 342);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(199, 25);
-            this.textBox6.TabIndex = 36;
+            this.text_pro_email.Location = new System.Drawing.Point(203, 342);
+            this.text_pro_email.Margin = new System.Windows.Forms.Padding(4);
+            this.text_pro_email.Name = "text_pro_email";
+            this.text_pro_email.Size = new System.Drawing.Size(199, 25);
+            this.text_pro_email.TabIndex = 36;
             // 
-            // textBox7
+            // text_pro_id
             // 
-            this.textBox7.Location = new System.Drawing.Point(203, 51);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(132, 25);
-            this.textBox7.TabIndex = 30;
+            this.text_pro_id.Location = new System.Drawing.Point(203, 51);
+            this.text_pro_id.Margin = new System.Windows.Forms.Padding(4);
+            this.text_pro_id.Name = "text_pro_id";
+            this.text_pro_id.ReadOnly = true;
+            this.text_pro_id.Size = new System.Drawing.Size(132, 25);
+            this.text_pro_id.TabIndex = 30;
             // 
-            // textBox5
+            // text_pro_phone
             // 
-            this.textBox5.Location = new System.Drawing.Point(203, 281);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(132, 25);
-            this.textBox5.TabIndex = 35;
+            this.text_pro_phone.Location = new System.Drawing.Point(203, 281);
+            this.text_pro_phone.Margin = new System.Windows.Forms.Padding(4);
+            this.text_pro_phone.Name = "text_pro_phone";
+            this.text_pro_phone.Size = new System.Drawing.Size(132, 25);
+            this.text_pro_phone.TabIndex = 35;
             // 
             // label10
             // 
@@ -420,14 +422,14 @@
             this.label10.TabIndex = 25;
             this.label10.Text = "ID";
             // 
-            // textBox4
+            // text_pro_type
             // 
-            this.textBox4.Location = new System.Drawing.Point(203, 226);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(132, 25);
-            this.textBox4.TabIndex = 34;
+            this.text_pro_type.Location = new System.Drawing.Point(203, 226);
+            this.text_pro_type.Margin = new System.Windows.Forms.Padding(4);
+            this.text_pro_type.Name = "text_pro_type";
+            this.text_pro_type.ReadOnly = true;
+            this.text_pro_type.Size = new System.Drawing.Size(132, 25);
+            this.text_pro_type.TabIndex = 34;
             // 
             // label9
             // 
@@ -439,13 +441,13 @@
             this.label9.TabIndex = 26;
             this.label9.Text = "密码";
             // 
-            // textBox3
+            // text_pro_pass
             // 
-            this.textBox3.Location = new System.Drawing.Point(203, 165);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(132, 25);
-            this.textBox3.TabIndex = 33;
+            this.text_pro_pass.Location = new System.Drawing.Point(203, 165);
+            this.text_pro_pass.Margin = new System.Windows.Forms.Padding(4);
+            this.text_pro_pass.Name = "text_pro_pass";
+            this.text_pro_pass.Size = new System.Drawing.Size(132, 25);
+            this.text_pro_pass.TabIndex = 33;
             // 
             // label8
             // 
@@ -457,14 +459,14 @@
             this.label8.TabIndex = 27;
             this.label8.Text = "用户名";
             // 
-            // textBox2
+            // text_pro_user
             // 
-            this.textBox2.Location = new System.Drawing.Point(203, 109);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(132, 25);
-            this.textBox2.TabIndex = 32;
+            this.text_pro_user.Location = new System.Drawing.Point(203, 109);
+            this.text_pro_user.Margin = new System.Windows.Forms.Padding(4);
+            this.text_pro_user.Name = "text_pro_user";
+            this.text_pro_user.ReadOnly = true;
+            this.text_pro_user.Size = new System.Drawing.Size(132, 25);
+            this.text_pro_user.TabIndex = 32;
             // 
             // label7
             // 
@@ -508,6 +510,7 @@
             this.Name = "ProjectManagerMenu";
             this.Text = "缺陷管理系统";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProjectManagerMenu_FormClosed);
+            this.Load += new System.EventHandler(this.ProjectManagerMenu_Load);
             this.tabControl1.ResumeLayout(false);
             this.page_homePage.ResumeLayout(false);
             this.page_homePage.PerformLayout();
@@ -544,15 +547,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TabPage page_personalInformation;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox text_pro_email;
+        private System.Windows.Forms.TextBox text_pro_id;
+        private System.Windows.Forms.TextBox text_pro_phone;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox text_pro_type;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox text_pro_pass;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox text_pro_user;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label11;

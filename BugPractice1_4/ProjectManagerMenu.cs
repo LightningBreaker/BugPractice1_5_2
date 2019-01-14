@@ -131,5 +131,77 @@ namespace BugPractice1_4
         {
 
         }
+
+        private void ProjectManagerMenu_Load(object sender, EventArgs e)
+        {
+            this.get_information();
+        }
+        public void get_information()
+        {
+            try
+            {
+                MySqlConnection myconn = new MySqlConnection(Global_Database.Conn);
+                myconn.Open();
+                string sql = "select * from table_user_info where user_id=" + Global_Userinfo.userid + "";
+                MySqlCommand com = new MySqlCommand(sql, myconn);
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    text_pro_id.Text = read["user_id"].ToString();
+                    text_pro_user.Text = read["user_name"].ToString();
+                    text_pro_pass.Text = read["password"].ToString();
+                    switch (char.Parse(read["type"].ToString()))
+                    {
+                        case '1': text_pro_type.Text = "系统管理员"; break;
+                        case '2': text_pro_type.Text = "项目管理者"; break;
+                        case '3': text_pro_type.Text = "测试工程师"; break;
+                        case '4': text_pro_type.Text = "开发工程师"; break;
+                    };
+                    text_pro_phone.Text = read["telephone"].ToString();
+                    text_pro_email.Text = read["email"].ToString();
+                }
+                myconn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabControl1.SelectedIndex==2)
+                 get_information();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string user_id = text_pro_id.Text;
+                string user_name = text_pro_user.Text;
+                string password = text_pro_pass.Text;
+                string type = text_pro_type.Text;
+                string telephone = text_pro_phone.Text;
+                string email = text_pro_email.Text;
+                MySqlConnection myconn = new MySqlConnection(Global_Database.Conn);
+                myconn.Open();
+                string sql =
+                    "update table_user_info set user_name='" + user_name + "',password='" + password + "',telephone='" + telephone + "',email='" + email + "'where user_id='" + Global_Userinfo.userid + "'";
+
+
+                MySqlCommand mysqlupdate = new MySqlCommand(sql, myconn);
+                mysqlupdate.ExecuteNonQuery();
+                myconn.Close();
+
+                MessageBox.Show("修改成功");
+                this.get_information();
+            }
+            catch (MySqlException ex)
+            {
+                string message = ex.Message;
+                Console.WriteLine("修改数据失败! " + message);
+            }
+        }
     }
 }

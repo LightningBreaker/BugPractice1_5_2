@@ -185,6 +185,7 @@
             this.MinimizeBox = false;
             this.Name = "ViewPlan_Tester_2";
             this.Text = "测试用例";
+            this.Load += new System.EventHandler(this.ViewPlan_Tester_2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

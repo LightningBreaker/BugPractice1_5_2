@@ -47,6 +47,38 @@ namespace BugPractice1_4
             bug_ays_version_combo.Enabled = false;
         }
 
+        public void get_information()
+        {
+            try
+            {
+                MySqlConnection myconn = new MySqlConnection(Global_Database.Conn);
+                myconn.Open();
+                string sql = "select * from table_user_info where user_id=" + Global_Userinfo.userid + "";
+                MySqlCommand com = new MySqlCommand(sql, myconn);
+                MySqlDataReader read = com.ExecuteReader();
+                while (read.Read())
+                {
+                    text_change_user_id.Text = read["user_id"].ToString();
+                    text_change_user_name.Text = read["user_name"].ToString();
+                    text_change_user_password.Text = read["password"].ToString();
+                    switch (char.Parse(read["type"].ToString()))
+                    {
+                        case '1': text_change_user_type.Text = "系统管理员"; break;
+                        case '2': text_change_user_type.Text = "项目管理者"; break;
+                        case '3': text_change_user_type.Text = "测试工程师"; break;
+                        case '4': text_change_user_type.Text = "开发工程师"; break;
+                    };
+                    text_change_phoneNums.Text = read["telephone"].ToString();
+                    text_change_user_email.Text = read["email"].ToString();
+                }
+                myconn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
 
         private void init_grid(int status)
         {
@@ -173,6 +205,7 @@ namespace BugPractice1_4
 
                 init_next_list(row_idx);
             }
+
           
             
             
@@ -295,6 +328,7 @@ namespace BugPractice1_4
             {
                 bug_ays_version_combo.Enabled = false;
             }
+
             if (bug_analysis_status.SelectedIndex == 2)
             {
                 bug_analysis_status.Items.Clear();
@@ -306,7 +340,7 @@ namespace BugPractice1_4
                 bug_analysis_status.Items.Clear();
                 for (int i = 0; i < status_combo_list.Count; i++)
                     bug_analysis_status.Items.Add(status_combo_list[i]);
-                bug_analysis_status.SelectedIndex = bug_analysis_status.SelectedIndex;
+                bug_analysis_status.SelectedIndex = bug_analysis_status_select.SelectedIndex;
             }
 
             global_status = bug_analysis_status_select.SelectedIndex + 1;
@@ -416,6 +450,45 @@ namespace BugPractice1_4
             var result = MessageBox.Show("确认要退出？", "退出", MessageBoxButtons.OKCancel);
             if (result == DialogResult.Cancel) return;
             this.Close();
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 2)
+            {
+
+                get_information();
+            }
+        }
+
+        private void bug_ays_change_user_info_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string user_id =text_change_user_id.Text;
+                string user_name = text_change_user_name.Text;
+                string password = text_change_user_password.Text;
+                string type = text_change_user_type.Text;
+                string telephone =text_change_phoneNums.Text;
+                string email = text_change_user_email.Text;
+                MySqlConnection myconn = new MySqlConnection(Global_Database.Conn);
+                myconn.Open();
+                string sql =
+                    "update table_user_info set user_name='" + user_name + "',password='" + password + "',telephone='" + telephone + "',email='" + email + "'where user_id='" + Global_Userinfo.userid + "'";
+
+
+                MySqlCommand mysqlupdate = new MySqlCommand(sql, myconn);
+                mysqlupdate.ExecuteNonQuery();
+                myconn.Close();
+
+                MessageBox.Show("修改成功");
+                this.get_information();
+            }
+            catch (MySqlException ex)
+            {
+                string message = ex.Message;
+                Console.WriteLine("修改数据失败! " + message);
+            }
         }
     }
 }
