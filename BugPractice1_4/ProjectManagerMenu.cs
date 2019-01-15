@@ -90,7 +90,6 @@ namespace BugPractice1_4
             {
                 new ReleaseProject_2(1, ds.Tables["table_project"].Rows[rowIndex]["project_id"].ToString()).ShowDialog();
             }
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
