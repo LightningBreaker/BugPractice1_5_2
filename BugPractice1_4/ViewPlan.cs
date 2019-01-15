@@ -136,7 +136,7 @@ namespace BugPractice1_4
         }
         public void InitiateComponentInfos()
         {
-            MessageBox.Show(index.ToString());
+         //   MessageBox.Show(index.ToString());
             textBox_planName.Text = planlist[index].name;
             textBox_description.Text = planlist[index].description;
            // MessageBox.Show(planlist[index].manager_name + planlist[index].manager_id);

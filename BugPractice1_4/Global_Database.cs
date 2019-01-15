@@ -45,7 +45,7 @@ namespace BugPractice1_4
             {
                 string sql = "insert into table_plan(plan_name,plan_priority,plan_status,plan_project,plan_manager,case_nums,description,plan_lock) " +
                     String.Format("values('{0}','{1}',1,'{2}','{3}','0','{4}',0)", p.name, p.priority, project_id, p.manager_id,p.description);
-                MessageBox.Show(sql);
+                //MessageBox.Show(sql);
                 command = new MySqlCommand(sql,conn);
                 command.ExecuteNonQuery();
             }
