@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea40 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend40 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series40 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea41 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend41 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series41 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea42 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend42 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series42 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -53,6 +53,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.line_Y = new System.Windows.Forms.Label();
+            this.line_X = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
@@ -62,16 +64,16 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea40.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea40);
+            legend40.Name = "Legend1";
+            this.chart1.Legends.Add(legend40);
             this.chart1.Location = new System.Drawing.Point(24, 23);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series40.ChartArea = "ChartArea1";
+            series40.Legend = "Legend1";
+            series40.Name = "Series1";
+            this.chart1.Series.Add(series40);
             this.chart1.Size = new System.Drawing.Size(602, 342);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -104,19 +106,19 @@
             // 
             // chart2
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
+            chartArea41.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea41);
+            legend41.Name = "Legend1";
+            this.chart2.Legends.Add(legend41);
             this.chart2.Location = new System.Drawing.Point(24, 23);
             this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.IsValueShownAsLabel = true;
-            series2.Label = "#VALX";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
+            series41.ChartArea = "ChartArea1";
+            series41.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series41.IsValueShownAsLabel = true;
+            series41.Label = "#VALX";
+            series41.Legend = "Legend1";
+            series41.Name = "Series1";
+            this.chart2.Series.Add(series41);
             this.chart2.Size = new System.Drawing.Size(602, 342);
             this.chart2.TabIndex = 3;
             this.chart2.Text = "chart2";
@@ -138,17 +140,18 @@
             // 
             // chart3
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea3);
-            legend3.Name = "缺陷严重程度";
-            this.chart3.Legends.Add(legend3);
+            chartArea42.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea42);
+            legend42.Enabled = false;
+            legend42.Name = "缺陷严重程度";
+            this.chart3.Legends.Add(legend42);
             this.chart3.Location = new System.Drawing.Point(24, 23);
             this.chart3.Name = "chart3";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "缺陷严重程度";
-            series3.Name = "Series1";
-            this.chart3.Series.Add(series3);
+            series42.ChartArea = "ChartArea1";
+            series42.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series42.Legend = "缺陷严重程度";
+            series42.Name = "Series1";
+            this.chart3.Series.Add(series42);
             this.chart3.Size = new System.Drawing.Size(602, 342);
             this.chart3.TabIndex = 5;
             this.chart3.Text = "chart3";
@@ -250,11 +253,33 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // line_Y
+            // 
+            this.line_Y.AutoSize = true;
+            this.line_Y.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.line_Y.Location = new System.Drawing.Point(22, 43);
+            this.line_Y.Name = "line_Y";
+            this.line_Y.Size = new System.Drawing.Size(55, 10);
+            this.line_Y.TabIndex = 9;
+            this.line_Y.Text = "缺陷等级/";
+            // 
+            // line_X
+            // 
+            this.line_X.AutoSize = true;
+            this.line_X.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.line_X.Location = new System.Drawing.Point(582, 351);
+            this.line_X.Name = "line_X";
+            this.line_X.Size = new System.Drawing.Size(45, 10);
+            this.line_X.TabIndex = 10;
+            this.line_X.Text = "\\缺陷ID";
+            // 
             // Data_Visualization_Analysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(760, 440);
+            this.Controls.Add(this.line_Y);
+            this.Controls.Add(this.line_X);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -297,5 +322,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label line_Y;
+        private System.Windows.Forms.Label line_X;
     }
 }
