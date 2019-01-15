@@ -202,7 +202,7 @@ namespace BugPractice1_4
             conn.Close();
 
             conn = new MySqlConnection(Conn);
-             sql = String.Format("select * from table_plan p, table_case c where p.plan_id = c.plan_id and case_status != 3", planID);
+             sql = String.Format("select * from table_plan p, table_case c where p.plan_id = c.plan_id and case_status != 3 and c.plan_id = {0}", planID);
             conn.Open();
             command = new MySqlCommand(sql, conn);
             reader = command.ExecuteReader();

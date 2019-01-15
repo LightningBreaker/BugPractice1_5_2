@@ -95,10 +95,10 @@ namespace BugPractice1_4
                 "bug_level from table_project, table_plan p, table_bug b , " +
                 "table_case c where plan_manager = {0} and project_id = " +
                 "p.plan_project and p.plan_id = c.plan_id and c.case_id = b.case_id " +
-                "and c.case_status = {1}",Global_Userinfo.userid,status);
+                "and b.bug_status = {1}",Global_Userinfo.userid,status);
             //MessageBox.Show(sql);
             conn.Open();
-            dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.AutoGenerateColumns = false;  
             MySqlCommand command = new MySqlCommand(sql, conn);
             MySqlDataAdapter da = new MySqlDataAdapter(command);
             ds2 = new DataSet();
