@@ -11,7 +11,7 @@ namespace BugPractice1_4
     class Global_Database
     {
         public static string Conn = "Database='practice_in_school';" +
-            "Data Source='';User Id='root';" +
+            "Data Source='192.168.43.116';User Id='root';" +
             "Password='TheFirstDon';charset='utf8';pooling=true";
         
         public static Dictionary<string,string> SearchTesterInfo()
