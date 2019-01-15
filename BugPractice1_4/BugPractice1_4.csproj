@@ -206,6 +206,9 @@
     <EmbeddedResource Include="Data_Visualization_Analysis.resx">
       <DependentUpon>Data_Visualization_Analysis.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DeveloperMenu.resx">
+      <DependentUpon>DeveloperMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

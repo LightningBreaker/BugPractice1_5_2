@@ -29,7 +29,7 @@ namespace BugPractice1_4
             comboBox1.SelectedIndex = 0;
             switch (Global_Userinfo.type)
             {
-                case Global_Userinfo.ADMINISTRATOR: type = "管理员"; break;
+                case Global_Userinfo.ADMINISTRATOR: type = "系统管理员"; break;
                 case Global_Userinfo.PROJECT_MANAGER: type = "项目管理者"; break;
                 case Global_Userinfo.TESTER: type = "测试工程师"; break;
                 case Global_Userinfo.DEVELOPER: type = "开发工程师"; break;
@@ -63,18 +63,18 @@ namespace BugPractice1_4
         {
             // 1: 未完成 2:已完成
 
-            //MySqlConnection conn = new MySqlConnection(Global_Database.Conn);
-            //string sql = String.Format("select project_name, project_id from table_project where manager_id={0} and project_status = {1}", Global_Userinfo.userid, status);
-            //conn.Open();
-            //dataGridView1.AutoGenerateColumns = false;
-            //MySqlCommand command = new MySqlCommand(sql, conn);
-            //MySqlDataAdapter da = new MySqlDataAdapter(command);
-            //ds = new DataSet();
-            //da.Fill(ds, "table_project");
-            //dataGridView1.DataSource = ds.Tables["table_project"];
-            //dataGridView1.Refresh();
+            MySqlConnection conn = new MySqlConnection(Global_Database.Conn);
+            string sql = string.Format("select project_name, project_id from table_project where manager_id={0} and project_status = {1}", Global_Userinfo.userid, status);
+            conn.Open();
+            dataGridView1.AutoGenerateColumns = false;
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataAdapter da = new MySqlDataAdapter(command);
+            ds = new DataSet();
+            da.Fill(ds, "table_project");
+            dataGridView1.DataSource = ds.Tables["table_project"];
+            dataGridView1.Refresh();
 
-            //conn.Close();
+            conn.Close();
 
         }
 

@@ -25,6 +25,7 @@ namespace BugPractice1_4
             
             lockStatus = Global_Database.SearchPlanLock(planID);
             if (lockStatus == 1) mode = 1;
+            
             InititateDataGridView();
         }
 
@@ -166,6 +167,11 @@ namespace BugPractice1_4
                 InititateDataGridView();
             }
             else if(button_upload_status == 2) {
+                int rowIndex = dataGridView1.CurrentCell.RowIndex;
+                string case_id = ds.Tables["table_case"].Rows[rowIndex]["case_id"].ToString();
+                new BugCreater(BugCreater.OPEN_FOR_LOOK,int.Parse(case_id) , 0).ShowDialog();
+
+
             }
                 //打开查看缺陷窗口
         }
