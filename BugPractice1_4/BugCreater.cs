@@ -674,7 +674,7 @@ namespace BugPractice1_4
 
 
             tableAuditBug.Bug_status = bug_cre_audit_status.SelectedIndex + 1;
-            tableAuditBug.Bug_description = bug_cre_audit_desc.Text;
+            //tableAuditBug.Bug_description = bug_cre_audit_desc.Text;
 
             if (tableAuditBug.Bug_status == 3)
             {
