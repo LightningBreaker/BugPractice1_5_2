@@ -21,6 +21,9 @@ namespace BugPractice1_4
         public Data_Visualization_Analysis()
         {
             InitializeComponent();
+           
+
+
         }
 
         private void Data_Visualization_Analysis_Load(object sender, EventArgs e)
@@ -33,6 +36,9 @@ namespace BugPractice1_4
             this.chart2.Visible = true;
             this.chart1.Visible = false;
             this.chart3.Visible = false;
+            this.line_X.Visible = false;
+            this.line_Y.Visible = false;
+            
         }
         public void Bar_Load()//柱状图
         {
@@ -64,7 +70,7 @@ namespace BugPractice1_4
                 Random rd = new Random();
                 while (k != 0)
                 {
-                    Strength.Points.AddXY("用例" + number.ToString(), rd.Next(1, 100));
+                    Strength.Points.AddXY("功能" + number.ToString(), rd.Next(1, 50));
                     k--;number++;
                 }
           /* Strength.Points.AddXY("用例1",  rd.Next(1, 100));
@@ -90,6 +96,8 @@ namespace BugPractice1_4
             if (e.HitTestResult.ChartElementType == ChartElementType.DataPoint)
             {
                 int i = e.HitTestResult.PointIndex;
+                Random rd = new Random();
+                int num = rd.Next(1, 4);
                 DataPoint dp = e.HitTestResult.Series.Points[i];
                 //分别显示x轴和y轴的数值，其中{1:F3},表示显示的是float类型，精确到小数点后3位。                     
                 string r = string.Format("用例数量:{0} ", dp.YValues[0] );
@@ -102,13 +110,13 @@ namespace BugPractice1_4
                 this.panel2.Visible = true;
                 this.panel2.Location = new Point(x, y);
                 this.label7.Text = r;
-                Random rd = new Random();
-                switch (rd.Next(1, 4))
-                {
-                    case 1: this.label6.Text = "测试功能：用户登录";break;
-                    case 2: this.label6.Text = "测试功能：上传数据"; break;
-                    case 3: this.label6.Text = "测试功能：缺陷修复"; break;
-                }
+                this.label6.Text = "测试功能：用户登录";
+                //switch (num)
+                //{
+                //    case 1: this.label6.Text = "测试功能：用户登录";break;
+                //    case 2: this.label6.Text = "测试功能：上传数据"; break;
+                //    case 3: this.label6.Text = "测试功能：缺陷修复"; break;
+                //}
                 
             }
 
@@ -123,7 +131,7 @@ namespace BugPractice1_4
             List<string> xData = new List<string>() { "功能缺陷", "设计缺陷", "性能缺陷", "配置缺陷" };
             Random rd = new Random();
             int num1 = rd.Next(1, 50), num2 = rd.Next(1, 50);
-            List<int> yData1 = new List<int>() {num1,50-num1,num2,50-num2 };
+            List<int> yData1 = new List<int>() {23,27,25,25 };
             List<int> yData = new List<int>() { 10, 20, 30, 40 };
             this.chart2.Titles.Add("缺陷数量报表");
             chart2.Series["Series1"].Label = "#PERCENT{P}";
@@ -152,7 +160,7 @@ namespace BugPractice1_4
                 while ((k--) != 0)
                 {
                     xData1.Add((int)dtb.Rows[i]["bug_id"]);
-                    yData1.Add(rd.Next(1, 10) * 10);
+                    yData1.Add(rd.Next(1, 4) );
                     i++;
                 }
                 chart3.GetToolTipText += new EventHandler<ToolTipEventArgs>(chart3_GetToolTipText);
@@ -160,6 +168,7 @@ namespace BugPractice1_4
                 //List<int> yData = new List<int>() { 10, 60, 30, 70 };
                 this.chart3.Titles.Add("缺陷严重程度报表");
                 //线条颜色
+                
                 chart3.Series[0].Color = Color.Green;
                 //线条粗细
                 chart3.Series[0].BorderWidth = 3;
@@ -178,6 +187,7 @@ namespace BugPractice1_4
                 //绘制黑色的连线
                 chart3.Series[0]["PieLineColor"] = "Black";
                 chart3.Series[0].Points.DataBindXY(xData1, yData1);
+                
             }
             catch (MySqlException ex)
             {
@@ -196,7 +206,7 @@ namespace BugPractice1_4
                     int i = e.HitTestResult.PointIndex;
                     DataPoint dp = e.HitTestResult.Series.Points[i];
                     //分别显示x轴和y轴的数值，其中{1:F3},表示显示的是float类型，精确到小数点后3位。                     
-                    string r = string.Format("等级:{0} ",  dp.YValues[0]/10);
+                    string r = string.Format("等级:{0} ",  dp.YValues[0]);
                   
                     //鼠标相对于窗体左上角的坐标
                     Point formPoint = this.PointToClient(Control.MousePosition);
@@ -213,31 +223,31 @@ namespace BugPractice1_4
                         
                         switch (dtb.Rows[num]["bug_reason"])
                         {
-                            case 1: this.label2.Text = "原因:功能问题"; break;
-                            case 2: this.label2.Text = "原因:接口问题"; break;
-                            case 3: this.label2.Text = "原因:逻辑问题"; break;
-                            case 4: this.label2.Text = "原因:计算问题"; break;
-                            case 5: this.label2.Text = "原因:数据问题"; break;
-                            case 6: this.label2.Text = "原因:用户界面问题"; break;
-                            case 7: this.label2.Text = "原因:文档问题"; break;
-                            case 8: this.label2.Text = "原因:性能问题"; break;
-                            case 9: this.label2.Text = "原因:兼容问题"; break;
-                            case 10: this.label2.Text = "原因:其他问题"; break;
+                            case 1: this.label2.Text = "原因:功能问题"; this.label4.Text = "所属功能：用户登录"; break;
+                            case 2: this.label2.Text = "原因:接口问题"; this.label4.Text = "所属功能：上传数据"; break;
+                            case 3: this.label2.Text = "原因:逻辑问题"; this.label4.Text = "所属功能：缺陷修复"; break;
+                            case 4: this.label2.Text = "原因:计算问题"; this.label4.Text = "所属功能：用户登录"; break;
+                            case 5: this.label2.Text = "原因:数据问题"; this.label4.Text = "所属功能：上传数据"; break;
+                            case 6: this.label2.Text = "原因:用户界面问题"; this.label4.Text = "所属功能：缺陷修复"; break;
+                            case 7: this.label2.Text = "原因:文档问题"; this.label4.Text = "所属功能：用户登录"; break;
+                            case 8: this.label2.Text = "原因:性能问题"; this.label4.Text = "所属功能：上传数据"; break;
+                            case 9: this.label2.Text = "原因:兼容问题"; this.label4.Text = "所属功能：缺陷修复"; break;
+                            default: this.label2.Text = "原因:其他问题"; this.label4.Text = "所属功能：用户登录"; break;
                         }
                     }
                     num++;
                 }
                  
                  this.label3.Text = "名称"+ dtb.Rows[i]["bug_name"]+"  "+r;
-                    
+                 //this.label4.Text = "所属功能：缺陷修复";
                    // this.label4.Text = "所属功能：登录";
-                Random rd = new Random();
-                switch (rd.Next(1, 4))
-                {
-                    case 1: this.label4.Text = "所属功能：用户登录"; break;
-                    case 2: this.label4.Text = "所属功能：上传数据"; break;
-                    case 3: this.label4.Text = "所属功能：缺陷修复"; break;
-                }
+                //Random rd = new Random();
+                //switch (rd.Next(1, 4))
+                //{
+                //    case 1: this.label4.Text = "所属功能：用户登录"; break;
+                //    case 2: this.label4.Text = "所属功能：上传数据"; break;
+                //    case 3: this.label4.Text = "所属功能：缺陷修复"; break;
+                //}
             }
 
                 //鼠标离开数据标记点，则隐藏提示信息
@@ -258,6 +268,9 @@ namespace BugPractice1_4
             this.chart2.Visible = true;
             this.chart1.Visible = false;
             this.chart3.Visible = false;
+            this.line_X.Visible = false;
+            this.line_Y.Visible = false;
+            
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -265,6 +278,9 @@ namespace BugPractice1_4
             this.chart2.Visible = false;
             this.chart1.Visible = true;
             this.chart3.Visible = false;
+            this.line_X.Visible = false;
+            this.line_Y.Visible = false;
+           
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -272,6 +288,9 @@ namespace BugPractice1_4
             this.chart2.Visible = false;
             this.chart1.Visible = false;
             this.chart3.Visible = true;
+            this.line_X.Visible = true;
+            this.line_Y.Visible = true;
+            
         }
 
         private void chart3_Click(object sender, EventArgs e)
