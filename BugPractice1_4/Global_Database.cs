@@ -11,7 +11,7 @@ namespace BugPractice1_4
     class Global_Database
     {
         public static string Conn = "Database='practice_in_school';" +
-            "Data Source='';User Id='root';" +
+            "Data Source='192.168.43.116';User Id='root';" +
             "Password='TheFirstDon';charset='utf8';pooling=true";
         
         public static Dictionary<string,string> SearchTesterInfo()
@@ -43,9 +43,9 @@ namespace BugPractice1_4
             
             foreach(var p in plans)
             {
-                string sql = "insert into table_plan(plan_name,plan_priority,plan_status,plan_project,plan_manager,case_nums,description) " +
-                    String.Format("values('{0}','{1}',1,'{2}','{3}','0','{4}')", p.name, p.priority, project_id, p.manager_id,p.description);
-                MessageBox.Show(sql);
+                string sql = "insert into table_plan(plan_name,plan_priority,plan_status,plan_project,plan_manager,case_nums,description,plan_lock) " +
+                    String.Format("values('{0}','{1}',1,'{2}','{3}','0','{4}',0)", p.name, p.priority, project_id, p.manager_id,p.description);
+                //MessageBox.Show(sql);
                 command = new MySqlCommand(sql,conn);
                 command.ExecuteNonQuery();
             }

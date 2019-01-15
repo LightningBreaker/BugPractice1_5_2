@@ -90,7 +90,13 @@ namespace BugPractice1_4
             // 1: 未完成 2:已完成
 
             MySqlConnection conn = new MySqlConnection(Global_Database.Conn);
-            string sql = String.Format("select c.case_id, plan_name, p.plan_id , project_name, project_id, bug_id, bug_name,bug_level from table_project, table_plan p, table_bug b , table_case c where plan_manager = {0} and project_id = p.plan_id and p.plan_id = c.plan_id and c.case_id = b.case_id and c.case_status = {1}",Global_Userinfo.userid,status);
+            string sql = String.Format("select c.case_id, plan_name, p.plan_id , " +
+                "project_name, project_id, bug_id, bug_name," +
+                "bug_level from table_project, table_plan p, table_bug b , " +
+                "table_case c where plan_manager = {0} and project_id = " +
+                "p.plan_project and p.plan_id = c.plan_id and c.case_id = b.case_id " +
+                "and c.case_status = {1}",Global_Userinfo.userid,status);
+            //MessageBox.Show(sql);
             conn.Open();
             dataGridView2.AutoGenerateColumns = false;
             MySqlCommand command = new MySqlCommand(sql, conn);
@@ -101,7 +107,9 @@ namespace BugPractice1_4
             dataGridView2.Refresh();
 
             conn.Close();
-           
+
+            if (comboBox2.SelectedIndex == 1) button2.Visible = true;
+            else button2.Visible = false;
         }
 
 

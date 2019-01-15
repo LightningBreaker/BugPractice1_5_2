@@ -14,7 +14,7 @@ namespace BugPractice1_4
    
     public partial class Form1 : Form
     {
-        public static string CONSTR = "server=localhost;" +
+        public static string CONSTR = "server=192.168.43.116;" +
            "User Id=root;password=TheFirstDon;" +
            "Database=practice_in_school";
         public Form1()
