@@ -24,6 +24,20 @@ namespace BugPractice1_4
         {
             InitializeComponent();
             bug_sequences.Clear();
+           
+            label_username.Text = Global_Userinfo.username;
+            string type;
+          
+            switch (Global_Userinfo.type)
+            {
+                case Global_Userinfo.ADMINISTRATOR: type = "管理员"; break;
+                case Global_Userinfo.PROJECT_MANAGER: type = "项目管理者"; break;
+                case Global_Userinfo.TESTER: type = "测试工程师"; break;
+                case Global_Userinfo.DEVELOPER: type = "开发工程师"; break;
+                default: type = "未知用户"; break;
+            }
+            label_userType.Text = type;
+          
 
         }
 
@@ -33,6 +47,18 @@ namespace BugPractice1_4
             LoginForm = loginForm;
             InitializeComponent();
             bug_sequences.Clear();
+            label_username.Text = Global_Userinfo.username;
+            string type;
+
+            switch (Global_Userinfo.type)
+            {
+                case Global_Userinfo.ADMINISTRATOR: type = "管理员"; break;
+                case Global_Userinfo.PROJECT_MANAGER: type = "项目管理者"; break;
+                case Global_Userinfo.TESTER: type = "测试工程师"; break;
+                case Global_Userinfo.DEVELOPER: type = "开发工程师"; break;
+                default: type = "未知用户"; break;
+            }
+            label_userType.Text = type;
 
         }
 
