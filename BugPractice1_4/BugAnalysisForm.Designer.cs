@@ -50,15 +50,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button_exit = new System.Windows.Forms.Button();
+            this.button_logOut = new System.Windows.Forms.Button();
             this.label_userType = new System.Windows.Forms.Label();
             this.label_username = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button_logOut = new System.Windows.Forms.Button();
-            this.button_exit = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.bug_ays_change_user_info = new System.Windows.Forms.Button();
             this.text_change_user_email = new System.Windows.Forms.TextBox();
             this.text_change_user_id = new System.Windows.Forms.TextBox();
@@ -81,6 +81,7 @@
             // 
             // dataGrid_waiting_bug
             // 
+            this.dataGrid_waiting_bug.AllowUserToAddRows = false;
             this.dataGrid_waiting_bug.BackgroundColor = System.Drawing.Color.White;
             this.dataGrid_waiting_bug.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid_waiting_bug.Location = new System.Drawing.Point(6, 35);
@@ -335,58 +336,27 @@
             this.tabPage1.Text = "首页";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // button_exit
             // 
-            this.tabPage2.AutoScroll = true;
-            this.tabPage2.Controls.Add(this.dataGrid_waiting_bug);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.bug_ays_lbl_sel_id);
-            this.tabPage2.Controls.Add(this.bug_ays_version_combo);
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.bug_analysis_status_select);
-            this.tabPage2.Controls.Add(this.label15);
-            this.tabPage2.Controls.Add(this.bug_bug_analysis_refresh);
-            this.tabPage2.Controls.Add(this.bug_analysis_desc);
-            this.tabPage2.Controls.Add(this.bug_analysis_bugReason);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.bug_analysis_btn_update);
-            this.tabPage2.Controls.Add(this.label19);
-            this.tabPage2.Controls.Add(this.bug_analysis_status);
-            this.tabPage2.Controls.Add(this.label17);
-            this.tabPage2.Controls.Add(this.label23);
-            this.tabPage2.Controls.Add(this.label21);
-            this.tabPage2.Controls.Add(this.label22);
-            this.tabPage2.Controls.Add(this.bug_analysis_main_text);
-            this.tabPage2.Controls.Add(this.label20);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(755, 423);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "我的工作";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.button_exit.Location = new System.Drawing.Point(391, 311);
+            this.button_exit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_exit.Name = "button_exit";
+            this.button_exit.Size = new System.Drawing.Size(108, 39);
+            this.button_exit.TabIndex = 11;
+            this.button_exit.Text = "退出";
+            this.button_exit.UseVisualStyleBackColor = true;
+            this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
             // 
-            // tabPage3
+            // button_logOut
             // 
-            this.tabPage3.Controls.Add(this.bug_ays_change_user_info);
-            this.tabPage3.Controls.Add(this.text_change_user_email);
-            this.tabPage3.Controls.Add(this.text_change_user_id);
-            this.tabPage3.Controls.Add(this.text_change_phoneNums);
-            this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Controls.Add(this.text_change_user_type);
-            this.tabPage3.Controls.Add(this.label9);
-            this.tabPage3.Controls.Add(this.text_change_user_password);
-            this.tabPage3.Controls.Add(this.label8);
-            this.tabPage3.Controls.Add(this.text_change_user_name);
-            this.tabPage3.Controls.Add(this.label7);
-            this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(755, 423);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "个人资料";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.button_logOut.Location = new System.Drawing.Point(229, 311);
+            this.button_logOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_logOut.Name = "button_logOut";
+            this.button_logOut.Size = new System.Drawing.Size(108, 39);
+            this.button_logOut.TabIndex = 10;
+            this.button_logOut.Text = "注销登录";
+            this.button_logOut.UseVisualStyleBackColor = true;
+            this.button_logOut.Click += new System.EventHandler(this.button_logOut_Click_1);
             // 
             // label_userType
             // 
@@ -440,27 +410,58 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "欢迎进入缺陷管理系统！";
             // 
-            // button_logOut
+            // tabPage2
             // 
-            this.button_logOut.Location = new System.Drawing.Point(229, 311);
-            this.button_logOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_logOut.Name = "button_logOut";
-            this.button_logOut.Size = new System.Drawing.Size(108, 39);
-            this.button_logOut.TabIndex = 10;
-            this.button_logOut.Text = "注销登录";
-            this.button_logOut.UseVisualStyleBackColor = true;
-            this.button_logOut.Click += new System.EventHandler(this.button_logOut_Click_1);
+            this.tabPage2.AutoScroll = true;
+            this.tabPage2.Controls.Add(this.dataGrid_waiting_bug);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.bug_ays_lbl_sel_id);
+            this.tabPage2.Controls.Add(this.bug_ays_version_combo);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.bug_analysis_status_select);
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.bug_bug_analysis_refresh);
+            this.tabPage2.Controls.Add(this.bug_analysis_desc);
+            this.tabPage2.Controls.Add(this.bug_analysis_bugReason);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.bug_analysis_btn_update);
+            this.tabPage2.Controls.Add(this.label19);
+            this.tabPage2.Controls.Add(this.bug_analysis_status);
+            this.tabPage2.Controls.Add(this.label17);
+            this.tabPage2.Controls.Add(this.label23);
+            this.tabPage2.Controls.Add(this.label21);
+            this.tabPage2.Controls.Add(this.label22);
+            this.tabPage2.Controls.Add(this.bug_analysis_main_text);
+            this.tabPage2.Controls.Add(this.label20);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(755, 423);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "我的工作";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button_exit
+            // tabPage3
             // 
-            this.button_exit.Location = new System.Drawing.Point(391, 311);
-            this.button_exit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_exit.Name = "button_exit";
-            this.button_exit.Size = new System.Drawing.Size(108, 39);
-            this.button_exit.TabIndex = 11;
-            this.button_exit.Text = "退出";
-            this.button_exit.UseVisualStyleBackColor = true;
-            this.button_exit.Click += new System.EventHandler(this.button_exit_Click);
+            this.tabPage3.Controls.Add(this.bug_ays_change_user_info);
+            this.tabPage3.Controls.Add(this.text_change_user_email);
+            this.tabPage3.Controls.Add(this.text_change_user_id);
+            this.tabPage3.Controls.Add(this.text_change_phoneNums);
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.text_change_user_type);
+            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.text_change_user_password);
+            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.text_change_user_name);
+            this.tabPage3.Controls.Add(this.label7);
+            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(755, 423);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "个人资料";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // bug_ays_change_user_info
             // 

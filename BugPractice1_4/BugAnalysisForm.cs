@@ -185,6 +185,7 @@ namespace BugPractice1_4
                 string bug_analysis = tableBug.Rows[row_idx][12].ToString();
 
                 bug_analysis_bugReason.SelectedIndex = bug_reason - 1;
+                Console.WriteLine("My Reasonnnnnnnnnnnnnnnnnn=" + bug_analysis_bugReason.SelectedIndex.ToString());
                 bug_analysis_main_text.Text = bug_analysis;
                 bug_analysis_bugReason.Enabled = false;
                 bug_analysis_main_text.Enabled = false;
@@ -200,15 +201,16 @@ namespace BugPractice1_4
             bug_analysis_desc.Text = description;
             bug_update.Bug_id = selected_id;
 
-            if (bug_status == 2)
+            if (bug_status !=1)
             {
 
                 init_next_list(row_idx);
             }
 
-          
-            
-            
+
+
+
+
         }
 
         private List<int> next_id_list = new List<int>();
@@ -289,6 +291,10 @@ namespace BugPractice1_4
             {
                 bug_update.Bug_id =int.Parse(bug_ays_lbl_sel_id.Text.Trim());
                 bug_update.Bug_reason = bug_ays_version_combo.SelectedIndex + 1;
+                if (bug_update.Bug_reason == 0)
+                {
+                    bug_update.Bug_reason = 1;
+                }
                 bug_update.Bug_analysis = bug_analysis_main_text.Text;
                 bug_update.Bug_status = 2;
                 if (TableBug.Update_Bug(bug_update, TableBug.DEVOLOPER)==1)
@@ -340,7 +346,7 @@ namespace BugPractice1_4
                 bug_analysis_status.Items.Clear();
                 for (int i = 0; i < status_combo_list.Count; i++)
                     bug_analysis_status.Items.Add(status_combo_list[i]);
-                bug_analysis_status.SelectedIndex = bug_analysis_status_select.SelectedIndex;
+               // bug_analysis_status.SelectedIndex = bug_analysis_status_select.SelectedIndex;
             }
 
             global_status = bug_analysis_status_select.SelectedIndex + 1;
@@ -378,7 +384,7 @@ namespace BugPractice1_4
         {
             bug_ays_lbl_sel_id.Text = para_tableBug.Bug_id.ToString();
             bug_analysis_desc.Text = para_tableBug.Bug_description;
-            bug_analysis_status.SelectedIndex = para_tableBug.Bug_status - 1;
+           // bug_analysis_status.SelectedIndex = para_tableBug.Bug_status +1;
             if (para_tableBug.Bug_reason != 1)
             {
                 bug_analysis_bugReason.SelectedIndex = para_tableBug.Bug_reason - 1;

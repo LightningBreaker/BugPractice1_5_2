@@ -280,10 +280,10 @@ namespace BugPractice1_4
                 else
                 {
                     string str = "update table_bug set bug_status="
-                        + tableBug.Bug_status +
-                        " ,bug_description= '"+tableBug.Bug_description+"'"+
+                        + tableBug.Bug_status.ToString() +
+                       
                         " where bug_id="
-                        + tableBug.Bug_id + "";
+                        + tableBug.Bug_id.ToString() + "";
 
                     string str2 = "update table_case set bug_nums=bug_nums-1 where case_id=" + tableBug.Case_id;
                     MySqlCommand mycmd =
